@@ -1,0 +1,7 @@
+footer{
+    min-height: 20vh;
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--textcolor);
+    border: 5px solid var(--textcolor);
+}

@@ -1,0 +1,134 @@
+
+.modalMenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 98;
+    transition: 0.4s;
+}
+.blurbg{
+    animation: blury forwards 1s;
+}
+
+
+.menu{
+    position: absolute;
+    width:50vw;
+    height:100vh;
+    top: 0;
+    left: 0;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: menuAnimation 0.5s forwards ease-in-out;
+    transition: 0.5s;
+    z-index: 99;
+    opacity: unset;
+}
+
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_deroulant{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: plakkaat;
+    font-size: 5vw;
+    padding-top:20px ;
+    padding-bottom:20px ;
+}
+
+.shrink{
+    transition: 300ms;
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    font-size: 3vw;
+    font-family: plakkaat;
+}
+
+.shrink div{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+
+.shrink a{
+    font-weight: 100;
+    margin: 10px;
+}
+
+
+.menu_deroulant:hover .shrink{
+    grid-template-rows: 1fr;
+    padding-top: 5px;
+}
+
+
+.link{
+    font-family: plakkaat;
+    font-size: 5vw;
+    padding-top:20px ;
+    padding-bottom:20px ;
+    z-index: 100;
+}
+
+.img_container{
+      position: absolute;
+      display: none;
+      z-index: 101;
+      left:-8%;
+  }
+
+  @keyframes blury{
+    0%{
+        backdrop-filter: blur(0px);
+
+    }
+    100%{
+        backdrop-filter: blur(10px);
+
+    }
+  }
+ 
+  @keyframes menuAnimation{
+      0%{
+        transform: translateX(-100%);
+        border-top-right-radius: 20% ;
+        border-bottom-right-radius: 20%;
+      }
+    100%{
+        transform: translateX(0%);
+        border-top-right-radius: 1% ;
+        border-bottom-right-radius: 1%;
+    }
+  }
+
+  @media screen and (max-width:700px) {
+    .menu{
+        width: 100%;
+    }
+
+    .link,.menu_deroulant{
+        font-size: 12vw;
+    }
+
+
+    .shrink{
+        font-size: 8vw;
+    }
+
+}

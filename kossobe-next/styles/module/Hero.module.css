@@ -1,0 +1,44 @@
+.hero{
+    margin-top: -10vh;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.parallax_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.parallax_wrapper img{
+    object-fit: contain;
+    position: absolute;
+}
+.crowd3{
+    z-index: 1;
+}
+
+.crowd2{
+    transform: translateY(100px);
+    z-index: 2;
+}
+.crowd1{
+    z-index: 3;
+}
+
+.stage{
+    transform: translateY(150px);
+}
+
+.title{
+    position: absolute;
+    z-index: 2;
+    top: 80vh;
+    font-size: 10vw;
+}
+
+@media (max-width: 600px) {
+}
