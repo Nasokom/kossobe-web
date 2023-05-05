@@ -98,6 +98,10 @@ const Contact = () => {
             {userLang.includes('fr') ? 'contact' : userLang.includes('de')? 'Kontakt' : 'contact'}
               </h1>
               <p>Prenez contact avec nous</p>
+              <p> {userLang.includes('fr') ? 'Intéressé par nos services ?' 
+                  :userLang.includes('de')? 'Interessiert an unseren Dienstleistungen?' 
+                  : 'Interested in our services?'}</p>
+              
       </div>
 
   

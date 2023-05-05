@@ -9,7 +9,9 @@ const About = () => {
     <div>
       <div className='page-header'>
             <h1 className="page-title">
-            {userLang.includes('fr') ? 'A propos de Kossobe' : userLang.includes('de')? 'Uber kossobe' : 'About Kossobe'}
+            {userLang.includes('fr') ? 'A propos de Kossobe' 
+            : userLang.includes('de')? 'Uber kossobe' 
+            : 'About Kossobe'}
               </h1>
               <p>A propos de kossobe</p>
       </div>
