@@ -1,10 +1,10 @@
 import React from 'react'
 import { useStateContext } from '../context/StateContext'
 
-const about = () => {
+const About = () => {
 
   const {userLang} = useStateContext();
-  
+
   return (
     <div>
       <div className='page-header'>
@@ -17,4 +17,4 @@ const about = () => {
   )
 }
 
-export default about
+export default About
