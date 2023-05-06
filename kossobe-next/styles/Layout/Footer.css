@@ -4,4 +4,6 @@ footer{
     background-color: var(--bg);
     color: var(--textcolor);
     border: 5px solid var(--textcolor);
+    background-color: red;
 }
+

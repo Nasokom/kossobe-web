@@ -1,8 +1,8 @@
 .hero{
-    margin-top: -10vh;
     height: 100vh;
-    overflow: hidden;
     position: relative;
+    border-bottom: 3px solid var(--textColor);
+    z-index: 1;
 }
 
 .parallax_wrapper{
@@ -17,6 +17,7 @@
     object-fit: contain;
     position: absolute;
 }
+
 .crowd3{
     z-index: 1;
 }

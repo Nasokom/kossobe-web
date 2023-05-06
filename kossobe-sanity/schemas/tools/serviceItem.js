@@ -4,6 +4,13 @@ export default{
     type:"object",
     fields:[
         {
+            name:'backOfficeName',
+            title:'Nom du Service',
+            type:"string",
+            description:"Nom du service"
+
+        },
+        {
             name:"name",
             title:"Nom du service",
             type:'titleTrad',

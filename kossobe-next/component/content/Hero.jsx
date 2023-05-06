@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
 
     const [imgW, setImgW] = useState(1500);
-    const main = useRef(null)
+/*     const main = useRef(null)
 
     useIsomorphicLayoutEffect(() => {
 
@@ -58,9 +58,9 @@ const Hero = () => {
              return () => ctx.revert();
            }, []);
      
-
+ */
   return (
-    <div className={styles.hero} ref={main}>
+    <div className={styles.hero} id="hero">
         <div className={styles.parallax_wrapper}>
             <h1 className={styles.title} id='title'>Kossobe</h1>
             <Image src="/img/stage.png" height={500} width={500} className={styles.stage} id={'stage'}/>

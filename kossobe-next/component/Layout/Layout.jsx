@@ -11,7 +11,7 @@ const Layout = ({children}) => {
   
       setTimeout(()=>{
         setIsLoading(false)
-      }, 2000)
+      }, 200)
   
     },[])
   

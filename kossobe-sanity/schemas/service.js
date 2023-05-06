@@ -4,6 +4,13 @@ export default{
     type:"document",
     fields:[
         {
+            name:'backOfficeName',
+            title:'Nom de la categorie de service',
+            type:"string",
+            description:"Nom de la categorie"
+
+        },
+        {
             name:"name",
             title:"Nom de la Categorie de Service",
             type:"titleTrad",
