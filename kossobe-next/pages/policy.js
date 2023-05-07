@@ -49,8 +49,11 @@ const Policy = ({policys}) => {
     </Head>
 
     <div className={Styles.policy} ref={mainRef}>
-        <h1 className='page-title'>policy</h1>
+      <div className='page-header'>
+        <h1>policy</h1>
+      </div>
         
+      <div className={Styles.content_container}>
       {policys.map((policy,i)=>{
         return(
           <div className={Styles.categ} key={i} id={policy.id}>
@@ -58,10 +61,8 @@ const Policy = ({policys}) => {
             
             <div>
               {policy.subCateg.map((categ,i)=>{
-              
-                console.log(categ.text[userLang])
                 return(
-                  <div className={Styles.sub_categ} key={i}>
+                  <div className={Styles.sub_categ}  id={categ.id}key={i}>
 
                     <div className={Styles.sub_title} onClick={(e)=>toggleText(e)}>
                       <h3>{categ.name[userLang]}</h3>
@@ -79,6 +80,7 @@ const Policy = ({policys}) => {
           </div>
           )
         })}
+    </div>
     
     
     

@@ -1,6 +1,7 @@
 import React, { useEffect,useState, useRef } from 'react'
-import { client } from '../../Utils/sanityClient';
+import { client, urlFor } from '../../Utils/sanityClient';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useStateContext } from '../../context/StateContext';
 import ComplexText from '../../component/Ui/ComplexText';
 import Styles from '../../styles/Pages/Services.module.css'
@@ -12,41 +13,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ServicePage = ({services, category}) => {
 
-    const {userLang} = useStateContext();
+    const {userLang, setServiceMsg} = useStateContext();
     console.log(services.services)
     const main = useRef(null)
-    useIsomorphicLayoutEffect(() => {
-
-      //setImgW(window.innerWidth)
-
-      const ctx = gsap.context((self) => {
-   
-          //main.current.querySelector('#crowd3')
-
-               const crowd3 = self.selector('#crowd3');
-                const card = main.current.querySelectorAll('.service-card');
-     
-               const tl = gsap.timeline({
-                 scrollTrigger: {
-                   trigger: main.current,
-                   start:"top top",
-                   end: "+=1500px",
-                   scrub: true,
-                   pin: true,
-                 }
-               });
-   
-              card.forEach((elt,i)=>{
-
-                 i > 0 && tl.to(elt,{
-                  y:-300*i
-                })   
-              })
-
-           }, main);
-           return () => ctx.revert();
-         }, []);
-   
 
     
   return (
@@ -57,6 +26,7 @@ const ServicePage = ({services, category}) => {
         </div>
 
     <div  ref={main}>
+      
         <div className={Styles.nav}>
 
             {category.map((categ,i)=>{
@@ -73,12 +43,52 @@ const ServicePage = ({services, category}) => {
 
         <div className={Styles.service_container}>
             {services.services.map((service,i)=>{
+              
+              const myLoader = () => {
+                return service.image[0] && urlFor(service.image[0]).width(200).height(200).url()
+            }
+
+            const myLoader2 = () => {
+              return service.image[1] && urlFor(service.image[1]).width(200).height(200).url()
+          }
               return(
                 <div key={i} className={`service-card ${Styles.card}`}>
                        <h2>{service.name[userLang]}</h2> 
+                       <div className={Styles.content}>
+                            <ComplexText data={service.text[userLang]}/>
+                            <Image 
+                            loader={myLoader}
+                            width={200}
+                            height={200}
+                            src={'bjr'}
+                            alt=''
+                            />
+                        </div>
+                        <div className={Styles.content}>
+                          <ComplexText data={service.text2[userLang]}/>
+                            <Image 
+                            loader={myLoader2}
+                            width={200}
+                            height={200}
+                            src={'bjr'}
+                            alt=''
+                            />
+                       </div>
 
-                        <ComplexText data={service.text[userLang]}/>
-
+                        <div className={Styles.contact}>
+                          <p>
+                            {userLang.includes('fr') ? 'intéressé par ce service ?' 
+                            : userLang.includes('de') ? 'Interesse an dieser Dienstleistung ?'
+                            : 'interested in this service ?' }
+                          </p>
+                          <Link href={'/contact'}>
+                            <button className={Styles.btn} onClick={()=>setServiceMsg(service.name)}>
+                            {userLang.includes('fr') ? 'Contactez nous' 
+                            : userLang.includes('de') ? 'Kontaktiere uns'
+                            : 'Contact us' }
+                            </button>
+                          </Link>
+                        </div>
                     </div>
                 )
               })}

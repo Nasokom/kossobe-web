@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { client } from '../../Utils/sanityClient';
 import styles from '../../styles/Layout/Menu.module.css'
 import { useStateContext } from '../../context/StateContext';
+import ThemeBtn from '../Ui/ThemeBtn';
+import LangueBtn from '../Ui/LangueBtn';
 
 const Menu = ({toggleMenu}) => {
 
@@ -23,7 +25,10 @@ const Menu = ({toggleMenu}) => {
 
     return (
 
-        <div id="menu-container" className={`${styles.modalMenu} ${styles.blurbg}`} onClick={()=>toggleMenu()} >
+        <div id="menu-container" className={`${styles.modalMenu} ${styles.blurbg}`} 
+        //onClick={()=>toggleMenu()} 
+        >
+        <div className={styles.emptyClose} onClick={()=>toggleMenu()}></div>
          <div className={styles.menu} ref={menuRef} id="menu">
             <ul className={styles.container}>
                {/*  <div className={styles.img_container}>
@@ -37,7 +42,7 @@ const Menu = ({toggleMenu}) => {
                 </Link> 
 
                 <div className={styles.menu_deroulant} data-text="Contact Us" >
-                    {userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Dienstleistungen': 'Our Services' }
+                    {userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Services': 'Our Services' }
                     <div className={styles.shrink}>
                         <div>
 
@@ -73,7 +78,7 @@ const Menu = ({toggleMenu}) => {
                     className={styles.link}    
                     onClick={()=>toggleMenu()}
                 >
-                     <span>{userLang.includes('fr') ? 'A propos de nous' : userLang.includes('de') ? 'über uns': 'About Us' }</span>
+                     <span>{userLang.includes('fr') ? 'Nous connaître' : userLang.includes('de') ? 'über uns': 'About Us' }</span>
                 </Link>
 
 
@@ -85,8 +90,12 @@ const Menu = ({toggleMenu}) => {
                 </Link>
 
             </ul>
-            
+        <div className={styles.btn_box}>
+                <ThemeBtn/>
+                <LangueBtn/>
+            </div>
         </div>
+
         </div>
     )
 }

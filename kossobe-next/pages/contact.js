@@ -7,8 +7,7 @@ import Styles from '../styles/Pages/Contact.module.css'
 const Contact = () => {
 
     //lang
-    const {userLang} = useStateContext();
-
+    const {userLang,serviceMsg} = useStateContext();
     //Mail State
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -113,6 +112,7 @@ const Contact = () => {
                     <input type="text" name='nom' placeholder={userLang.includes('fr') ? 'Nom' : userLang.includes('de')? 'Name' : 'nom'} required={true} />
                     <input type='email' name='mail' placeholder='Email' required={true} />
                     <input type='tel' name="tel" placeholder='Phone' />
+                    <input type="text" name='subject' placeholder={userLang.includes('fr') ? 'Sujet' : userLang.includes('de')? 'Thema' : 'Subject'} value={ serviceMsg ? serviceMsg[userLang] : ''}/>
                     <textarea id="txtid" name="message" placeholder={userLang.includes('fr') ? 'Message' : userLang.includes('de')? 'Nachricht' : 'Message'} rows="10" cols="50" maxLength="1000" required={true} >
                     </textarea>
                     <button id="submit" type='submit' className={Styles.submit} name='submit-btn' 

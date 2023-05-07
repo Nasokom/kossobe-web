@@ -6,10 +6,6 @@
     padding-bottom: 100px;
 }
 
-.policy h1{
-    margin-bottom: 70px;
-    font-family: plakkaat;
-}
 .policy p{
     font-size: clamp(15px, 2vw, 25px);
     width: 100%;
@@ -28,6 +24,14 @@
     padding-bottom: 20px;
 }
 
+.content_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
 
 .categ{
     display: flex;
@@ -35,16 +39,21 @@
     flex-direction: column;
     align-items: center;
     min-height: 50vh;
-    padding-top: 100px;
+    margin-top: 80px;
+    background: var(--bg);
+    min-width: 80%;
+    padding: 30px;
+    border-radius: 20px;
 }
 
 
 .sub_categ{
+    min-width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    border-bottom: 4px solid var(--textcolor);
+    border-bottom: 4px solid var(--textColor);
     margin-bottom: 30px;
     padding-bottom: 20px;
 }
