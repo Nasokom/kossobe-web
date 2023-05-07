@@ -1,0 +1,26 @@
+.footer-banner{
+    padding: 50px;
+    }
+  
+    .footer-banner-text{
+  
+    }
+  
+    .footer-banner-text > *{
+      margin-bottom: 50px;
+    }
+  
+    .footer-banner-btn-container{
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: 100%;
+    }
+    .footer-banner-btn{
+      border-radius: 50px;
+      font-family: plakkat;
+      background-color: black;
+      padding: 25px;
+      color: white;
+      font-size: 25px;
+    }

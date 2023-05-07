@@ -3,10 +3,12 @@ import textTrad from './tools/textTrad'
 import titleTrad from './tools/titleTrad'
 import serviceItem from './tools/serviceItem'
 import service from './service'
+import titleText from './tools/titleText'
+import policy from './policy'
 
 export const schemaTypes = [
-    banner,service,
+    banner,service,policy,
     
     
-    textTrad, titleTrad, serviceItem
+    textTrad, titleTrad, serviceItem, titleText
 ]
