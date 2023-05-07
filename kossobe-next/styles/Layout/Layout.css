@@ -1,0 +1,10 @@
+@import 'Navbar.css';
+@import 'Footer.css';
+
+main{
+    padding-top: 10vh;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overflow:hidden;
+}
