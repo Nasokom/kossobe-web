@@ -3,8 +3,8 @@ import { useStateContext } from '../context/StateContext'
 import TrustClient from '../component/content/TrustClient';
 import { client } from '../Utils/sanityClient';
 //import styles from '../styles/Pages/About.module.css'
-import ComplexText from '../component/ui/ComplexText'
 import Image from 'next/image'
+import ComplexText from '../component/Ui/ComplexText';
 
 const About = ({clientDatas, aboutDatas}) => {
 
@@ -26,7 +26,7 @@ const About = ({clientDatas, aboutDatas}) => {
         return(
             <div key={i}>
                 <h4>{data.name}</h4>
-                <ComplexText data={datat.text}/>
+                <ComplexText data={data.text}/>
                 <Image/>
             </div>
         )
