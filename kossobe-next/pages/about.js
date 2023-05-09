@@ -24,7 +24,7 @@ const About = ({clientDatas, aboutDatas}) => {
       <div>
       {aboutDatas.map((data,i)=>{
         return(
-            <div>
+            <div key={i}>
                 <h4>{data.name}</h4>
                 <ComplexText data={datat.text}/>
                 <Image/>
