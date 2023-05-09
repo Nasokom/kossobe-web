@@ -3,23 +3,25 @@ import { client, urlFor } from '../../Utils/sanityClient';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useStateContext } from '../../context/StateContext';
-import ComplexText from '../../component/Ui/ComplexText';
+import ComplexText from '../../component/Ui/ComplexText'
 import Styles from '../../styles/Pages/Services.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
+import ServiceCard from '../../component/content/ServiceCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ServicePage = ({services, category}) => {
 
-    const {userLang, setServiceMsg} = useStateContext();
+    const {userLang} = useStateContext();
     console.log(services.services)
     const main = useRef(null)
 
     
   return (
     <div>
+      
         <div className='page-header'>
             <h1>{userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Dienstleistungen': 'Our Services' }</h1>
             <p>Decouvrez les Services que nous proposons</p>
@@ -28,7 +30,6 @@ const ServicePage = ({services, category}) => {
     <div  ref={main}>
       
         <div className={Styles.nav}>
-
             {category.map((categ,i)=>{
               return( 
                 <Link href={`/services/${categ.slug.current}`} key={i}>
@@ -38,62 +39,16 @@ const ServicePage = ({services, category}) => {
                     </Link>
                 )
               })}
-
         </div>
 
         <div className={Styles.service_container}>
             {services.services.map((service,i)=>{
-              
-              const myLoader = () => {
-                return service.image[0] && urlFor(service.image[0]).width(200).height(200).url()
-            }
-
-            const myLoader2 = () => {
-              return service.image[1] && urlFor(service.image[1]).width(200).height(200).url()
-          }
-              return(
-                <div key={i} className={`service-card ${Styles.card}`}>
-                       <h2>{service.name[userLang]}</h2> 
-                       <div className={Styles.content}>
-                            <ComplexText data={service.text[userLang]}/>
-                            <Image 
-                            loader={myLoader}
-                            width={200}
-                            height={200}
-                            src={'bjr'}
-                            alt=''
-                            />
-                        </div>
-                        <div className={Styles.content}>
-                          <ComplexText data={service.text2[userLang]}/>
-                            <Image 
-                            loader={myLoader2}
-                            width={200}
-                            height={200}
-                            src={'bjr'}
-                            alt=''
-                            />
-                       </div>
-
-                        <div className={Styles.contact}>
-                          <p>
-                            {userLang.includes('fr') ? 'intéressé par ce service ?' 
-                            : userLang.includes('de') ? 'Interesse an dieser Dienstleistung ?'
-                            : 'interested in this service ?' }
-                          </p>
-                          <Link href={'/contact'}>
-                            <button className={Styles.btn} onClick={()=>setServiceMsg(service.name)}>
-                            {userLang.includes('fr') ? 'Contactez nous' 
-                            : userLang.includes('de') ? 'Kontaktiere uns'
-                            : 'Contact us' }
-                            </button>
-                          </Link>
-                        </div>
-                    </div>
-                )
+                  return(
+                    <ServiceCard data={service} key={i}/>
+                  )
               })}
-
         </div>
+
         </div>
     </div>
   )

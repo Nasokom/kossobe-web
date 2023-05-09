@@ -7,14 +7,14 @@ export default{
             name:'backOfficeName',
             title:'Nom de la categorie de service',
             type:"string",
-            description:"Nom de la categorie"
+            description:"Nom de la categorie de service pour le backOffice"
 
         },
         {
             name:"name",
             title:"Nom de la Categorie de Service",
             type:"titleTrad",
-            description:" exemple : Pedagogie , live , etc .."
+            description:"Nom de la categorie afficher sur le site web"
         },
         {
             name:"image",
