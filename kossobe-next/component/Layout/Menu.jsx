@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { client } from '../../Utils/sanityClient';
+//import { client } from '../../Utils/sanityClient';
 import styles from '../../styles/Layout/Menu.module.css'
 import { useStateContext } from '../../context/StateContext';
 import ThemeBtn from '../Ui/ThemeBtn';
@@ -29,7 +29,9 @@ const Menu = ({toggleMenu}) => {
         //onClick={()=>toggleMenu()} 
         >
         <div className={styles.emptyClose} onClick={()=>toggleMenu()}></div>
+
          <div className={styles.menu} ref={menuRef} id="menu">
+            
             <ul className={styles.container}>
                {/*  <div className={styles.img_container}>
                     <Image className={styles.image} src={'/djembe.png'} width="300" height="500" />

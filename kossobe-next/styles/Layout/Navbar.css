@@ -5,7 +5,7 @@ nav{
   z-index: 100;
   width: 100%;
   padding : 0 30px;
-  height: 10vh;
+  /* height: 10vh; */
   align-items: center;
   top: 0;
   left: 0;
@@ -67,6 +67,10 @@ nav{
     .grid {
       width: 100%;
       flex-direction: column;
+    }
+
+    nav{
+        padding : 0 5px;
     }
   }
   

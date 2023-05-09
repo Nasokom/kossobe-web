@@ -1,6 +1,6 @@
 export default {
     name:"trustClient",
-    title:'Ils nous font confaince',
+    title:'Ils nous font confiance',
     type:'document',
     fields:[
         {

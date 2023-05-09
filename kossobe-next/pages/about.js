@@ -2,8 +2,11 @@ import React from 'react'
 import { useStateContext } from '../context/StateContext'
 import TrustClient from '../component/content/TrustClient';
 import { client } from '../Utils/sanityClient';
+//import styles from '../styles/Pages/About.module.css'
+import ComplexText from '../component/ui/ComplexText'
+import Image from 'next/image'
 
-const About = ({clientDatas}) => {
+const About = ({clientDatas, aboutDatas}) => {
 
   const {userLang} = useStateContext();
 
@@ -18,6 +21,17 @@ const About = ({clientDatas}) => {
               <p>Apprennez en plus sur nous</p>
       </div>
 
+      <div>
+      {aboutDatas.map((data,i)=>{
+        return(
+            <div>
+                <h4>{data.name}</h4>
+                <ComplexText data={datat.text}/>
+                <Image/>
+            </div>
+        )
+      })}
+      </div>
 
       <TrustClient datas={clientDatas}/>
 
@@ -30,9 +44,12 @@ export default About
 export async function getStaticProps(){
 
   const clientDatas = await client.fetch(`*[_type == "trustClient"]`);
+  const aboutDatas = await client.fetch(`*[_type == "about"]`);
   return {
     props: {
-      clientDatas
+      clientDatas,
+      aboutDatas
+      
     },
     revalidate: 1,
   };

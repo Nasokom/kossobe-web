@@ -6,9 +6,10 @@ import service from './service'
 import titleText from './tools/titleText'
 import policy from './policy'
 import trustClient from './trustClient'
+import about from './about'
 
 export const schemaTypes = [
-    banner,service,policy,trustClient,
+    banner,service,policy,trustClient,about,
     
     
     textTrad, titleTrad, serviceItem, titleText
