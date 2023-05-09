@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ServicePage = ({services, category}) => {
 
     const {userLang} = useStateContext();
-    console.log(services.services)
+    //console.log(services.services)
     const main = useRef(null)
 
     
