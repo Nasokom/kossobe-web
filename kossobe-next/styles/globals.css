@@ -134,5 +134,90 @@ p{
 
 @media (min-width: 800px) {
 
+}
 
+.text-container p{
+  padding-bottom: 15px;
+  font-family: tahoma;
+}
+
+.text-container li{
+  padding-bottom: 10px;
+  font-family: tahoma;
+}
+
+
+.scroll_container{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service_card{
+  outline: 3px solid var(--textColor); 
+  border-radius: 20px;
+  background:var(--bg) ;
+  width: 80%;
+  display:flex;
+  overflow: hidden;
+  height: 80vh;
+  position: relative;
+}
+
+.scroll-title{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: var(--bg);
+  z-index: 10;
+  height: 8vh;
+  overflow: hidden;
+  border-bottom: 3px solid var(--textColor);
+}
+
+.all_title_box{
+  height:fit-content;
+}
+.service_title{
+  width: 100%;
+  height: 8vh;
+  font-family: plakkaat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.scroll_container:hover .all_img_box{
+translate:0 100% ;
+}
+
+.scroll_container:hover .all_txt_box{
+  translate:0 -100% ;
+}
+
+.all_txt_box,.all_img_box{
+  width: 50%;
+  transition: 0.5s;
+}
+
+.service_texts,.service_imgs{
+
+}
+
+
+.un_txt, .un_img{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 1px solid var(--textColor);
+  position: relative;
+  padding: 20px;
+}
+
+.service_imgs, .all_img_box{
+  display: flex;
+  flex-direction: column-reverse;
 }

@@ -21,7 +21,7 @@ const ComplexText = ({data}) => {
         data.marks &&  data.marks.forEach((mark)=>{//Select 1 style
 
           if(mark == def._key){
-            console.log(def._key)
+            /* console.log(def._key) */
               customStyle.href = def.href
           }
           
