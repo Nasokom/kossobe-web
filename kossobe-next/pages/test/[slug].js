@@ -9,34 +9,35 @@ import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
 import ServiceCard from '../../component/content/ServiceCard';
+import {FaAngleUp, FaAngleDown} from 'react-icons/fa'
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ServicePage = ({services, category}) => {
 
     const {userLang} = useStateContext();
-    //console.log(services.services)
+    const [animProgress, setAnimProgress] = useState(0)
+
     const main = useRef(null)
 
-    const [itemCount, setItemCount] = useState(-1);
-
-    const servL = []
-
-    
-    
     useIsomorphicLayoutEffect(() => {
+FaAngleDown
+        const servL = []
+
         services.services.forEach((ser,i)=>{
-            
             servL.push(ser.content.length)
-            //console.log(servL)
+            console.log(servL)
         })
+
         const ctx = gsap.context((self) => {
+
             const imgsBox = self.selector('.all_img_box');
             const textBox = self.selector('.all_txt_box');
             const itemsL =main.current.querySelectorAll('.un_txt').length
             const titles = self.selector('.all_title_box')
             
              const tl = gsap.timeline({
+                 onUpdate: ()=>setAnimProgress(tl.progress()),
                scrollTrigger: {
                  trigger: main.current,
 
@@ -49,24 +50,59 @@ const ServicePage = ({services, category}) => {
              });
 
              for(let i = 0 ; i < itemsL ; i ++){
-
-                 tl.to(imgsBox, {
+                tl.pause(2)
+                i !==0 && tl.to(imgsBox, {
                    y:`${i*100}%`,
-                 },i)
+                 },i-1)
       
-                 tl.to(textBox, {
+                 i !==0 &&  tl.to(textBox, {
                     y:`-${i*100}%`,
-                },i)
+                },i-1)
              } 
 
 
-             servL.forEach((serv,i)=>{
-                setItemCount(prevCount => prevCount + parseInt(serv))
-                console.log(parseInt(serv))
+             //constrol progress
+
+             const prevBtn = main.current.querySelector('#prev-btn');
+             const nextBtn = main.current.querySelector('#next-btn');
+             prevBtn.addEventListener('click',()=>updateProgress(0))
+             nextBtn.addEventListener('click',()=>updateProgress(1))
+
+             function updateProgress(i){
+                
+                var progress = tl.progress(); 
+                tl.progress( progress + 1/itemsL); 
+
+                if(i == 1){
+                    tl.progress( progress + 1/itemsL ); 
+                    var pr = tl.progress(); 
+                    pr >= 1 ? nextBtn.style.opacity="O" :  nextBtn.style.opacity="1"
+                }else{
+                    tl.progress( progress - 1/itemsL ); 
+                    var pr = tl.progress();
+                    pr <= 0 ? nextBtn.style.opacity="O" :  nextBtn.style.opacity="1"
+                }
+            }
+
+           
+
+
+             servL.forEach((serv,i)=>{ 
+
+                const newAr = servL.slice(0,i+1) // tronquer de l'index au debut 
+
+                const initialValue = 0; 
+                const sumAr = // additioner new array
+                newAr.reduce((accumulator, currentValue) => accumulator + currentValue,initialValue);
+               /*  console.log('######################################')
+                console.log( 'sumImg : ' + sumAr)
+                console.log( 'index : ' + i)
+                console.log('last index : ' + (servL.length -1))
+                console.log('not index : ' + (i !== servL.length -1) ) */
+                i !== servL.length -1 && 
                 tl.to(titles, {
-                    y:`-${i*8}vh`,
-                  },i+1)
-                  console.log(itemCount)
+                    y:`-${(i+1)*8}vh`,
+                },sumAr-1)
             })
 
          }, main);
@@ -96,6 +132,18 @@ const ServicePage = ({services, category}) => {
         </div>
 
         <div className='scroll_container'>
+
+            <div className='button_box'>
+                <button id="prev-btn" 
+                    style={{opacity:`${animProgress <= 0 ? '0.2' : '1'}`, cursor:`${animProgress <= 0 ? 'unset' : 'pointer'}`}}>
+                    <FaAngleUp/>
+                </button>
+                <button id="next-btn" 
+                 style={{opacity:`${animProgress >= 1 ? '0.2' : '1'}`, cursor:`${animProgress >= 1 ? 'unset' : 'pointer'}`}}>
+                    <FaAngleDown/>
+                </button>
+            </div>
+
             <div className='service_card'>
             <div className='scroll-title'>
                 <div className='all_title_box'>
@@ -186,3 +234,5 @@ export const getStaticPaths = async () => {
   }
 
 export default ServicePage
+
+
