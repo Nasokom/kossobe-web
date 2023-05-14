@@ -1,17 +1,21 @@
 import React from 'react'
 import { useStateContext } from '../context/StateContext'
 import TrustClient from '../component/content/TrustClient';
-import { client } from '../Utils/sanityClient';
+import { client, urlFor } from '../Utils/sanityClient';
 //import styles from '../styles/Pages/About.module.css'
 import Image from 'next/image'
 import ComplexText from '../component/Ui/ComplexText';
+import styles from '../styles/Pages/About.module.css'
 
 const About = ({clientDatas, aboutDatas}) => {
 
   const {userLang} = useStateContext();
 
+  const triData = aboutDatas.sort((a, b) => (a.ordre > b.ordre) ? 1 : -1)
+
+
   return (
-    <div>
+    <div className='page'>
       <div className='page-header'>
             <h1 className="page-title">
             {userLang.includes('fr') ? 'A propos de Kossobe' 
@@ -21,13 +25,34 @@ const About = ({clientDatas, aboutDatas}) => {
               <p>Apprennez en plus sur nous</p>
       </div>
 
-      <div>
-      {aboutDatas.map((data,i)=>{
+      <div className={styles.container}>
+      {triData.map((data,i)=>{
+        const myLoader = () =>{return data.image && urlFor(data.image).url()}
         return(
-            <div key={i}>
-                <h4>{data.name}</h4>
-                <ComplexText data={data.text}/>
-                <Image/>
+            <div key={i} className={styles.card}>
+                {data.name && <h4>{data.name[userLang]}</h4>}
+
+                <div className={styles.txtBox}>
+                  <div className={styles.txt}>
+                    <ComplexText data={data.text[userLang]}/>
+                  </div>
+
+                  <div className={styles.txtAnim}></div>
+                </div>
+
+
+                {data.image &&
+                <div className={ styles.image}>
+                      <Image 
+                      loader={myLoader}
+                      fill={true}
+                      sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
+                      src={'bjr'}
+                      alt=''
+                      style={{objectFit:'cover'}}
+                      className='img'
+                      />
+                </div>}
             </div>
         )
       })}

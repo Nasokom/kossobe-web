@@ -11,6 +11,12 @@ export default{
             description:'pour identifier dans le backoffice'
         },
         {
+            name:'ordre',
+            type:'number',
+            title:"Ordre",
+            description:"ordre d'apparition dans l'app"
+        },
+        {
             name:'name',
             title:'Titre',
             type:'titleTrad',

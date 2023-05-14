@@ -80,6 +80,12 @@ p{
   font-display: swap;
 }
 
+@font-face {
+  font-family: "akkura";
+  src: url('.././public/fonts/Akkurat.ttf');
+  font-display: swap;
+}
+
 
 @import 'Layout/Layout.css';
 @import 'themebtn.css';
