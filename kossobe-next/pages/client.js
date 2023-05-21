@@ -25,7 +25,7 @@ const Client = ({datas}) => {
                 const myLoader = () => {return data.image && urlFor(data.image)}
                 return(
 
-                    <div className={styles.card}>
+                    <div className={styles.card} key={i}>
                         <img
                         loader={myLoader}
                         src={data.image && urlFor(data.image)}
