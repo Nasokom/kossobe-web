@@ -1,13 +1,35 @@
 import Head from 'next/head'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import axios from "axios";
 import {useStateContext} from '../context/StateContext'
 import Styles from '../styles/Pages/Contact.module.css'
+import {client} from '../Utils/sanityClient'
 
-const Contact = () => {
+const Contact = ({services}) => {
 
-    //lang
+    //subject 
+    const [subjectOpt,setSubjectOpt] = useState([]);
+
+   //console.log(services)
+    useEffect(()=>{
+      const op =[]
+     services.length >1 && services.map((serv)=>{
+      serv.services.forEach(elt => {
+        op.push(elt.name)
+      });
+
+
+      op.length > 1 && setSubjectOpt(op)
+      })
+
+      console.log(op)
+      
+    }, [])
+    console.log(subjectOpt);
+
+    //get Context
     const {userLang,serviceMsg} = useStateContext();
+
     //Mail State
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -27,7 +49,9 @@ const Contact = () => {
         setName(form[0].value)
         setEmail(form[1].value)
         setPhone(form[2].value)
-        setMessage(form[3].value)
+        setSubject(form[3].value)
+        setMessage(form[4].value)
+
     }   
 
 
@@ -42,7 +66,9 @@ const Contact = () => {
               name,
             email,
             phone,
+            subject,
             message,
+            userLang,
             userLang
 
         });
@@ -71,7 +97,7 @@ const Contact = () => {
                     form[0].value = ""
                     form[1].value = ""
                     form[2].value = ""
-                    form[3].value = ""
+                    form[4].value = ""
             },1000)
 
       };
@@ -112,7 +138,14 @@ const Contact = () => {
                     <input type="text" name='nom' placeholder={userLang.includes('fr') ? 'Nom' : userLang.includes('de')? 'Name' : 'nom'} required={true} />
                     <input type='email' name='mail' placeholder='Email' required={true} />
                     <input type='tel' name="tel" placeholder='Phone' />
-                    <input type="text" name='subject' placeholder={userLang.includes('fr') ? 'Sujet' : userLang.includes('de')? 'Thema' : 'Subject'} value={ serviceMsg ? serviceMsg[userLang] : ''}/>
+
+                    <select name='subject'>
+                      <option value={serviceMsg ? serviceMsg['fr'] : ''}>{serviceMsg ? serviceMsg[userLang] : (userLang.includes('fr') ? 'Sujet' : userLang.includes('de')? 'Thema' : 'Subject')}</option>
+                      {subjectOpt.map((s,i)=>{
+                        return <option key={i} value={s['fr']}>{s[userLang]}</option>
+                      })}
+
+                    </select>
                     <textarea id="txtid" name="message" placeholder={userLang.includes('fr') ? 'Message' : userLang.includes('de')? 'Nachricht' : 'Message'} rows="10" cols="50" maxLength="1000" required={true} >
                     </textarea>
                     <button id="submit" type='submit' className={Styles.submit} name='submit-btn' 
@@ -142,3 +175,16 @@ const Contact = () => {
 }
 
 export default Contact
+
+export async function getStaticProps() {
+
+  //const aboutData = await client.fetch(`*[_type == "contenu"]`);
+  const services = await client.fetch(`*[_type == "service"]`);
+  return {
+    props: {
+     // aboutData,
+      services
+    },
+    revalidate: 1,
+  };
+}

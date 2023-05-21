@@ -16,15 +16,15 @@ const TrustClient = ({datas}) => {
                 
                 {datas.map((data,i)=>{
                     
-                    const loader = ()=>{ return data.image && urlFor(data.image).width(200).height(200).url()}
+                    const loader = ()=>{ return data.image && urlFor(data.image).height(200).url()}
                     return(
                         <div key={i}>
                                 <Link href={data.url ? data.url : ''} target={ typeof data.url == 'string' ? '_blank' : '_self'}>
                                 <p>{data.name}</p>
                                 <Image
                                     loader={loader}
-                                    width={200}
-                                    height={200}
+                                    fill={true}
+                                    sizes="(max-width: 768px) 200px, (max-width: 1200px) 200px, 200px"
                                     alt={`logo de ${data.name}`}
                                     src={'empty'}
                                     />

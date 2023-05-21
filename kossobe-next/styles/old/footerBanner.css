@@ -2,12 +2,11 @@
     padding: 50px;
     }
   
-    .footer-banner-text{
-  
-    }
+
   
     .footer-banner-text > *{
       margin-bottom: 50px;
+      font-family: plakkaat;
     }
   
     .footer-banner-btn-container{
@@ -18,9 +17,13 @@
     }
     .footer-banner-btn{
       border-radius: 50px;
-      font-family: plakkat;
       background-color: black;
       padding: 25px;
       color: white;
       font-size: 25px;
+      transition: 0.3s ;
+    }
+
+    .footer-banner-btn:hover{
+      scale: 1.2 1.2;
     }

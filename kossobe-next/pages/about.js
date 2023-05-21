@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import { useStateContext } from '../context/StateContext'
 import TrustClient from '../component/content/TrustClient';
 import { client, urlFor } from '../Utils/sanityClient';
-//import styles from '../styles/Pages/About.module.css'
 import Image from 'next/image'
 import ComplexText from '../component/Ui/ComplexText';
 import styles from '../styles/Pages/About.module.css'
+import Card from '../component/Ui/card';
+import Container from '../component/Ui/Container';
+
 
 const About = ({clientDatas, aboutDatas}) => {
 
@@ -13,6 +15,7 @@ const About = ({clientDatas, aboutDatas}) => {
 
   const triData = aboutDatas.sort((a, b) => (a.ordre > b.ordre) ? 1 : -1)
 
+  const main = useRef(null)
 
   return (
     <div className='page'>
@@ -24,25 +27,25 @@ const About = ({clientDatas, aboutDatas}) => {
               </h1>
               <p>Apprennez en plus sur nous</p>
       </div>
-
-      <div className={styles.container}>
+      <div ref={main}>
+      <Container >
       {triData.map((data,i)=>{
         const myLoader = () =>{return data.image && urlFor(data.image).url()}
         return(
-            <div key={i} className={styles.card}>
+              <Card>
+            <div key={i} className={`${styles.card}`}>
+
+
+             
                 {data.name && <h4>{data.name[userLang]}</h4>}
 
-                <div className={styles.txtBox}>
-                  <div className={styles.txt}>
+                <div className={'txt txtAnim'}>
                     <ComplexText data={data.text[userLang]}/>
-                  </div>
-
-                  <div className={styles.txtAnim}></div>
                 </div>
 
 
                 {data.image &&
-                <div className={ styles.image}>
+                <div className={styles.image}>
                       <Image 
                       loader={myLoader}
                       fill={true}
@@ -54,11 +57,13 @@ const About = ({clientDatas, aboutDatas}) => {
                       />
                 </div>}
             </div>
+            </Card>
         )
       })}
+      </Container>
       </div>
 
-      <TrustClient datas={clientDatas}/>
+     {/*  <TrustClient datas={clientDatas}/> */}
 
     </div>
   )

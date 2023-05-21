@@ -23,7 +23,7 @@ a , button{
   cursor: pointer;
 }
 
-button > *{
+button,button > *{
   font-family: plakkaat;
 }
 * {
@@ -43,13 +43,10 @@ button > *{
     color: var(--textColor);
 }
 
-h1,h2,h3,h4, button{
+h1,h2,h3,h4, h3 p, h3 > * button{
   font-family: plakkaat;
 }
 
-p{
-  font-family: tahoma;
-}
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -59,6 +56,14 @@ p{
     background: black;
   }
 } */
+p, ul, li{
+  font-family: tahoma;
+  font-size: 25px;
+}
+.text-container ul{
+  padding-left: 25px;
+}
+
 
 [data-theme="dark"]{
   --textColor:white;
@@ -147,12 +152,10 @@ p{
 
 .text-container p{
   padding-bottom: 15px;
-  font-family: tahoma;
 }
 
 .text-container li{
   padding-bottom: 10px;
-  font-family: tahoma;
 }
 
 
@@ -270,7 +273,7 @@ translate:0 100% ;
   border: 2px solid var(--bg);
   z-index: -1;
 }
-.button_box button:active::after{ 
-  scale: 10 10;
-}
 
+.button_box button:active{
+  scale: 1.5 1.5;
+}

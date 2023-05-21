@@ -10,7 +10,7 @@ export default async function sendEmail(req, res) {
     },
   });
 
-  const { name, email, message,phone } = req.body;
+  const { name, email,subject, message,phone, userLang } = req.body;
 
   /* const templateFile = await fs.readFile('public/mailTemplate/emailClient.html', 'utf-8');
 
@@ -40,18 +40,21 @@ export default async function sendEmail(req, res) {
   const mailOptions2 = {
   from: email,
   to: process.env.GMAIL_USER,
-  subject: `${name} vous a envoyé un message depuis votre siteweb`,
+  subject: `${name} est intéressé par ${subject}`,
   text: 
   `Bonjour admin kossobe,
   
    Vous avez recu un mail de ${name} depuis le site web kossobe :
    
    voici son message:
+    concernant ${subject}
     
    ${message}
 
    voici son mail pour le contacter: ${email}
    ${phone && `Voici son numero de telephone pour le contacter : ${phone}` }
+
+   ps: cette personne communique en (${userLang})
   `
 };
 
