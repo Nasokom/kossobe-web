@@ -32,7 +32,7 @@ const About = ({clientDatas, aboutDatas}) => {
       {triData.map((data,i)=>{
         const myLoader = () =>{return data.image && urlFor(data.image).url()}
         return(
-              <Card>
+              <Card key={i}>
             <div key={i} className={`${styles.card}`}>
 
 
