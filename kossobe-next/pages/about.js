@@ -5,7 +5,7 @@ import { client, urlFor } from '../Utils/sanityClient';
 import Image from 'next/image'
 import ComplexText from '../component/Ui/ComplexText';
 import styles from '../styles/Pages/About.module.css'
-import Card from '../component/Ui/card';
+import Card from '../component/Ui/Card';
 import Container from '../component/Ui/Container';
 
 
