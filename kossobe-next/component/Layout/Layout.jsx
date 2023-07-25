@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import NavBar from './Navbar'
 import Footer from './Footer'
 import Loading from './Loading'
+import ComingSoon from './ComingSoon'
 
 
 const Layout = ({children}) => {
@@ -9,17 +10,18 @@ const Layout = ({children}) => {
 
     useEffect(()=>{
   
-      setTimeout(()=>{
-        setIsLoading(false)
-      }, 200)
-  
-    },[])
+      setIsLoading(true)
+    document.documentElement.style.overflow ="hidden"
+
+
+  },[])
+
   
     return (
       <>
       <NavBar/>
           <main>
-          { isLoading ? <Loading/> : children}
+          { isLoading ? <ComingSoon/> : children}
 
           </main>
       <Footer/>
