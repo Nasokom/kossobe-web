@@ -21,9 +21,9 @@ main{
     position: fixed;
     background-color: #FFFFF2;
     width: 100vw;
-    height: 100dvh;
-    height: 100svh;
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -35,12 +35,12 @@ main{
 
 #lottie{
     padding: 0;
-    max-height: 50dvh;
-    max-height: 50svh;
-    max-height: 50vh;
-    max-width: 50dvh;
-    max-width: 50svh;
-    max-width: 50vh;
+    max-height: 55vh;
+    max-height: 55svh;
+    max-height: 55dvh;
+    max-width: 55vh;
+    max-width: 55svh;
+    max-width: 55dvh;
 }
 
 #comingSoon h1{
