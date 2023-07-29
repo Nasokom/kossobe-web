@@ -17,18 +17,17 @@ const ServicePage = ({services, category}) => {
     const {userLang} = useStateContext();
     //console.log(services.services)
     const main = useRef(null)
-
+  //console.log(services.color.hex)
     
   return (
     <div>
       
-        <div className='page-header'>
-            <h1>{userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Dienstleistungen': 'Our Services' }</h1>
-            <p>Decouvrez les Services que nous proposons</p>
+        <div className={Styles.header}>
+           <h1 style={{backgroundColor:services.color.hex ? services.color.hex : 'blue'}}>{services.name && services.name[userLang]}</h1>
         </div>
-
+        
     <div  ref={main}>
-      
+
         <div className={Styles.nav}>
             {category.map((categ,i)=>{
               return( 
@@ -37,8 +36,7 @@ const ServicePage = ({services, category}) => {
                             {categ.name[userLang]}
                         </button>
                     </Link>
-                )
-              })}
+                )})}
         </div>
 
         <div className={Styles.service_container}>

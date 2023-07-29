@@ -10,16 +10,17 @@ import ComplexText from '../Ui/ComplexText'
 const ServiceCard = ({data}) => {
 
     const {userLang, setServiceMsg} = useStateContext();
-
   return (
     <div className={`service-card ${styles.card}`}>
+
         <h2>{data.name[userLang]}</h2> 
+
         { data.content && data.content.map((content,i)=>{
 
             const myLoader = () =>{return content.image && urlFor(content.image).width(200).height(200).url()}
             return(
                 <div className={styles.content} key={i}>
-                    <ComplexText data={content.text[userLang]}/>
+                    <ComplexText data={content.hasOwnProperty('text') && content.text[userLang]}/>
                      <Image 
                     loader={myLoader}
                     width={200}

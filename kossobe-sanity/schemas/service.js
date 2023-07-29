@@ -1,3 +1,5 @@
+import {colorInput} from '@sanity/color-input'
+
 export default{
     name:"service",
     title:"Service",
@@ -10,6 +12,12 @@ export default{
             description:"Nom de la categorie de service pour le backOffice"
 
         },
+        {
+            name: 'color',
+            title: 'Service Color',
+            type: 'color',
+            description:'couleur du service 👍'
+          },
         {
             name:"name",
             title:"Nom de la Categorie de Service",

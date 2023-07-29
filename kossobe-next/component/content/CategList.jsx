@@ -21,7 +21,7 @@ const CategList = ({data}) => {
   return (
     <div className={Styles.parent} id="categList">
 
-      <h2 >Decouvrez nos services</h2>
+      <h2>Nos services</h2>
 
       <div className={Styles.container}>
 
@@ -32,12 +32,27 @@ const CategList = ({data}) => {
             }
 
             return(
-              <Link href={`/services/${d.slug.current}`} key={i}>
-              <div className={Styles.card}>
-                <div>
+              <div className={Styles.card} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue'}}>
+              
+              <div className={Styles.cardTop}>
+                
+                {d.services && d.services.map((service,i)=>{
+                  return(
+                    <div className={Styles.categServices} key={i}>{service.name[userLang]}</div>
+                  )
+                })}
+              </div>
 
                 <h3>{d.name[userLang]}</h3>
-                <Image 
+
+
+                <div className={Styles.cardBottom}>
+
+                    <Link href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
+                  <button> Discover</button>
+                </Link>
+                </div>
+              {/*   <Image 
                 loader={myLoader}
                 layout={'fill'}
                 objectFit="cover"
@@ -45,10 +60,8 @@ const CategList = ({data}) => {
                 sizes="100%"
                 src={'bjr'}
                 alt=''
-                />
-                </div>
+                /> */}
               </div>
-            </Link>
               )
             })}
 

@@ -51,7 +51,7 @@ const ComplexText = ({data}) => {
 
     return (
       <div className='text-container'>
-        {data.map((p,i)=>{
+        {data && data.map((p,i)=>{
           const markDefs = p.markDefs && p.markDefs //markDefs[0]._key && .href &&._type
             //const list = p.listItem && p.listItem;
             

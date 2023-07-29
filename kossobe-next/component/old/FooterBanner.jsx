@@ -8,7 +8,7 @@ const FooterBanner = ({banner:{intro, catchP, text}}) => {
     console.log(text)
     const {userLang} = useStateContext() 
     return (
-        <div className="footer-banner gradient-bg">
+        <div className="footer-banner">
                 <div className='footer-banner-text'>
                     <h3>{intro[userLang]}</h3>
                     <h1>{catchP[userLang]}</h1>

@@ -8,13 +8,13 @@ import ComingSoon from './ComingSoon'
 const Layout = ({children}) => {
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(()=>{
+  /*   useEffect(()=>{
   
         setIsLoading(true)
       document.documentElement.style.overflow ="hidden"
 
   
-    },[])
+    },[]) */
   
     return (
       <>
