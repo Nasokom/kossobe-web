@@ -32,7 +32,9 @@ const ServicePage = ({services, category}) => {
             {category.map((categ,i)=>{
               return( 
                 <Link href={`/services/${categ.slug.current}`} key={i}>
-                        <button className={services.name[userLang] == categ.name[userLang] && Styles.btn_active}>
+                        <button className={services.name[userLang] == categ.name[userLang] && Styles.btn_active}
+                        style={{backgroundColor: categ.color.hex ? categ.color.hex : 'blue'}}
+                        >
                             {categ.name[userLang]}
                         </button>
                     </Link>
