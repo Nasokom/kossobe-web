@@ -21,7 +21,7 @@ const Layout = ({children}) => {
       <NavBar/>
       
           <main>
-          { isLoading ? <ComingSoon/> : children}
+          { children}
 
           </main>
       <Footer/>
