@@ -25,25 +25,25 @@ const CategList = ({data}) => {
 
       <div className={Styles.container}>
 
-          {data.map((d,i)=>{
+          {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
 
             const myLoader = () => {
                 return d.image && urlFor(d.image).width(200).height(200).url()
             }
 
             return(
-              <div className={Styles.card} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue'}}>
+              <div className={Styles.card} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>
               
               <div className={Styles.cardTop}>
                 
                 {d.services && d.services.map((service,i)=>{
                   return(
-                    <div className={Styles.categServices} key={i}>{service.name[userLang]}</div>
+                    <div className={Styles.categServices} key={i} style={{color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>{service.name[userLang]}</div>
                   )
                 })}
               </div>
 
-                <h3>{d.name[userLang]}</h3>
+                <h3 style={{color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>{d.name[userLang]}</h3>
 
 
                 <div className={Styles.cardBottom}>

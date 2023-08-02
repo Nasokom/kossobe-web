@@ -13,10 +13,21 @@ export default{
 
         },
         {
+            name:"ordre",
+            title:"Ordre d'affichage croissant",
+            type:"number",
+        },
+        {
             name: 'color',
             title: 'Service Color',
             type: 'color',
             description:'couleur du service 👍'
+          },
+          {
+            name: 'colorTxt',
+            title: 'Service Color text',
+            type: 'color',
+            description:'couleur texte du service 👍'
           },
         {
             name:"name",

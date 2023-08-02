@@ -24,6 +24,12 @@ export default
         type:"string",
         description: "Descritpion de l'image pour l'accessibilité"
       },
+      { 
+        name:"kossTrad",
+        title:"Kossobe traduction",
+        type:'titleTrad',
+        description:"traduction de kossobe"
+      },
       
       {
         name:"intro",

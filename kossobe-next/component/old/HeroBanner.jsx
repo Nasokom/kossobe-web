@@ -17,6 +17,7 @@ const HeroBanner = ({banner}) => {
         <div className="home-header">
             <div className='container'>
               <h1>KOSSOBE</h1>
+              <p>{banner.kossTrad[userLang]}</p>
                 <h3>{banner.catchP[userLang]}</h3>
             </div>
         </div>

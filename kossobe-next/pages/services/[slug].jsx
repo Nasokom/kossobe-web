@@ -23,13 +23,15 @@ const ServicePage = ({services, category}) => {
     <div>
       
         <div className={Styles.header}>
-           <h1 style={{backgroundColor:services.color.hex ? services.color.hex : 'blue'}}>{services.name && services.name[userLang]}</h1>
+           <h1 style={{backgroundColor:services.color.hex ? services.color.hex : 'blue',color: services.colorTxt.hex ? services.colorTxt.hex : 'black' }}>
+            {services.name && services.name[userLang]}
+          </h1>
         </div>
         
     <div  ref={main}>
 
         <div className={Styles.nav}>
-            {category.map((categ,i)=>{
+            {category.sort(function(a,b){return a.ordre-b.ordre}).map((categ,i)=>{
               return( 
                 <Link href={`/services/${categ.slug.current}`} key={i}>
                         <button className={services.name[userLang] == categ.name[userLang] && Styles.btn_active}
