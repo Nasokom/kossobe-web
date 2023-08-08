@@ -1,4 +1,3 @@
-import {colorInput} from '@sanity/color-input'
 
 export default{
     name:"service",
