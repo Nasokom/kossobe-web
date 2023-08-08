@@ -1,11 +1,27 @@
+.container{
+    padding: 0px 50px;
+}
+
+.container > *{
+}
+
 /* Header */
 .header{
     display: flex;
     width: 100%;
-    height: 48vh;
-    padding: 40px 40px 10px 40px;
-
+    height: 50vh;
 }
+
+@keyframes x{
+    0%{
+        scale: 1;
+    }
+    100%{
+        scale: 0.2;
+    }
+}
+
+
 
 .header h1{
     display: flex;
@@ -16,6 +32,8 @@
     border-radius: 15px;
     font-size: 5vw;
     text-align: center;
+    position: relative;
+    padding: 0px 30px;
 }
 
 .services{
@@ -25,14 +43,17 @@
 /* Navs */
 .nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    justify-self: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .nav button{
+    position: relative;
     padding: 10px 20px;
+    height: 70px;
+    margin-right: 20px;
     transition: 0.5s;
     border-radius: 10px;
     background-color: grey;
@@ -47,6 +68,37 @@
     color: white;
 }
 
+/* Intro */
+
+.intro{
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.intro_text{
+    width: 60%;
+}
+.intro h3{ font-size: 30px; margin-bottom: 30px;}
+
+.intro ul{
+    translate:0 20%
+}
+.intro li{
+    margin: 30px 0px;
+    font-family: plakkaat;
+    display: flex;
+    align-items: center;
+}
+
+.intro li span{
+    padding: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
 
 /* services */
 .service_container{
@@ -54,85 +106,183 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    max-height: 90vh;
+    max-height: 100vh;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .card{
-    margin: 100px 0px;
     width: 100%;
+    border-top-left-radius:20px; 
+    border-top-right-radius: 20px;
+    border-radius: 20px;
+    background: white;
 }
 
-.card h2 {
-    padding-bottom: 18px;
-    width: 100%;
-    margin-bottom: 12px;
-    text-align: center;
-    font-size: 3.8vw;
+.cardTop{
+    height: 13vh;
+    padding: 0 30px;
+    padding-bottom: 3.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+
+.cardTop span{
+    font-family: plakkaat;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+
+/* Inner accordion */
+.wrapper{
+    display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-out;
+}
+.inner{
+    overflow: hidden;
+}
+
+/* .card:hover .wrapper{
+    grid-template-rows: 1fr;
+} */
 .content{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 50px;
+    max-height: 45vh;
+    height:45vh ;
+    padding: 0 30px;
 }
 
 .imgBox{
-
+    border-radius: 20px;
+    min-width: 45%;
+    position: relative;
+    height: 95%;
+    width: 43%;
+    overflow: hidden;
 }
 
-.card img{
-    border-radius: 5px;
-    margin-top: 20px;
+.imgBox::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: inherit;
+    z-index: 10;
+    opacity: 0.3;
+}
+.cardText{
+    max-width: 48%;
+    max-height: 100%;
+    overflow: scroll;
 }
 
-.contact{
+.cardText p{
+    font-size: 20px;
+}
+
+
+
+/* Contact */
+.cardBottom{
+    height: 16vh;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
-    padding-top: 20px;
+    padding-bottom: 3vh;
 }
 
-.contact p{
-    font-family: plakkaat;
+.bottomText{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20px;
 }
-.contact button{
-    margin-left: 20px;
-    border: 3px solid var(--textColor);
-    min-width: 120px;
-    height: 40px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-align: center;
+
+.bottomText p{
+    font-family: plakkaat;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.btn{
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100%;
+    padding: 10px;
+}
+
+.btn div{
+    border: 4px solid black;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 0.3s;
 }
 
-.contact button:hover{
-    scale: 1.1 1.1;
-    background-color: var(--textColor);
-    color: var(--reverseColor);
+.btn:hover div{
+    rotate: -45deg;
 }
 
 @media (max-width: 800px) {
-
-    .card{
-        padding: 10px 20px;
-    }
-    .card img{
-        margin-bottom: 40px;
-    }
-
     .content{
-        flex-direction: column-reverse;
+        flex-direction: column;
+    }
+    .imgBox{
+       max-width: 100%;
+       width: 100%;
+    }
+    .cardText{
+        max-width: 100%;
+        width: 100%;
+        max-height: 60%;
+    }
+
+    .container{
+        padding: 0px 10px;
+    }
+    .header h1{
+        font-size: 15vw;
+        line-height: 15vw;
+    }
+    .intro_text{
+        width: 100%;
+    }
+    .intro{
+       flex-direction: column;
+       padding: 0px;
+       padding: 40px 0px;
+    }
+    .intro ul{
+        translate:0 0
     }
 }
 
-@media (min-width: 800px) {
-    .card img{
-        margin: 40px;
-    }
-}
 
 
+
+
+/* fix drills color */

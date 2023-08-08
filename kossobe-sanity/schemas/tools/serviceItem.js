@@ -17,6 +17,18 @@ export default{
             description:"Nom afficher sur le site web"
         },
         {
+            name:'image',
+            title:'Image Unique',
+            type:'image',
+            description:'New img field'
+        },
+        {
+            name:'text',
+            title:'text',
+            type:'textTrad',
+            description:'New text field'
+        },
+        {
             name:'content',
             title:'Contenu',
             type:'array',

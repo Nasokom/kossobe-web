@@ -25,9 +25,9 @@ export default{
           },
           {
             name: 'colorTxt',
-            title: 'Service Color text',
+            title: 'Service Color 2',
             type: 'color',
-            description:'couleur texte du service 👍'
+            description:'deuxieme couleur du service 👍'
           },
         {
             name:"name",
@@ -39,6 +39,26 @@ export default{
             name:"image",
             title:"Image",
             type:"image"
+            
+        },
+        {
+            name:"introTitle",
+            title:"Intro Title",
+            type:"titleTrad",
+            description:'New filed intro title'
+        },
+        {
+            name:"introText",
+            title:"Intro Text",
+            type:"textTrad",
+            description:'New filed text'
+        },
+        {
+            name:"list",
+            title:"Key points List",
+            type:'array',
+            of:[{type:'titleTrad'}],
+            description:'New field key point'
         },
         {
             name:"services",
@@ -47,6 +67,7 @@ export default{
             of:[{type:"serviceItem"}],
             description:"Service unique liée a cette categ ex : concert, atelier etc .."
         },
+
         { 
             name: 'slug',
             title: 'Slug',

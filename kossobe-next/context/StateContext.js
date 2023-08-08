@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import {useRouter} from 'next/router'
 
 const Context = createContext();
 
@@ -9,7 +10,8 @@ export const StateContext = ({ children }) => {
     const [userLang,setUserLang] = useState('en');
     const [theme, setTheme] = useState(false) 
     const [serviceMsg, setServiceMsg] = useState(null)
-
+    const router = useRouter()
+    const [nextI, setNextI] =useState(null)
 
     useEffect(()=>{      
 
@@ -38,8 +40,8 @@ export const StateContext = ({ children }) => {
         userLanguage.includes('fr') ? setUserLang('fr')
         : userLanguage.includes('de') ? setUserLang('de')
         : setUserLang('en');
-        console.log(userLang)
-    },[])
+        //console.log(userLang)
+    },[router.query.slug && router.query.slug])
 
     
     return (
@@ -54,7 +56,8 @@ export const StateContext = ({ children }) => {
             theme,
             setTheme,
             serviceMsg,
-            setServiceMsg
+            setServiceMsg,
+            router,
         }}
         >
         {children}

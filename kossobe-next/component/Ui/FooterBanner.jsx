@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { useStateContext } from '../../context/StateContext';
-import ComplexText from '../Ui/ComplexText';
+import ComplexText from './ComplexText';
 
 const FooterBanner = ({banner:{intro, catchP, text}}) => {
 

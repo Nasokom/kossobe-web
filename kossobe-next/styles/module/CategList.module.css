@@ -12,82 +12,175 @@
     font-size: 5vw;
 }
 
+  .nav{ 
+    margin-top: 20px;
+  }
+
+  .nav button{
+    padding: 10px 20px; 
+    border-radius: 30px;
+    border: 1px solid black;
+    margin: 5px;
+  }
+
   .container{
     display: flex;
     align-items: center;
+    position: relative;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 0px;
     width: 100%;
+    padding :20px 20px;
+    height: 100vh;
   }
 
-  .linkBox{
-  }
+
   .card{
     color: var(--textColor);
     /* border: 3px solid var(--textColor); */
-    width: 100%;
-    height: 100dvh;
-    height: 100vh;
+    width: 90%;
+    height: 70vh;
+    height: 70dvh;
     display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    font-family: plakkaat;
+    padding: 30px;
+    position: relative;
+    position: absolute;
+    border: unset;
+  }
+
+  .cardLeft{
+    width: 50%;
+    height: 100%;
+    background-color: grey;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cardRight{
+    width: 100%;
+    height: 55%;
+    display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 15px;
-    margin-bottom: 5px;
-    font-family: plakkaat;
+    justify-content: space-between;
+    padding-left: 20px;
+    background-color: inherit;
   }
 
-  .cardTop{
+.services{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.services li{
+  font-family: plakkaat;
+  font-size: 20px;
+  width: fit-content;
+  line-height: 20px;
+}
+
+.card h3{
+  font-size: 50Px;
+  text-align: left;
+  width: 100%;
+}
+
+.discover{
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+
+.discover p {
+  font-family: plakkaat;
+  margin-right: 20px;
+}
+.discover button{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  transition: 0.3s;
+}
+
+
+.discover button:hover {
+  rotate: -45deg;
+}
+.discover .linkBox{
+  padding: 20px;
+  border-top-left-radius: 30px;
+  background-color: white;
+  min-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+@media screen and (max-width:800px) {
+
+  .container{
+    padding :10px;
   }
 
-  .categServices{
-    padding: 10px;
-    border-radius: 15px;
-    /* border: 3px solid black; */
-    font-size: 30px;
 
+  .discover button{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
   }
 
   .card h3{
-    font-size: 50px;
+    font-size: 28px;
     text-align: center;
-    padding: 0px 100px;
-  }
-
-  .cardBottom{
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50px;
   }
 
-  .cardBottom button{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: white;
-    color: black;
+  .services{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .services li{
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0px 5px;
+  }
+
+  .card {
+    flex-direction: column;
     align-items: center;
-    transition: 0.3s;
-    font-size: 3vw;
     padding: 10px;
-    box-shadow: 10px 10px black;
-    box-shadow: inset 0px 0px black,
-    10px 10px black;
+    padding-bottom: 90px;
   }
 
-  .cardBottom button:hover{
-    scale: 0.98; 
-    translate: 12px 12px;
-    box-shadow: inset 7px 7px 5px black,
-    0px 0px black,inset -2px -2px 2px black;
-
+  .cardRight{
+    padding: 0;
+    justify-content: space-around;
   }
 
+  .cardLeft{
+    width: 100%;
+    height: 40%;
+    align-self: center;
+  }
+
+}

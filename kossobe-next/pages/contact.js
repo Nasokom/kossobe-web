@@ -7,15 +7,18 @@ import {client} from '../Utils/sanityClient'
 
 const Contact = ({services}) => {
 
+
+    //get Context
+    const {userLang,serviceMsg} = useStateContext();
+
     //subject 
     const [subjectOpt,setSubjectOpt] = useState([]);
 
-   //console.log(services)
     useEffect(()=>{
       const op =[]
      services.length >1 && services.map((serv)=>{
       serv.services.forEach(elt => {
-        op.push(elt.name)
+        op.push(elt.name[userLang])
       });
 
 
@@ -24,11 +27,9 @@ const Contact = ({services}) => {
 
       console.log(op)
       
-    }, [])
+    }, [userLang])
     console.log(subjectOpt);
 
-    //get Context
-    const {userLang,serviceMsg} = useStateContext();
 
     //Mail State
     const [name, setName] = useState("");
@@ -141,8 +142,8 @@ const Contact = ({services}) => {
 
                     <select name='subject'>
                       <option value={serviceMsg ? serviceMsg['fr'] : ''}>{serviceMsg ? serviceMsg[userLang] : (userLang.includes('fr') ? 'Sujet' : userLang.includes('de')? 'Thema' : 'Subject')}</option>
-                      {subjectOpt.map((s,i)=>{
-                        return <option key={i} value={s['fr']}>{s[userLang]}</option>
+                      {subjectOpt.sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1)).map((s,i)=>{
+                        return <option key={i} value={s}>{s}</option>
                       })}
 
                     </select>

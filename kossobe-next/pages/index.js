@@ -1,20 +1,17 @@
 import React,{useRef, useState} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Hero from '../component/content/Hero'
 import { client } from '../Utils/sanityClient'
 import CategList from '../component/content/CategList'
 import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout'
 import { gsap } from 'gsap'
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
-import FooterBanner from '../component/old/FooterBanner'
-import HeroBanner from '../component/old/HeroBanner'
+import FooterBanner from '../component/Ui/FooterBanner'
+import HeroBanner from '../component/content/HeroBanner'
 
 
 export default function Home({services, bannerData}) {
 
-  console.log(bannerData[1])
-  console.log(bannerData[0])
   const [imgW, setImgW] = useState(1500);
 
   return (
@@ -25,7 +22,7 @@ export default function Home({services, bannerData}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroBanner banner={bannerData[1]}/>
-      <CategList data={services}/>
+      <CategList data={services} cible={bannerData[1].intro}/>
       <FooterBanner banner={bannerData[0]}/>
     </>
   )
