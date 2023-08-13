@@ -1,0 +1,12 @@
+div .introCard{
+    translate: 0 110dvh;
+}
+
+div .introCard:nth-child(1){
+    translate: 0 0;
+}
+
+.activeAboutLi{
+    color: green;
+    border: 1px solid black;
+}

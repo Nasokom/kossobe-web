@@ -8,7 +8,6 @@ export default{
             title:'Nom du Service',
             type:"string",
             description:"Nom du back office"
-
         },
         {
             name:"name",

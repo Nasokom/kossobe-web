@@ -14,7 +14,6 @@ const ComplexText = ({data}) => {
 
       const customStyle = {} //Style
       const [defIndex, setDefIndex] = useState(null) //Store markDefs index
-      
 
       defs.length >= 1 && defs.forEach((def,i)=>{
 
@@ -64,6 +63,7 @@ const ComplexText = ({data}) => {
             </ul> 
             )
           }else{
+
             return(
 
               <p key={i}>

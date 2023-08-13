@@ -11,28 +11,28 @@ export default{
             description:'pour identifier dans le backoffice'
         },
         {
-            name:'ordre',
-            type:'number',
-            title:"Ordre",
-            description:"ordre d'apparition dans l'app"
-        },
-        {
             name:'name',
-            title:'Titre',
-            type:'titleTrad',
-            description:'Titre afficher sur le site web Optionnel'
+            title:"Phrase d'accroche",
+            type:'simpleTextTrad',
         },
         {
-            name:'text',
-            title:'contenu du block',
-            type:'textTrad',
+            name:'intro',
+            title:'Introduction',
+            type:'array',
+            of:[{type:'simpleTextImage'}],
+            desctiption:'introdution',
         },
         {
-            name:'image',
-            title:'Image',
-            type:'image',
-            description:'optionnelle'
+            name:'keyPoint',
+            title:'keypoint',
+            type:'array',
+            of:[{type:'titleText'}],
+            description:'our mission & our Vision'
         },
-
+        {
+            name:'values',
+            title:'Nos Valeurs',
+            type:'aboutValues'
+        },
     ]
 }

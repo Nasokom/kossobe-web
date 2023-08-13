@@ -1,70 +1,225 @@
-import React, {useRef} from 'react'
+import React, {useRef,useState} from 'react'
 import { useStateContext } from '../context/StateContext'
-import TrustClient from '../component/content/TrustClient';
 import { client, urlFor } from '../Utils/sanityClient';
 import Image from 'next/image'
 import ComplexText from '../component/Ui/ComplexText';
 import styles from '../styles/Pages/About.module.css'
-import Card from '../component/Ui/Card';
-import Container from '../component/Ui/Container';
+import { gsap, selector } from 'gsap';
+import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
+import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout';
+import {BsFillCircleFill} from 'react-icons/bs'
 
+gsap.registerPlugin(ScrollTrigger);
 
-const About = ({clientDatas, aboutDatas}) => {
+const About = ({appColors, data}) => {
 
   const {userLang} = useStateContext();
-
-  const triData = aboutDatas.sort((a, b) => (a.ordre > b.ordre) ? 1 : -1)
-
   const main = useRef(null)
 
+  const [valueIndex, setValueIndex] = useState(0)
+  useIsomorphicLayoutEffect(() => { 
+
+    const ctx = gsap.context((self) => {
+  
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: main.current,
+          start:"top top",
+          end: "+=10000vh",
+          scrub: true,
+          pin: true,
+          //markers:true
+        }
+      });
+      
+      const cards = self.selector('.introCard');
+      const keyPoint = main.current.querySelector('.keyPoint')
+  
+
+  
+      //Image anim
+      cards.forEach((card,i)=>{
+
+        const textContainer = card.querySelector('.introTextContainer')
+        const img = card.querySelector('.introImg')
+        const text1 = card.querySelector('.introTxt1')
+        const text2 = card.querySelector('.introTxt2')
+        const spans = text2.querySelectorAll('span');
+
+         i !== 0 && tl.to(card,{
+          translate:`0 0`,
+          duration: 10
+        })
+        
+        spans.forEach((span,i)=>{
+          tl.to(span,{
+            opacity:1,
+            color:'black'
+          })
+        })
+        
+        tl.to(textContainer,{
+          translate:`0 -100vh`,
+          duration: 10
+        })//0
+
+        tl.to(img,{
+          scale:1,
+          duration: 10
+        })//0
+      })
+
+      tl.to(keyPoint,{
+        translate : '0 -100vh',
+        duration: 10
+      })
+
+      const valueList = main.current.querySelector('.valueList').querySelectorAll('li')
+      //const lis = valueList.querySelectorAll('li');
+
+      const toggleClass = (elt,is) => is ? elt.classList.add('activeAboutLi') : elt.classList.remove('activeAboutLi')
+
+      const valueTxtBox = main.current.querySelector('.valueTxtBox')
+      valueList.forEach((li,i)=>{
+        
+        
+
+        tl.to(valueTxtBox,{
+          translate: `0px -${i*400}px`,
+          backgroundColor: appColors[i].color.hex,
+          color: appColors[i].colorTxt.hex,
+          onStart : ()=>toggleClass(li,true),//!!SS+
+        })
+
+        tl.to(li,{
+          translate : '50px 0px',
+          color:appColors[i].colorTxt.hex,
+          scale:1.2,
+          duration: 10,
+          //className:'+=activeAboutLi',
+          yoyo:true,
+          onComplete: ()=>toggleClass(li,false), //!!SS+
+          onReverseComplete : ()=>toggleClass(li,false),
+        })
+
+        tl.to(li,{
+          color:'black',
+          translate : '0px 0px',
+          scale:1,
+          duration:10,
+          onReverseComplete : ()=>toggleClass(li,true),
+        })
+      })
+
+
+      //7868.5
+      //8824
+      //9876
+
+      valueList.forEach((a, i) => {
+        a.addEventListener("click", e => {
+          e.preventDefault();
+          window.scrollTo({
+            top: i == 0 ? 7868 : i == 1 ? 8869 : 9876,
+            left: 0,
+            behavior: "smooth",
+          });
+          //alert(window.scrollY)
+        })
+      })
+
+    
+  }, main);
+  return () => ctx.revert();
+  }, []);
+
+
+  //Split string 
+
   return (
-    <div className='page'>
-      <div className='page-header'>
-            <h1 className="page-title">
-            {userLang.includes('fr') ? 'A propos de Kossobe' 
-            : userLang.includes('de')? 'Uber kossobe' 
-            : 'About Kossobe'}
-              </h1>
-              <p>Apprennez en plus sur nous</p>
-      </div>
+    <div className={styles.page}>
+
+      <h1>{data.name[userLang]}</h1>
+
+        <p>Apprennez en plus sur nous</p>
       <div ref={main}>
-      <Container >
-      {triData.map((data,i)=>{
-        const myLoader = () =>{return data.image && urlFor(data.image).url()}
-        return(
-              <Card key={i}>
-            <div key={i} className={`${styles.card}`}>
 
 
-             
-                {data.name && <h4>{data.name[userLang]}</h4>}
+          <div className={styles.introContainer}>
+            {data.intro.map((data,i)=>{
 
-                <div className={'txt txtAnim'}>
-                    <ComplexText data={data.text[userLang]}/>
+              const txt = data.text[userLang].split(' ')
+
+              const imgLoader = () =>{return data.image && urlFor(data.image).url()}
+              return(
+                <div key={i} className={` ${styles.card} introCard` }>
+
+                    <div className={`introImg ${styles.imgBox}`}> 
+                      <Image loader={imgLoader} fill  style={{objectFit:'cover'}}sizes={'100%'}src={'bjr'}alt=''/>
+                    </div>
+
+                    <div className={`introTextContainer ${styles.textContainer}`}>
+
+                        <div className='introTxt1'>
+                          <p>
+                            {txt.map((t,i)=> <span key={i}>{t}</span>)}
+                          </p>
+                        </div>
+
+                        <div className='introTxt2'>
+                            <p>
+                              {txt.map((t,i)=> <span key={i}>{t}</span>)}
+                            </p>
+                        </div>
+                    </div>
                 </div>
+              )
+            })}
 
+          </div>{/* end intro */}
 
-                {data.image &&
-                <div className={styles.image}>
-                      <Image 
-                      loader={myLoader}
-                      fill={true}
-                      sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"
-                      src={'bjr'}
-                      alt=''
-                      style={{objectFit:'cover'}}
-                      className='img'
-                      />
-                </div>}
-            </div>
-            </Card>
-        )
-      })}
-      </Container>
+          <div className={`keyPoint ${styles.keyPointContainer}`}>
+
+              {data.keyPoint.map((point,i)=>{
+                return(
+                  <div className={`${styles.keyCard}`}>
+
+                      <h3>{point.name[userLang]}</h3>
+
+                        <ComplexText data={point.text[userLang]}/>
+                  </div>
+                )
+              })}
+
+              <div className={styles.ourValues}>
+                <h3>{data.values.title[userLang]}</h3>
+
+                <div className={styles.valuesContainer}>
+                    <ul className={`valueList ${styles.valuesList}`}>
+                      {data.values.valeur.map((vName,i)=>{
+                        return(
+                          <li> <BsFillCircleFill/> {vName.name[userLang]}</li>
+                      )
+                      })}
+                    </ul>
+
+                    <div className={`valuesImg ${styles.valuesImg}`}>
+                      <div className={`valueTxtBox ${styles.valueTxtBox}`}>
+                    {data.values.valeur.map((vName,i)=>{
+                      return <ComplexText data={vName.text[userLang]}/>
+                    })}
+                    </div>
+
+                     {/*   {valueIndex && <ComplexText data={data.values.valeur[valueIndex].text[userLang]}/>} */}
+                    </div>
+
+                </div>
+              </div>
+
+          </div>
+
       </div>
-
-     {/*  <TrustClient datas={clientDatas}/> */}
-
     </div>
   )
 }
@@ -73,12 +228,12 @@ export default About
 
 export async function getStaticProps(){
 
-  const clientDatas = await client.fetch(`*[_type == "trustClient"]`);
-  const aboutDatas = await client.fetch(`*[_type == "about"]`);
+  const appColors = await client.fetch(`*[_type == "service"]{color,colorTxt}`);
+  const data = await client.fetch(`*[_type == "about"][0]`);
   return {
     props: {
-      clientDatas,
-      aboutDatas
+      appColors,
+      data
       
     },
     revalidate: 1,

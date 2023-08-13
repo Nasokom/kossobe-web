@@ -8,10 +8,15 @@ import policy from './policy'
 import trustClient from './trustClient'
 import textImage from './tools/textImage'
 import about from './about'
+import aboutValues from './tools/aboutValues'
+import simpleTextImg from './tools/simpleTextImg'
+import simpleTextTrad from './tools/simpleTextTrad'
+import mail from './mail'
 
 export const schemaTypes = [
-    banner,service,policy,trustClient,about,
+    banner,service,policy,trustClient,about,mail,
     
     
-    textTrad, titleTrad, serviceItem, titleText, textImage
+    textTrad, titleTrad, serviceItem, titleText, textImage, aboutValues,
+    simpleTextImg, simpleTextTrad
 ]

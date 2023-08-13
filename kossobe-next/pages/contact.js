@@ -70,7 +70,6 @@ const Contact = ({services}) => {
             subject,
             message,
             userLang,
-            userLang
 
         });
             

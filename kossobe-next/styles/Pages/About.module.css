@@ -1,55 +1,146 @@
-.container{
-    padding: 40px;
+.page{
+    padding: 0 50px;
+}
+
+.page h1{
+    font-family: plakkaat;
+    font-size: 5vw;
+    line-height: 1.5em;
+    margin-bottom: 35px;
+}
+
+.introContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
+    min-height: 100vh;
 }
 
 .card{
-    display: flex;
-    flex-direction: column;
-}
-
-
-.image{
-    margin-top: 50px;
-    position: relative;
-    width: 100%;
-    height: 90vh;
-    height: 90dvh;
-    height: 90svh;
-    border-radius: 20px;
-    overflow: hidden;
-    transition: 0.3s;
-}
-
-.image * {
-    transition: 0.3s;
-    z-index: 0;
-}
-
-.imgAnim{
     position: absolute;
-    top: 0;
-    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    background: var(--html);
-    z-index: 1;
-    transition: 1s;
 }
 
-
-.image:hover{
-    scale: 1 1;
+.textContainer{
+    position: absolute; 
+    z-index: 10;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
+.textContainer div{
+    position: absolute; 
+    z-index: 10;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
 
-.txtBox{
+.textContainer p{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.textContainer p span{
+    margin-right: 12px;
+    font-size: 30px;
+    line-height: 2em;
+    color: lightgrey;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.imgBox{
     position: relative;
+    width: 100%;
+    height: 80vh;
+    scale: 1;
+}
+
+.imgBox image{
+    object-fit: contain;
+}
+
+
+/* Key points styles */
+
+.keyPointContainer{
+    background-color: white;
+    position: absolute;
+    translate: 0 100vh;
+    width: 100%;
+}
+
+.keyCard{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding:50px 0px;
+}
+
+.page h3{
+    font-size: 40px;
+}
+
+.keyCard p{
+}
+
+/* VAlues */
+.ourValues{
+    padding-top: 50px;
+}
+
+.valuesContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.valuesList{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.valuesList li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.valuesImg{
+    width: 400px;
+    height: 400px;
+    background-color: red;
+    border-radius: 20px;
     overflow: hidden;
 }
 
+.valuesImg p{
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+}
 
-
-
-
-
+.valueTxtBox{ 
+    translate: 0 400px;
+}
