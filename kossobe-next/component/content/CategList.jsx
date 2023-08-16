@@ -74,7 +74,7 @@ useIsomorphicLayoutEffect(() => {
 
       tl.to(card,{
         scale : `${ i < 2 ? `0.${8+i}` : 1}`,
-        translate:`0 ${(4.5*i)-7}vh`
+        translate:`0 ${(5.5*i)-7}vh`
       },i+0.5)//0
     })
 

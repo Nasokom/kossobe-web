@@ -49,7 +49,7 @@ const ComplexText = ({data}) => {
     //console.log(data)
 
     return (
-      <div className='text-container'>
+      <div className='complex-text'>
         {data && data.map((p,i)=>{
           const markDefs = p.markDefs && p.markDefs //markDefs[0]._key && .href &&._type
             //const list = p.listItem && p.listItem;

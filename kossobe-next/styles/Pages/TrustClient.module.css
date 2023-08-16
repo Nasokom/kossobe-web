@@ -1,0 +1,102 @@
+.page{
+padding: 50px;
+}
+
+.page h1{
+    font-size: 5vw;
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+
+.text{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text div{
+  margin: 50px 0px;
+  width: 90%;
+}
+
+.clientContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    padding: 20px;
+    border-radius: 20px;
+    margin: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover{
+}
+
+.imgBox{
+    margin: 15px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card:hover .cardBtnBox{
+    opacity: 1;
+    translate: 0 0;
+}
+
+.cardBtnBox{
+    transition: 0.5s;
+    translate: 70px 70px;
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-left-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.svg{
+    position: absolute;
+    bottom: 0px;
+    height: 20px;
+    left: -20px;
+    rotate: 180deg;
+  }
+  .svg2{
+    position: absolute;
+    top: -19px;
+    height:20px;
+    right: 0px;
+    rotate: 180deg;
+  }
+
+  .cardBtnBox button{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  .cardBtnBox button svg{
+    color: white;
+    fill: white;
+  }

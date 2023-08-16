@@ -58,19 +58,19 @@ p, ul, li{
   font-family: tahoma;
   font-size: 25px;
 }
-.text-container ul{
+.complex-text ul{
   padding-left: 25px;
 }
 
-.text-container{
+.complex-text {
   color: inherit;
 }
 
-.text-container p{
+.complex-text p{
   color: inherit;
 }
 
-.text-container p span{
+.complex-text  p span{
   color: inherit;
 }
 
@@ -154,11 +154,11 @@ p, ul, li{
   margin-bottom: 20px;
 }
 
-.text-container p{
+.complex-text p{
   padding-bottom: 15px;
 }
 
-.text-container li{
+.complex-text li{
   padding-bottom: 10px;
 }
 

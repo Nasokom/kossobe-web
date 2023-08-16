@@ -5,7 +5,7 @@ import ComplexText from './ComplexText';
 
 const FooterBanner = ({banner:{intro, catchP, text}}) => {
 
-    console.log(text)
+    //console.log(text)
     const {userLang} = useStateContext() 
     return (
         <div className="footer-banner">

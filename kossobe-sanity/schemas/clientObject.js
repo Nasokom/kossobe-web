@@ -1,7 +1,7 @@
 export default {
-    name:"trustClient",
+    name:"clientObject",
     title:'Ils nous font confiance',
-    type:'document',
+    type:'object',
     fields:[
         {
             name:"name",

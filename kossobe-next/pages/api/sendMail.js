@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 //const fs =  require('fs-extra')
 import ComplexText from "../../component/Ui/ComplexText";
-import { client } from "../../Utils/sanityClient";
+c
 const ReactDOMServer = require('react-dom/server');
 import EmailTemplate from "../../component/mailTemplate/EmailTemplate";
 

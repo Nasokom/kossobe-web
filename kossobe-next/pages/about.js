@@ -7,7 +7,7 @@ import styles from '../styles/Pages/About.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout';
-import {BsFillCircleFill} from 'react-icons/bs'
+import {FaCertificate} from 'react-icons/fa'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,7 +34,7 @@ const About = ({appColors, data}) => {
       });
       
       const cards = self.selector('.introCard');
-      const keyPoint = main.current.querySelector('.keyPoint')
+      const lastSection = main.current.querySelector('.lastSection')
   
 
   
@@ -49,7 +49,7 @@ const About = ({appColors, data}) => {
 
          i !== 0 && tl.to(card,{
           translate:`0 0`,
-          duration: 10
+          duration: 7
         })
         
         spans.forEach((span,i)=>{
@@ -61,7 +61,7 @@ const About = ({appColors, data}) => {
         
         tl.to(textContainer,{
           translate:`0 -100vh`,
-          duration: 10
+          duration: 7
         })//0
 
         tl.to(img,{
@@ -70,10 +70,22 @@ const About = ({appColors, data}) => {
         })//0
       })
 
-      tl.to(keyPoint,{
+
+
+      tl.to(lastSection,{
         translate : '0 -100vh',
         duration: 10
       })
+
+
+      /* OUR VALUES */
+      const valueSection = main.current.querySelector('.value-section')
+
+      tl.to(lastSection,{
+        translate : '0 -200vh',
+        duration: 10
+      })
+
 
       const valueList = main.current.querySelector('.valueList').querySelectorAll('li')
       //const lis = valueList.querySelectorAll('li');
@@ -81,20 +93,56 @@ const About = ({appColors, data}) => {
       const toggleClass = (elt,is) => is ? elt.classList.add('activeAboutLi') : elt.classList.remove('activeAboutLi')
 
       const valueTxtBox = main.current.querySelector('.valueTxtBox')
-      valueList.forEach((li,i)=>{
-        
-        
 
+      const lastI = valueList.length -1
+      valueList.forEach((li,i)=>{
         tl.to(valueTxtBox,{
           translate: `0px -${i*400}px`,
-          backgroundColor: appColors[i].color.hex,
-          color: appColors[i].colorTxt.hex,
+          backgroundColor: appColors[i] ? appColors[i].color.hex : appColors[0].color.hex,
+          color: appColors[i] ?  appColors[i].colorTxt.hex :  appColors[0].colorTxt.hex,
+          onStart : ()=>toggleClass(li,true),//!!SS+
+        })
+
+        tl.to(li,{
+          color:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
+          fill:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
+          translate:'50px 0',
+        })
+
+        tl.to(li,{
+          duration: 10,
+          //className:'+=activeAboutLi',
+          onComplete: ()=>toggleClass(li,false), //!!SS+
+          onReverseComplete : ()=>toggleClass(li,false),
+        })
+
+        tl.to(li,{
+          color:'black',
+          translate : '0px 0px',
+          scale:1,
+          duration:1,
+          onReverseComplete : ()=>toggleClass(li,true),
+        })
+
+        i == lastI && tl.to(valueTxtBox,{
+          translate: `0px -${(i+1)*400}px`,
+          duration:3,
+        })
+      })
+
+
+
+      /*  valueList.forEach((li,i)=>{
+        tl.to(valueTxtBox,{
+          translate: `0px -${i*400}px`,
+          backgroundColor: appColors[i] ? appColors[i].color.hex : appColors[0].color.hex,
+          color: appColors[i] ?  appColors[i].colorTxt.hex :  appColors[0].colorTxt.hex,
           onStart : ()=>toggleClass(li,true),//!!SS+
         })
 
         tl.to(li,{
           translate : '50px 0px',
-          color:appColors[i].colorTxt.hex,
+          color:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
           scale:1.2,
           duration: 10,
           //className:'+=activeAboutLi',
@@ -111,7 +159,7 @@ const About = ({appColors, data}) => {
           onReverseComplete : ()=>toggleClass(li,true),
         })
       })
-
+ */
 
       //7868.5
       //8824
@@ -179,27 +227,29 @@ const About = ({appColors, data}) => {
 
           </div>{/* end intro */}
 
-          <div className={`keyPoint ${styles.keyPointContainer}`}>
-
+        <div className={`lastSection ${styles.lastSection}`}>
+          <div className={`keyPoint-section ${styles.keyPointContainer}`}>
               {data.keyPoint.map((point,i)=>{
                 return(
-                  <div className={`${styles.keyCard}`}>
+                  <div className={`${styles.keyCard}`} key={i}>
 
                       <h3>{point.name[userLang]}</h3>
-
-                        <ComplexText data={point.text[userLang]}/>
+                        <div className={styles.keyText}>
+                          <ComplexText data={point.text[userLang]}/>
+                        </div>
                   </div>
                 )
               })}
+            </div>
 
-              <div className={styles.ourValues}>
+
+            <div className={`value-section ${styles.valuesSection}`}>
                 <h3>{data.values.title[userLang]}</h3>
-
                 <div className={styles.valuesContainer}>
                     <ul className={`valueList ${styles.valuesList}`}>
                       {data.values.valeur.map((vName,i)=>{
                         return(
-                          <li> <BsFillCircleFill/> {vName.name[userLang]}</li>
+                          <li key={i}> <FaCertificate/> {vName.name[userLang]}</li>
                       )
                       })}
                     </ul>
@@ -207,7 +257,7 @@ const About = ({appColors, data}) => {
                     <div className={`valuesImg ${styles.valuesImg}`}>
                       <div className={`valueTxtBox ${styles.valueTxtBox}`}>
                     {data.values.valeur.map((vName,i)=>{
-                      return <ComplexText data={vName.text[userLang]}/>
+                      return <ComplexText data={vName.text[userLang]} key={i}/>
                     })}
                     </div>
 
@@ -217,8 +267,7 @@ const About = ({appColors, data}) => {
                 </div>
               </div>
 
-          </div>
-
+              </div>
       </div>
     </div>
   )

@@ -69,6 +69,8 @@
     width: 100%;
     height: 80vh;
     scale: 1;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .imgBox image{
@@ -76,13 +78,23 @@
 }
 
 
+
+/* LastSection  */
+
+.lastSection{
+    position: absolute;
+    translate: 0 100vh;
+    background-color: white;
+}
 /* Key points styles */
 
 .keyPointContainer{
-    background-color: white;
-    position: absolute;
-    translate: 0 100vh;
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .keyCard{
@@ -98,12 +110,18 @@
     font-size: 40px;
 }
 
-.keyCard p{
+.keyText{
+    width: 50%;
 }
 
-/* VAlues */
-.ourValues{
-    padding-top: 50px;
+/* TODO VAlues  */
+.valuesSection{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .valuesContainer{
@@ -123,6 +141,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor:pointer;
+    transition: 0.3s;
+}
+
+.valuesList svg{
+    margin-right: 20px;
+    transition: 0.3;
+    scale: 0;
 }
 
 
@@ -130,7 +156,6 @@
 .valuesImg{
     width: 400px;
     height: 400px;
-    background-color: red;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -143,4 +168,5 @@
 
 .valueTxtBox{ 
     translate: 0 400px;
+    transition: 0.5s;
 }

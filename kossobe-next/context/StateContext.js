@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import {useRouter} from 'next/router'
+import {client} from '../Utils/sanityClient'
 
 const Context = createContext();
 
-export const StateContext = ({ children }) => {
+export const StateContext = ({children}) => {
 
     const[showMenu,setShowMenu] = useState(false);
     const[isMobile,setIsMobile] = useState(false);
@@ -12,9 +13,9 @@ export const StateContext = ({ children }) => {
     const [serviceMsg, setServiceMsg] = useState(null)
     const router = useRouter()
     const [nextI, setNextI] =useState(null)
+    const [appColors, setAppColors] = useState(null)
 
     useEffect(()=>{      
-
         //THeme
         if(localStorage.getItem("theme")){
             if(localStorage.getItem("theme") == "dark"){
@@ -41,8 +42,7 @@ export const StateContext = ({ children }) => {
         : userLanguage.includes('de') ? setUserLang('de')
         : setUserLang('en');
         //console.log(userLang)
-    },[router.query.slug && router.query.slug])
-
+    },[router.query.slug && router.query.slug, appColors])
     
     return (
         <Context.Provider
@@ -58,6 +58,8 @@ export const StateContext = ({ children }) => {
             serviceMsg,
             setServiceMsg,
             router,
+            appColors,
+            setAppColors,
         }}
         >
         {children}
@@ -66,3 +68,4 @@ export const StateContext = ({ children }) => {
 }
 
 export const useStateContext = () => useContext(Context);
+

@@ -54,16 +54,10 @@ const Menu = ({toggleMenu}) => {
                             <span>{userLang.includes('fr') ? 'Pedagogie' : userLang.includes('de') ? 'Pädagogik': 'Pedagogy' }</span>
                         </Link> 
 
-                        <Link href="/services/artiste"
-                            onClick={()=>toggleMenu()}
-                            >
-                            <span>{userLang.includes('fr') ? 'Artiste' : userLang.includes('de') ? 'Artist': 'Artist' }</span>
-                        </Link> 
-
                         <Link href="/services/live" 
                         onClick={()=>toggleMenu()}
                         >
-                            <span >Live</span>
+                            <span> <span>{userLang.includes('fr') ? 'Performance' : userLang.includes('de') ? 'Leistung': 'Performance' }</span></span>
                         </Link> 
 
                         <Link href="/services/boutique"
@@ -81,6 +75,13 @@ const Menu = ({toggleMenu}) => {
                     onClick={()=>toggleMenu()}
                 >
                      <span>{userLang.includes('fr') ? 'Nous connaître' : userLang.includes('de') ? 'über uns': 'About Us' }</span>
+                </Link>
+
+                <Link href="/clients"
+                    className={styles.link}    
+                    onClick={()=>toggleMenu()}
+                >
+                     <span>{userLang.includes('fr') ? 'Nos clients' : userLang.includes('de') ? 'zufriedene Kunden': 'Trust clients' }</span>
                 </Link>
 
 
