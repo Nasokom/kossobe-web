@@ -41,6 +41,12 @@ const Clients = ({datas,appColors}) => {
             return(
                 <div key={i} className={Styles.card}
                 style={colorsF()}>
+                    <div className={Styles.cardText}>
+                      <h3>{data.name}</h3>
+
+                      <p>visit website</p>
+                    </div>
+
                     <div className={Styles.imgBox}>
                         <Image loader={imgLoader} fill 
                         style={{objectFit:'contain'}}

@@ -36,9 +36,39 @@ padding: 50px;
     transition: 0.3s;
     position: relative;
     overflow: hidden;
+    box-shadow: -5px 5px black;
 }
 
+
 .card:hover{
+  box-shadow: 0px 0px black;
+  translate: -7px 7px;
+}
+.cardText{
+  padding:20px;
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.cardText:hover{
+  opacity: 1;
+  transition: 0.5s;
+}
+
+
+
+.cardText p, .cardText h3{
+  color: white;
 }
 
 .imgBox{
@@ -50,12 +80,32 @@ padding: 50px;
     overflow: hidden;
 }
 
+.card:hover::before{ 
+  opacity: 1;
+}
+
+.card::before{
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.555);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+
 .card:hover .cardBtnBox{
     opacity: 1;
     translate: 0 0;
 }
 
 .cardBtnBox{
+  z-index: 2;
     transition: 0.5s;
     translate: 70px 70px;
     position: absolute;
