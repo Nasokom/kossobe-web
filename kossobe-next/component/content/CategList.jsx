@@ -103,7 +103,6 @@ return () => ctx.revert();
 
   return (
     <div className={Styles.parent} id="categList" ref={main}>
-      <p style={{paddingBottom:"30px"}}>{cible[userLang]}</p>
       <h2>Decouvrez nos services</h2>
 
       <div className={Styles.nav} id='categListNav'>
@@ -120,7 +119,7 @@ return () => ctx.revert();
           {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
 
             const myLoader = () => {
-                return d.image && urlFor(d.image).width(200).height(200).url()
+                return d.image && urlFor(d.image).url()
             }
 
             /* Button Router + anim function */

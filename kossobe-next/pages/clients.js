@@ -43,8 +43,6 @@ const Clients = ({datas,appColors}) => {
                 style={colorsF()}>
                     <div className={Styles.cardText}>
                       <h3>{data.name}</h3>
-
-                      <p>visit website</p>
                     </div>
 
                     <div className={Styles.imgBox}>

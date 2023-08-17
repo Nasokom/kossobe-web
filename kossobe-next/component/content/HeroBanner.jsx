@@ -22,6 +22,7 @@ const HeroBanner = ({banner}) => {
                 <h3>{banner.catchP[userLang]}</h3>
                     <ComplexText data={banner.text[userLang]}/>
             </div>
+            <p>{banner.intro[userLang]}</p>
         </div>
 
     )
