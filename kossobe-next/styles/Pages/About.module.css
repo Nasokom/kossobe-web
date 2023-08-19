@@ -2,11 +2,26 @@
     padding: 0 50px;
 }
 
+.pinSpacer{
+    width: 100%;
+}
+
+.header{
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
 .page h1{
     font-family: plakkaat;
-    font-size: 5vw;
-    line-height: 1.5em;
-    margin-bottom: 35px;
+    font-size: 7vw;
+    text-align: center;
+}
+.page h2{
+    line-height: 1.2em;
+    font-size: clamp(20px, 4vw,100px);
 }
 
 .introContainer{
@@ -15,6 +30,7 @@
     flex-direction: column;
     position: relative;
     min-height: 100vh;
+    width:100%
 }
 
 .card{
@@ -57,7 +73,7 @@
 
 .textContainer p span{
     margin-right: 12px;
-    font-size: 30px;
+    font-size: clamp(25px,3vw,100px);
     line-height: 2em;
     color: lightgrey;
     opacity: 1;
@@ -85,6 +101,7 @@
     position: absolute;
     translate: 0 100vh;
     background-color: white;
+    outline: 10px solid white;
 }
 /* Key points styles */
 
@@ -92,22 +109,24 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
+
 }
 
 .keyCard{
     display: flex;
     justify-content: space-between;
     width: 100%;
+    height: 50vh;
     align-items: center;
     border-bottom: 1px solid black;
     padding:50px 0px;
 }
 
 .page h3{
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .keyText{
@@ -127,6 +146,8 @@
 .valuesContainer{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 60%;
 }
 
 .valuesList{
@@ -135,6 +156,7 @@
     align-items: flex-start;
     flex-direction: column;
     padding-left: 20px;
+    height: 100%;
 }
 
 .valuesList li{
@@ -143,6 +165,7 @@
     align-items: center;
     cursor:pointer;
     transition: 0.3s;
+    font-size: 2.5vw;
 }
 
 .valuesList svg{
@@ -169,4 +192,77 @@
 .valueTxtBox{ 
     translate: 0 400px;
     transition: 0.5s;
+}
+
+@media (max-width:800px){
+
+    .page{
+        padding: 0 20px;
+    }
+
+    .header{
+        justify-content: space-around;
+    }
+
+    .keyPointContainer{
+        justify-content: center;
+        outline: 5px solid white;
+    }
+
+    .keyCard{
+        flex-direction: column;
+        height: auto;
+    }
+    .keyCard h3{
+        margin-bottom: 20px;
+    }
+    .keyText{
+        width: 100%;
+    }
+
+    .keyText p{
+        width: 100%;
+        font-size: 4vw;
+    }
+
+    .valuesSection{
+        padding-top: 10vh;
+        justify-content: space-between;
+    }
+    
+    .valuesContainer{
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        padding-bottom: 20px;
+    }
+
+    .valuesList{
+        height: auto;
+        width: 100%;
+    }
+
+    .valuesList li{
+        padding-top: 30px;
+        font-size: 5vw;
+    }
+
+    .valuesImg{
+        width: 100%;
+        height: 50%;
+    }
+    
+    .valuesImg p{
+        width: 100%;
+        height: 400px;
+        padding: 20px;
+        font-size: 5vw;
+        line-height: 1.7em;
+    }
+    
+    .valueTxtBox{ 
+        translate: 0 400px;
+        transition: 0.5s;
+    }
+    
 }

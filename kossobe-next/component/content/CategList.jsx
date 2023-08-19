@@ -137,10 +137,12 @@ return () => ctx.revert();
 
 
             return(
-              <div className={`categCard ${Styles.card}`} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}} ref={card}>
+              <div onClick={(e)=>routingAnim(e)}
+              className={`categCard ${Styles.card}`} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}} ref={card}>
               
               {/* left Img */}
-                <div className={Styles.cardLeft}>
+                <div className={Styles.cardLeft} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>
+                  <div className={Styles.imgBox}>
                   <Image 
                     loader={myLoader}
                     objectFit="cover"
@@ -149,6 +151,7 @@ return () => ctx.revert();
                     src={'bjr'}
                     alt=''
                     />
+                </div>
                 </div>
 
                 {/* right  Txt*/}

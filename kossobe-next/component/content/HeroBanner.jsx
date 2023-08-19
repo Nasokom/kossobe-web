@@ -18,7 +18,6 @@ const HeroBanner = ({banner}) => {
         <div className={Styles.home_header}>
             <div className={Styles.container}>
               <h1>KOSSOBE</h1>
-              <p>{banner.kossTrad[userLang]}</p>
                 <h3>{banner.catchP[userLang]}</h3>
                     <ComplexText data={banner.text[userLang]}/>
             </div>

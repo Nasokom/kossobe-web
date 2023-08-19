@@ -13,7 +13,7 @@ const ServiceCard = ({data,i, color1, color2, selectedCard, setSelectedCard}) =>
 
     const {userLang, setServiceMsg} = useStateContext();
 
-    const myLoader = () =>{return data.image && urlFor(data.image).width(200).height(200).url()}
+    const myLoader = () =>{return data.image && urlFor(data.image).url()}
 
     const color = i == 0 || i == 2 ? color2 : color1;
     const bg = i == 0 || i == 2 ? color1 : color2;

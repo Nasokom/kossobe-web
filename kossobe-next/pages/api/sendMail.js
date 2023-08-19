@@ -1,11 +1,8 @@
 import nodemailer from "nodemailer";
-//const fs =  require('fs-extra')
 import ComplexText from "../../component/Ui/ComplexText";
-c
 const ReactDOMServer = require('react-dom/server');
 import EmailTemplate from "../../component/mailTemplate/EmailTemplate";
-
-
+import {client} from '../../Utils/sanityClient'
 export default async function sendEmail(req, res) {
 
   const { name, email, message,phone, userLang } = req.body;

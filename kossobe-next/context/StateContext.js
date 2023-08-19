@@ -42,7 +42,8 @@ export const StateContext = ({children}) => {
         : userLanguage.includes('de') ? setUserLang('de')
         : setUserLang('en');
         //console.log(userLang)
-    },[router.query.slug && router.query.slug, appColors])
+    //},[router.query.slug && router.query.slug, appColors])
+        },[appColors])
     
     return (
         <Context.Provider

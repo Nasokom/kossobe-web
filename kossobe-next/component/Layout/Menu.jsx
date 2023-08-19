@@ -48,6 +48,12 @@ const Menu = ({toggleMenu}) => {
                     <div className={styles.shrink}>
                         <div>
 
+                        <Link href="/services/boutique"
+                        onClick={()=>toggleMenu()}
+                        >
+                            <span>{userLang.includes('fr') ? 'Boutique' : userLang.includes('de') ? 'Geschäft': 'Shop' }</span>
+                        </Link> 
+
                         <Link href="/services/pedagogie"
                             onClick={()=>toggleMenu()}
                         >
@@ -60,11 +66,7 @@ const Menu = ({toggleMenu}) => {
                             <span> <span>{userLang.includes('fr') ? 'Performance' : userLang.includes('de') ? 'Leistung': 'Performance' }</span></span>
                         </Link> 
 
-                        <Link href="/services/boutique"
-                        onClick={()=>toggleMenu()}
-                        >
-                            <span>{userLang.includes('fr') ? 'Boutique' : userLang.includes('de') ? 'Geschäft': 'Shop' }</span>
-                        </Link> 
+                       
                     </div>
                     </div>
 

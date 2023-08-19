@@ -59,8 +59,8 @@ const ScrollRouter = ({categories,router,nextIndex}) => {
   return (
     <div className={Styles.container} ref={main}>
 
-        <h3>Scroll pour decouvrir </h3>
-        <h3>les autres services de kossobe</h3>
+        <h3>{userLang.includes('fr') ?'Scroll pour decouvrir' : userLang.includes('de') ? "Scrollen Sie, um die anderens" : "Scroll to discover" } </h3>
+        <h3>{userLang.includes('fr') ?'les autres services de kossobe' : userLang.includes('de') ? "Dienstleistungen von Kossobe zu entdecken" : "Kossobe's other services" }</h3>
         <br/>
         <div className={`routerScrollCardBox ${Styles.cardBox}`} style={{backgroundColor:categories[nextIndex].color.hex}} >
             <div className={Styles.card} style={{border:`4px solid ${categories[nextIndex].color.hex}`}}>

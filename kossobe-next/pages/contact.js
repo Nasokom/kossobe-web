@@ -4,6 +4,7 @@ import axios from "axios";
 import {useStateContext} from '../context/StateContext'
 import Styles from '../styles/Pages/Contact.module.css'
 import {client} from '../Utils/sanityClient'
+import MailResponse from '../component/Ui/MailResponse';
 
 const Contact = ({services}) => {
 
@@ -59,7 +60,7 @@ const Contact = ({services}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-      setSendingMail(true)
+        setSendingMail(true)
         
         //send the mail
         try {
@@ -117,15 +118,20 @@ const Contact = ({services}) => {
         <meta name="copyright" content="Kossobe"/>
         <meta name="page-topic" content="Kossobe"></meta>
     </Head>
+
     <div className={Styles.page}>
+
+      {toggleMsg && <MailResponse userLang={userLang} state={success} toggle={setToggleMsg}/>}
+
       <div className='page-header'>
             <h1 className="page-title">
-            {userLang.includes('fr') ? 'contact' : userLang.includes('de')? 'Kontakt' : 'contact'}
-              </h1>
-              <p>Prenez contact avec nous</p>
-              <p> {userLang.includes('fr') ? 'Intéressé par nos services ?' 
-                  :userLang.includes('de')? 'Interessiert an unseren Dienstleistungen?' 
-                  : 'Interested in our services?'}</p>
+            {userLang.includes('fr') ? 'Intéressé par nos services ?' 
+                :userLang.includes('de')? 'Interessiert an unseren Dienstleistungen?' 
+                : 'Interested in our services?'}
+            </h1>
+            <p> 
+            {userLang.includes('fr') ? 'Contactez-nous' : userLang.includes('de')? 'Kontaktieren Sie uns' : 'Contact us'}
+            </p>
               
       </div>
 
@@ -162,13 +168,7 @@ const Contact = ({services}) => {
                       
                       </button>
                 </form>
-            </div>
-
-
-                {/* {toggleMsg && <MailResponse success={success} closeMsg={setToggleMsg}/>} */}
-
-
-                
+            </div>                
     </div>
 </>
   )

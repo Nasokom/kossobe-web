@@ -17,6 +17,7 @@ const About = ({appColors, data}) => {
   const main = useRef(null)
 
   const [valueIndex, setValueIndex] = useState(0)
+
   useIsomorphicLayoutEffect(() => { 
 
     const ctx = gsap.context((self) => {
@@ -66,7 +67,7 @@ const About = ({appColors, data}) => {
 
         tl.to(img,{
           scale:1,
-          duration: 10
+          duration: 1
         })//0
       })
 
@@ -74,9 +75,20 @@ const About = ({appColors, data}) => {
 
       tl.to(lastSection,{
         translate : '0 -100vh',
-        duration: 10
+        duration: 5,
       })
 
+      const keyCards = self.selector('.complex-text')
+
+
+      keyCards.forEach((card,i)=>{
+
+        tl.to(card,{
+          duration: 2,
+          color: appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
+        })
+
+      })
 
       /* OUR VALUES */
       const valueSection = main.current.querySelector('.value-section')
@@ -169,11 +181,12 @@ const About = ({appColors, data}) => {
         a.addEventListener("click", e => {
           e.preventDefault();
           window.scrollTo({
-            top: i == 0 ? 7868 : i == 1 ? 8869 : 9876,
+            //top: i == 0 ? 6950 : i == 1 ? 8298 : 9150,
+            top:7040 + 1000*i,
             left: 0,
             behavior: "smooth",
           });
-          //alert(window.scrollY)
+          console.log(window.scrollY)
         })
       })
 
@@ -188,10 +201,13 @@ const About = ({appColors, data}) => {
   return (
     <div className={styles.page}>
 
-      <h1>{data.name[userLang]}</h1>
+      <div className={styles.header}>
+        <h1>{userLang.includes('fr') ? 'Apprennez en plus sur nous' : userLang.includes('de') ? 'lerne mehr über uns' : 'Learn more about us'}</h1>
+        <h2>{data.name[userLang]}</h2>
+      </div>
 
-        <p>Apprennez en plus sur nous</p>
-      <div ref={main}>
+
+      <div ref={main} className={styles.pinSpacer}>
 
 
           <div className={styles.introContainer}>
@@ -231,7 +247,7 @@ const About = ({appColors, data}) => {
           <div className={`keyPoint-section ${styles.keyPointContainer}`}>
               {data.keyPoint.map((point,i)=>{
                 return(
-                  <div className={`${styles.keyCard}`} key={i}>
+                  <div className={`keyCard ${styles.keyCard}`} key={i}>
 
                       <h3>{point.name[userLang]}</h3>
                         <div className={styles.keyText}>
