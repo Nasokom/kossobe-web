@@ -235,6 +235,7 @@
         justify-content: space-around;
         height: 100%;
         padding-bottom: 20px;
+        color: rgb(56, 56, 56);
     }
 
     .valuesList{

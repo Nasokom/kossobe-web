@@ -49,7 +49,7 @@ change:{
 
         <h4>{state ? title.success[userLang] : title.error[userLang]}</h4>
 
-            <p>{state ? msg.success[userLang] : msg.error[userLang] + <a href="mailto:kossobe@gmail.com">kossobe@gmail.com</a>}</p>
+            <p>{state ? msg.success[userLang] : msg.error[userLang] } { !state && <a href="mailto:kossobe@gmail.com">kossobe@gmail.com</a>}</p>
 
 
             <button onClick={()=>toggle(false)}>Ok</button>

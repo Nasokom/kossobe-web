@@ -31,7 +31,7 @@ useIsomorphicLayoutEffect(() => {
       scrollTrigger: {
         trigger: main.current,
         start:"top top",
-        end: "+=3000vh",
+        end: "+=2500vh",
         scrub: true,
         pin: true,
          onUpdate: self => {
@@ -40,6 +40,7 @@ useIsomorphicLayoutEffect(() => {
         }
       }
     });
+
     setGtl(tl)
     
     const cards = self.selector('.categCard');
@@ -58,7 +59,8 @@ useIsomorphicLayoutEffect(() => {
 
       i !== 2 && tl.to(btn,{
         backgroundColor:'white',
-        color:btn.dataset.clr
+        //color:btn.dataset.clr
+        color:'black'
       },i+0.5)
     })
 
@@ -107,10 +109,10 @@ return () => ctx.revert();
 
       <div className={Styles.nav} id='categListNav'>
         {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
-          return <button data-clr={d.color.hex} data-txtClr={d.colorTxt.hex}
+          return <button data-clr={d.color.hex} data-txtClr={'black'}
           // onClick={()=>gTl.seek(i+0.5*i,true)}
           //onClick={()=>alert(window.scrollY)}
-             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'white', color: i == 0 ? 'black' : d.color.hex}} className='categNavBtn'>{d.name[userLang]}</button>  
+             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'white', color: 'black' }} className='categNavBtn'>{d.name[userLang]}</button>  
         })}
       </div>
 
