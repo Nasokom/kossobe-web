@@ -112,7 +112,7 @@ return () => ctx.revert();
           return <button data-clr={d.color.hex} data-txtClr={'black'}
           // onClick={()=>gTl.seek(i+0.5*i,true)}
           //onClick={()=>alert(window.scrollY)}
-             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'white', color: 'black' }} className='categNavBtn'>{d.name[userLang]}</button>  
+             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'white', color: 'black`' }} className='categNavBtn'>{d.name[userLang]}</button>  
         })}
       </div>
 
