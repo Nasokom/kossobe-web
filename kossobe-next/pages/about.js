@@ -7,7 +7,7 @@ import styles from '../styles/Pages/About.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout';
-import {FaCertificate} from 'react-icons/fa'
+import {FaHeart} from 'react-icons/fa'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +27,7 @@ const About = ({appColors, data}) => {
         scrollTrigger: {
           trigger: main.current,
           start:"top top",
-          end: "+=10000vh",
+          end: "+=5000vh",
           scrub: true,
           pin: true,
           //markers:true
@@ -50,13 +50,14 @@ const About = ({appColors, data}) => {
 
          i !== 0 && tl.to(card,{
           translate:`0 0`,
-          duration: 7
+          duration: 3
         })
         
         spans.forEach((span,i)=>{
           tl.to(span,{
             opacity:1,
-            color:'black'
+            color:'black',
+            duration:0.1,
           })
         })
         
@@ -113,16 +114,18 @@ const About = ({appColors, data}) => {
           backgroundColor: appColors[i] ? appColors[i].color.hex : appColors[0].color.hex,
           color: appColors[i] ?  appColors[i].colorTxt.hex :  appColors[0].colorTxt.hex,
           onStart : ()=>toggleClass(li,true),//!!SS+
+          duration:0.1
         })
 
         tl.to(li,{
           color:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
           fill:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
           translate:'50px 0',
+          duration:3,
         })
 
         tl.to(li,{
-          duration: 10,
+          duration: 3,
           //className:'+=activeAboutLi',
           onComplete: ()=>toggleClass(li,false), //!!SS+
           onReverseComplete : ()=>toggleClass(li,false),
@@ -132,7 +135,7 @@ const About = ({appColors, data}) => {
           color:'black',
           translate : '0px 0px',
           scale:1,
-          duration:1,
+          duration:0.1,
           onReverseComplete : ()=>toggleClass(li,true),
         })
 
@@ -171,18 +174,20 @@ const About = ({appColors, data}) => {
           onReverseComplete : ()=>toggleClass(li,true),
         })
       })
- */
+ */ 
 
-      //7868.5
-      //8824
-      //9876
+      
+      //4052
+      //4472
+      //4871
+      //5256
 
       valueList.forEach((a, i) => {
         a.addEventListener("click", e => {
           e.preventDefault();
           window.scrollTo({
             //top: i == 0 ? 6950 : i == 1 ? 8298 : 9150,
-            top:7040 + 1000*i,
+            top:4052 +400*i,
             left: 0,
             behavior: "smooth",
           });
@@ -265,7 +270,9 @@ const About = ({appColors, data}) => {
                     <ul className={`valueList ${styles.valuesList}`}>
                       {data.values.valeur.map((vName,i)=>{
                         return(
-                          <li key={i}> <FaCertificate/> {vName.name[userLang]}</li>
+                          <li key={i}>
+                             <FaHeart/> 
+                             {vName.name[userLang]}</li>
                       )
                       })}
                     </ul>

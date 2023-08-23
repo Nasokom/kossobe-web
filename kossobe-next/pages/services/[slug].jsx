@@ -19,6 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ServicePage = ({services, categories, nextIndex}) => {
   
   const {userLang,router} = useStateContext();
+  const [disableScroll, setDisableScroll] = useState(false)
 
 
   useEffect(()=>{
@@ -90,8 +91,9 @@ const ServicePage = ({services, categories, nextIndex}) => {
                       />)})}
         </div>
 
-        <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug} categories={categories} currentSlug={services.slug.current} router={router}/>
-  
+        {!disableScroll && <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug}  setDisableScroll={setDisableScroll}categories={categories} currentSlug={services.slug.current} router={router}/>}
+
+
   </div>
   )
 }

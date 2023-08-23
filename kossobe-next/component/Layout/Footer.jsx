@@ -40,7 +40,7 @@ const Footer = () => {
               </p>
             <ul>
               <li><Link href={'/policy#terms'}>
-                {userLang.includes('fr') ? "Conditions d'utlitisation"
+                {userLang.includes('fr') ? "Conditions d'utilisation"
                 :userLang.includes('de') ? 'Nutzungsbedingungen'
                 :'Terms of use' }
               </Link></li>

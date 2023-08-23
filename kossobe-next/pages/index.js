@@ -8,6 +8,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import FooterBanner from '../component/Ui/FooterBanner'
 import HeroBanner from '../component/content/HeroBanner'
+import ScrollDown from '../component/Ui/ScrollDown'
 
 
 export default function Home({services, bannerData}) {
@@ -21,6 +22,7 @@ export default function Home({services, bannerData}) {
         <meta name="description" content="Kossobe website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ScrollDown/>
       <HeroBanner banner={bannerData[1]}/>
       <CategList data={services} cible={bannerData[1].intro}/>
       <FooterBanner banner={bannerData[0]}/>

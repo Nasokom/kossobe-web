@@ -1,0 +1,61 @@
+.parent{
+    position: fixed;
+    border-radius: 50%;
+    padding:10px;
+}
+
+.circle{
+    width: 150px;
+    height:150px;
+    animation: rotating 12s linear infinite;
+    font-family: plakkaat;
+}
+.parent p{
+    text-align: center;
+}
+
+.parent::before{
+    content: '';
+    position: absolute;
+    background-color: black;
+    width:3px;
+    height: 10px;
+    border-radius: 5px;
+    top: 40%;
+    left: 50%;
+    translate:-50% -50%;
+    scale:3;
+}
+.arrow{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate:-50% -50%;
+    scale: 3.6;
+    animation:pop 3s alternate-reverse infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+@keyframes pop {
+    from{
+        translate: -50% 10px;
+    }
+    
+    to{
+        translate: -50% -10px;
+    }
+}
+  @keyframes rotating {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  .rotating {
+    animation: rotating 12s linear infinite;
+  }
+
+  

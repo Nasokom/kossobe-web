@@ -7,7 +7,7 @@ import Styles from '../../styles/module/ui/ScrollRouter.module.css'
 import { useStateContext } from '../../context/StateContext';
 
 gsap.registerPlugin(ScrollTrigger);
-const ScrollRouter = ({categories,router,nextIndex}) => {
+const ScrollRouter = ({categories,router,nextIndex,setDisableScroll}) => {
 
 
     const {userLang} = useStateContext()
@@ -57,6 +57,7 @@ const ScrollRouter = ({categories,router,nextIndex}) => {
 
 
   return (
+    <>
     <div className={Styles.container} ref={main}>
 
         <h3>{userLang.includes('fr') ?'Scroll pour decouvrir' : userLang.includes('de') ? "Scrollen Sie, um die anderens" : "Scroll to discover" } </h3>
@@ -69,7 +70,9 @@ const ScrollRouter = ({categories,router,nextIndex}) => {
             </div>
         </div>
     
+    <div> <button onClick={()=>setDisableScroll(true)}>Annuler</button></div>
     </div>
+    </>
   )
 }
 

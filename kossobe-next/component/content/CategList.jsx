@@ -31,7 +31,7 @@ useIsomorphicLayoutEffect(() => {
       scrollTrigger: {
         trigger: main.current,
         start:"top top",
-        end: "+=2500vh",
+        end: "+=2200vh",
         scrub: true,
         pin: true,
          onUpdate: self => {
