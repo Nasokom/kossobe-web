@@ -1,38 +1,41 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
-import ComplexText from '../Ui/ComplexText'
-import Styles from '../../styles/Home/Intro.module.css'
+import ComplexText from '../../Ui/ComplexText'
+import Styles from './Intro.module.css'
 import Image from 'next/image'
-import { urlFor } from '../../Utils/sanityClient';
+import { urlFor } from '../../../Utils/sanityClient';
 import { gsap } from 'gsap'
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
-import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
-import { useStateContext } from '../../context/StateContext';
+import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
+import { useStateContext } from '../../../context/StateContext';
 
-const HomeIntro = ({banner, tl}) => {
+gsap.registerPlugin(ScrollTrigger);
+
+const HomeIntro = ({banner, tl, userLang, appColors}) => {
+
     const main = useRef(null)
-
-    const {appColors,userLang} =useStateContext()
-
 
     useIsomorphicLayoutEffect(() => { 
 
+
       const ctx = gsap.context((self) => {
         
-  
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: main.current,
             start:"top top",
-            end: "+=1000vh",
+            end: "+=100vh",
+            pin:true,
             scrub: true,
-            pin: true,
-            behavior:'smooth'
+
           }
         });
 
         const txt1 = main.current.querySelector('.introText1')
-        const words = txt1.querySelectorAll('span') 
-        const imgs = main.current.querySelectorAll('.introImgBoxs');
+
+      
+
+        const words =    gsap.utils.toArray('span');
         const imgsNode = main.current.querySelectorAll('img');
         const imgContainer = main.current.querySelector('.introImgContainer');
 
@@ -42,10 +45,6 @@ const HomeIntro = ({banner, tl}) => {
           })
         }
         
-         /*  tl.from(txt1,{
-            translate :'-50% 100%'
-          },) */
-
           tl.to(main.current,{
             opacity:1,
             onComplete:()=>imgAppear(-100),
@@ -53,54 +52,48 @@ const HomeIntro = ({banner, tl}) => {
           })
 
 
-          tl.to(txt1,{
-            translate :'-50% -50%',
-          })
-
           tl.addLabel('test', '+=1')
 
 
-
           tl.to(imgContainer,{
-            y:'-100px',
+            y:'-150px',
             duration:10,
           },'test')
 
           words.forEach((word,i )=> {
             tl.to(word,{
-                color: appColors && appColors[3].color.hex,
-                duration:1
+                //color: appColors && appColors[3].color.hex,
+                color:'black',
+                translate:'0 5px',
+                duration:1,
+                onStart: ()=>console.log('word'+i)
             },`test+=${i*0.1}`)
           });
 
-         /*  tl.to(txt1,{
-            backgroundColor:'black',
-            duration:10,
-          }) */
+          tl.addLabel('endo', '+=1')
 
-          tl.addLabel('end', '+=1')
           words.forEach((word,i )=> {
             tl.to(word,{
                 x:5,
                 y:20,
                 opacity:0
-            },`end+=${i*0.1}`)
+            },`endo+=${i*0.1}`)
           });
-
+          /* 
           tl.to(txt1,{
           //  translate:'-50% -70%',
             duration:10,
             opacity:0,
             onComplete:()=>imgAppear(-200),
             onReverseComplete:()=>imgAppear(-100),
-          })
+          }) */
 
   
   
     }, main);
   
     return () => ctx.revert();
-    }, []);
+    }, [appColors]);
 
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { MdQueuePlayNext } from 'react-icons/md'
@@ -6,7 +6,9 @@ import { MdQueuePlayNext } from 'react-icons/md'
 const ComplexText = ({data}) => {
 
 //This Component render one paragraphe "<p/>", with multiple span inside for the style 
+useEffect(()=>{
 
+},[data])
  //console.log(data)
 //todo 
     const Span = ({data, defs}) =>{

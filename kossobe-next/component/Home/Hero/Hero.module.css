@@ -1,4 +1,5 @@
 .container{
+  margin-top: -10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -63,25 +64,22 @@
 
   .imgBox{
     width: 100%;
-    height: 100%;
+    height: 130%;
     position: absolute;
-    translate: 0 0%;
     scale: 0.8;
-    opacity: 0.5;
-    translate: 0% 80%;
-    bottom: 0;
+    top: 80%;
     border-radius: 20px;
     overflow: hidden;
     color: white;
     object-fit: cover;
     object-position: bottom;
   }
-  
   .imgBox img{
-    object-position: bottom;
-    object-fit: cover;
-    object-position: top;
-  }
+   object-position: bottom;
+   object-fit: cover;
+   object-position: top;
+ }
+  
 
 
 

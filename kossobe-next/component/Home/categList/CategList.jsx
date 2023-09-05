@@ -1,15 +1,15 @@
 import React, {useEffect,useLayoutEffect,useRef, useState} from 'react'
-import ComplexTexts from '../Ui/ComplexText'
-import { useStateContext } from '../../context/StateContext'
+import ComplexTexts from '../../Ui/ComplexText'
+import { useStateContext } from '../../../context/StateContext'
 import Link from 'next/link';
-import Styles from '../../styles/Home/CategList.module.css'
+import Styles from './CategList.module.css'
 import Image from 'next/image';
-import { urlFor } from '../../Utils/sanityClient';
+import { urlFor } from '../../../Utils/sanityClient';
 import {FaArrowRight} from 'react-icons/fa'
 import { gsap } from 'gsap';
-import SplitText from '../../Utils/SplitText';
-import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
-
+import SplitText from '../../../Utils/SplitText';
+import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
+import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
 
 const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
@@ -27,20 +27,24 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
 
   useLayoutEffect(()=>{
 //useEffect(()=>{
+  gsap.registerPlugin(ScrollTrigger);
 
     const cards = main.current.querySelectorAll('.categCard');
     const navBtns = main.current.querySelectorAll('.categNavBtn')
     const nav = main.current.querySelector('#categListNav')
     const cardContainer = main.current.querySelector('#categCardContainer')
 
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: main.current,
+        start:"top top",
+        end: "+=1000vh",
+        scrub: true,
+        pin:true
+
+      }
+    });
     //0.22 //0.62
-    if(tl){
-      tl.to(arrow,{
-        x:'-90vh',
-        y:'-100%',
-        rotate:"-360deg",
-        onComplete: ()=>setTextAnim({h1:'inDown'}),
-      })
 
       tl.to(main.current,{
         translate:'0 0',
@@ -48,36 +52,24 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
         onReverseComplete: ()=>setTextAnim({h1:'outUp'})
       })
 
-      tl.to(main.current,{
-        opacity:1,
-        duration:5
-      })
-
-
-      tl.to(nav,{
-        opacity:1,
-      })
-
-      tl.to(main.current,{
-        translate:'0 -40%',
-        duration:5,
-      })
-
       tl.to(cardContainer,{
         opacity:1
       })
 
+      tl.to(nav,{
+        opacity:1
+      })
+
       tl.addLabel('card0', "+=1")
-      tl.addLabel('card1', "+=10")
-      tl.addLabel('card2', "+=20")
+      tl.addLabel('card1', "+=15")
+      tl.addLabel('card2', "+=30")
 
 
         navBtns.forEach((btn,i)=>{
-          tl.to(btn,{
+       /*    tl.to(btn,{
             backgroundColor:btn.dataset.clr,
-            //color:btn.dataset.txtClr
             color:'black',
-          },`card${i}`)
+          },`card${i}`) */
 
           i !== 2 && tl.to(btn,{
             backgroundColor:'white',
@@ -88,51 +80,47 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
 
         cards.forEach((card,i)=>{
 
-
           tl.to(card,{
-             translate:`0 ${(5*i)-0}vh`,
+             translate:`0 0`,
              //translate:`0 400px`,
             //y:`${(5*i)-0}dvh`,
             duration:5
-          },`card${i}`)//0
+          },`card${i}`)//0 
 
-            tl.to(card,{
+           tl.to(card,{
             scale : `${ i < 2 ? `0.${8+i}` : 1}`,
             translate:`0 ${(5.5*i)-7}vh`,
             //y:`${(5.5*i)-7}vh`,
             duration:5
-          },`card${i}`)//0
+          },`card${i}+=5`)//0
         }) 
         
         // ClickeEvent 
         gsap.utils.toArray("#categListNav button").forEach((a, i) => {
           a.addEventListener("click", e => {
             e.preventDefault();
-           /*  window.scrollTo({
+            window.scrollTo({
               top: i == 0 ? 919 : i == 1 ? 2344 : 3870,
               left: 0,
               behavior: "smooth",
-            }); */
-            tl.seek(`card${i}+=5`);
+            });
+            tl.seek(`card${i}`);
           })
-        })
-    }
+        }) 
 
 
 
 
-  },[tl])
+  },[])
 
 const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen', en:'Discover our services'}
 
 
 
   return (
-    <div className={Styles.parent} id="categList" ref={main}>
+    <div ref={main}>
+    <div className={Styles.parent} id="categList" >
       <h2><SplitText data={titre[userLang]} direction={textAnim.h1}/></h2>
-
-
-
       <div className={Styles.nav} id='categListNav'>
         
         {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
@@ -228,6 +216,7 @@ const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen',
             })}
 
         </div>
+    </div>
     </div>
   )
 }

@@ -3,19 +3,19 @@ import React,{useRef, useState,Suspense, useLayoutEffect, useEffect} from 'react
 import Head from 'next/head'
 import Image from 'next/image'
 import { client } from '../Utils/sanityClient'
-import CategList from '../component/Home/CategList'
+import CategList from '../component/Home/categList/CategList'
 import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout'
 import { gsap } from 'gsap'
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import FooterBanner from '../component/Ui/FooterBanner'
-import HeroBanner from '../component/Home/HeroBanner'
+import HeroBanner from '../component/Home/Hero/HeroBanner'
 import ScrollDown from '../component/Ui/ScrollDown'
-import HomeIntro from '../component/Home/HomeIntro'
+import HomeIntro from '../component/Home/Intro/HomeIntro'
 import { useStateContext } from '../context/StateContext'
 import Loading from '../component/Layout/Loading'
 
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 export default function Home({services, bannerData}) {
   const {userLang,appColors,router} = useStateContext()
@@ -24,9 +24,10 @@ export default function Home({services, bannerData}) {
 
 
   useEffect(()=>{
+    
     setArrowElt(main.current.querySelector('.scrollDownArrow'))
 
-  },[])
+  },[userLang, bannerData,main.current])
   
 
   return (
@@ -42,8 +43,8 @@ export default function Home({services, bannerData}) {
        <ScrollDown/>
        <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>
        
-       <HomeIntro banner={bannerData[1]} userLang={userLang}/> 
-       <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />
+     {(bannerData[1] && userLang) && <HomeIntro banner={bannerData[1]} userLang={userLang}/> }
+       {services && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />}
       
       </div>
       </Suspense>

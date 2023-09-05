@@ -1,13 +1,14 @@
 import React, {useEffect,useLayoutEffect,useRef, useState} from 'react'
-import { urlFor } from '../../Utils/sanityClient';
+import { urlFor } from '../../../Utils/sanityClient';
 import Image from 'next/image';
-import { useStateContext } from '../../context/StateContext';
-import ComplexText from '../Ui/ComplexText';
-import Styles from '../../styles/Home/Hero.module.css'
-import DoubleText from '../Ui/DoubleText';
+import { useStateContext } from '../../../context/StateContext';
+import ComplexText from '../../Ui/ComplexText';
+import Styles from './Hero.module.css'
+import DoubleText from '../../Ui/DoubleText';
 import gsap from 'gsap';
-import SplitText from '../../Utils/SplitText';
-import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
+import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
+import SplitText from '../../../Utils/SplitText';
+import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
 
 const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
@@ -24,7 +25,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
     const myLoader = () => banner.image && urlFor(banner.image)
 
     useIsomorphicLayoutEffect(() => { 
-
+      gsap.registerPlugin(ScrollTrigger);
       const ctx = gsap.context((self) => {
         
   
@@ -32,9 +33,8 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
           scrollTrigger: {
             trigger: main.current,
             start:"top top",
-            end: "+=1000vh",
+            end:'bottom top',
             scrub: true,
-            pin: true,
             behavior:'smooth'
           }
         });
@@ -44,10 +44,8 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
         tl.to(img,{
           scale:'1',
-          translate:'0 -80%',
           opacity:1,
           duration:20,
-          borderRadius:'0px',
           onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown'}),
           onReverseComplete: ()=>setTexAnim({h1:'inUp',h3:'inDown'})
         })
