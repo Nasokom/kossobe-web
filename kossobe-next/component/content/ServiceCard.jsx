@@ -43,7 +43,7 @@ const ServiceCard = ({data,i, color1, color2, selectedCard, setSelectedCard}) =>
 
               <div className={styles.inner}>
                 <div className={styles.content} style={{bg}}>
-                  <div className={styles.cardText} style={{color}}>
+                  <div className={`service-card-text ${styles.cardText}`} style={{color, pointerEvents:'none'}}>
                     <ComplexText data={data.hasOwnProperty('text') && data.text[userLang]}/>
                   </div>
                   <div className={styles.imgBox} style={{backgroundColor:bg}}>

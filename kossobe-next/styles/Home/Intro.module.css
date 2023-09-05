@@ -1,0 +1,95 @@
+.container{
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    bottom: 0;
+    background-color: white;
+}
+
+.textBox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    color: rgb(210, 209, 209);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    padding:0px 50px ;
+    transition: 0.5s;
+   
+}
+
+.textBox p span{
+    font-size: 3vw;
+    transition: 0.3s;
+ /*    text-shadow: 1px 1px 2px white; */
+}
+.container .introText1{
+    z-index: 2;
+}
+
+.imgContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    position: absolute;
+    transition: 0.5s;
+    top: 0;
+}
+
+.imgBox{
+    position: relative;
+    width:150px;
+    height: 200px;
+    width: 20vw;
+    height: 23vw;
+    border-radius: 20px;
+    overflow: hidden;
+    filter: grayscale();
+    transition: 0.2s;
+    opacity: 0.6;
+}
+
+.imgBox:nth-child(1){transform: translateY(100%);}
+.imgBox:nth-child(3){transform: translateY(150%);}
+
+.imgBox img{
+    translate: 0 100%;
+    transition: 1s;
+}
+
+@media (max-width:800px){
+
+    .imgBox{
+        position: relative;
+        width: 30vw;
+        height: 32vw;
+    }
+
+    .imgContainer{
+        padding: 10px;
+        padding-top: 75px;
+    }
+
+    .imgBox:nth-child(1){transform: translateY(250%);}
+    .imgBox:nth-child(3){transform: translateY(450%);}
+
+    .textBox p span{
+        font-size: 2.3vh;
+        font-size: 2.3dvh;
+        transition: 0.3s;
+    }
+    .textBox{
+        padding:0px 20px ;
+        padding-top: 20px;
+        transition: 0.3s;
+
+    }
+}

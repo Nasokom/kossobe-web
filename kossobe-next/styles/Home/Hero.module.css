@@ -1,0 +1,111 @@
+.container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 50px;
+  padding-bottom: 30vh;
+  width: 100vw;
+  position: relative;
+  
+}
+
+.textBox{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  color: white;
+}
+
+  .textBox h1{
+    font-size: 11vw;
+    padding: 0;
+    line-height: 11vw;
+    overflow: hidden;
+    display: flex;
+    color: white;
+  }
+
+  .textBox >*{
+    color: white;
+  } 
+
+  .textBox h3{
+    padding: 30px;
+    font-size: 4vw;
+    text-align: center;
+    z-index: 2;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .textBox h2{
+    opacity: 1;
+    display: none;
+    position: absolute;
+    font-size: 4vw;
+    color: white;
+  }
+
+  .textBox h1 >*{
+    color: white;
+  }
+
+  .textBox h3>*{
+  }
+
+  .imgBox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    translate: 0 0%;
+    scale: 0.8;
+    opacity: 0.5;
+    translate: 0% 80%;
+    bottom: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    color: white;
+    object-fit: cover;
+    object-position: bottom;
+  }
+  
+  .imgBox img{
+    object-position: bottom;
+    object-fit: cover;
+    object-position: top;
+  }
+
+
+
+@media screen and (max-width:1400px) {
+
+
+}
+
+@media screen and (max-width:800px) {
+
+  .textBox h1{
+    font-size: 18vw;
+    line-height: 18vw;
+  }
+
+  .textBox h3{
+    font-size: 8vw;
+    padding: 0px;
+    width: 100vw;
+  }
+
+  .textBox h2{
+    font-size: 8vw;
+    padding: 0px;
+    width: 100vw;
+  }
+  }

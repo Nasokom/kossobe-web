@@ -1,24 +1,32 @@
 .parent{
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    translate: 0 100%;
     min-height: 100vh;
     max-height: 100vh;
+    z-index: 10;
+    top: 40%;
+    opacity: 0;
+    background-color: white;
 }
 
 .parent h2{
-    font-size: 5vw;
-    padding: 20px;
+    font-size: 4.5vw;
 }
+
+
+
 
   .nav{ 
     margin-top: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
+    opacity: 0;
   }
 
   .nav button{
@@ -37,6 +45,8 @@
     width: 100%;
     padding :20px 20px;
     height: 100vh;
+    opacity: 0;
+    transition: 0.3s;
   }
 
 
@@ -53,7 +63,6 @@
     margin-bottom: 40px;
     font-family: plakkaat;
     padding: 30px;
-    position: relative;
     position: absolute;
     border: unset;
     transition: 0.3s;

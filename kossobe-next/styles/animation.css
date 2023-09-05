@@ -41,8 +41,9 @@
 
 @keyframes reverseAnim {
     0%{scale: 10; z-index: 20;}
-    95%{scale: 1; z-index: 20}
-    100%{display: none;}
+    95%{scale: 1; z-index: 20;opacity: 1;}
+    100%{display: none; 
+         opacity: 0;}
 }
 
 @keyframes btnRouterAnim {
@@ -59,6 +60,8 @@
 }
 .reverseAnim::before{
     animation: reverseAnim 0.5s forwards;
+    background-color: inherit;
+
 }
 
 #introAnim > *{
@@ -86,5 +89,65 @@
     100%{
         translate: 0 0px;
         opacity: 1;
+    }
+}
+
+
+.splitTextOutDown{
+    animation: splitTextAnim1 forwards ease-in-out;
+    translate: 0 0px;
+}
+
+@keyframes splitTextAnim1 {
+    0%{
+        translate: 0 0px;
+    }
+    100%{
+        translate: 0 200%;
+    }
+}
+
+.splitTextOutUp{
+    animation: splitTextAnim2 forwards ease-in-out;
+    translate: 0 0px;
+}
+
+
+@keyframes splitTextAnim2 {
+    0%{
+        translate: 0 0px;
+    }
+    100%{
+        translate: 0 -200%;
+    }
+}
+
+
+.splitTextInDown{
+    animation: splitTextAnim3 forwards ease-in-out ;
+    translate: 0 200%;
+}
+
+@keyframes splitTextAnim3 {
+    0%{
+        translate: 0 200%;
+    }
+    100%{
+        translate: 0 0px;
+    }
+}
+
+.splitTextInUp{
+    translate: 0 -200%;
+    animation: splitTextAnim4 forwards ease-in-out ;
+}
+
+
+@keyframes splitTextAnim4 {
+    0%{
+        translate: 0 -200%;
+    }
+    100%{
+        translate: 0 0px;
     }
 }

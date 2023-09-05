@@ -1,15 +1,25 @@
 .parent{
-    position: fixed;
     border-radius: 50%;
     padding:10px;
+    position: absolute;
+    top: 70vh;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 100;
+    transition: 0.3s;
 }
 
 .circle{
-    width: 150px;
-    height:150px;
+    width: 20vh;
+    height:20vh;
     animation: rotating 12s linear infinite;
     font-family: plakkaat;
+    
 }
+.circle g{
+    font-size: 22px;
+}
+
 .parent p{
     text-align: center;
 }

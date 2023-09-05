@@ -12,23 +12,23 @@ import ServiceCard from '../../component/content/ServiceCard';
 import {FaMusic} from 'react-icons/fa'
 import service from '../../../kossobe-sanity/schemas/service';
 import ScrollRouter from '../../component/Ui/ScrollRouter';
+import Container from '../../component/services/Container';
 
-
-gsap.registerPlugin(ScrollTrigger);
 
 const ServicePage = ({services, categories, nextIndex}) => {
   
   const {userLang,router} = useStateContext();
   const [disableScroll, setDisableScroll] = useState(false)
-
+  const main = useRef(null)
 
   useEffect(()=>{
+
     setTimeout(()=>{
       document.documentElement.style.overflow ="auto"
     },500)
-  },[])
+    
+  },[services])
  
-  const main = useRef(null)
 
   const [selectedCard, setSelectedCard] = useState(0);
   const filterCateg = categories.filter(function(a){return a.slug.current != services.slug.current})
@@ -79,7 +79,7 @@ const ServicePage = ({services, categories, nextIndex}) => {
         </div>
 
         {/* Content */}
-        <div className={Styles.service_container}>
+      {/*   {services && <div className={Styles.service_container} ref={main} style={{minHeight:'100vh',}}>
             {services.services.map((service,i)=>{
                   return(
                     <ServiceCard data={service} i={i}
@@ -89,7 +89,9 @@ const ServicePage = ({services, categories, nextIndex}) => {
                       color1={services.color.hex}
                       color2={services.colorTxt.hex}
                       />)})}
-        </div>
+        </div>} */}
+
+        <Container services={services} />
 
         {!disableScroll && <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug}  setDisableScroll={setDisableScroll}categories={categories} currentSlug={services.slug.current} router={router}/>}
 

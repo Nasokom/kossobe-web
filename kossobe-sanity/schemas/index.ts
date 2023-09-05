@@ -13,9 +13,10 @@ import simpleTextTrad from './tools/simpleTextTrad'
 import mail from './mail'
 import clientPage from './clientPage'
 import clientObject from './clientObject'
+import colors from './colors'
 
 export const schemaTypes = [
-    banner,service,policy,about,mail,clientPage,clientObject,
+    banner,service,policy,about,mail,clientPage,clientObject,colors,
     
     
     textTrad, titleTrad, serviceItem, titleText, textImage, aboutValues,
