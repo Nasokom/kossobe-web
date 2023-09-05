@@ -19,7 +19,7 @@
     padding: 40px;
 }
 
-.page input,.page textarea, .page button{
+.page input,.page textarea, .page button ,.page select{
     max-width: 700px;
     width: 100%;
     padding:10px 0px;

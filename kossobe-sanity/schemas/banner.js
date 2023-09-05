@@ -18,11 +18,24 @@ export default
               hotspot: true,
           },
       },
+
+      {
+        name:'images',
+        titles:'introImg',
+        type:'array',
+        of:[{type:'image'}]
+      },
       {
         name:"imgDesc",
         title:"Image description",
         type:"string",
         description: "Descritpion de l'image pour l'accessibilité"
+      },
+      { 
+        name:"kossTrad",
+        title:"Kossobe traduction",
+        type:'titleTrad',
+        description:"traduction de kossobe"
       },
       
       {
@@ -30,6 +43,7 @@ export default
         title:"introduction",
         type:"titleTrad"
       },
+
       {
         name:"catchP",
         title:"phrase d'accroche",

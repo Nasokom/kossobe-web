@@ -1,34 +1,152 @@
-.services{
-    background-color: red;
+.container{
+    padding: 0px 50px;
+}
+
+.container > *{
+}
+
+/* Header */
+.header{
+    display: flex;
+    width: 100%;
+    height: 50vh;
+}
+
+@keyframes x{
+    0%{
+        scale: 1;
+    }
+    100%{
+        scale: 0.2;
+    }
 }
 
 
+
+.header h1{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: bisque;
+    width: 100%;
+    border-radius: 15px;
+    font-size: 5vw;
+    text-align: center;
+    position: relative;
+    padding: 0px 30px;
+}
+
+.services{
+<<<<<<< HEAD
+    background-color: red;
+=======
+    display: flex;
+}
+
+/* Navs */
+.nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.nav button{
+    position: relative;
+    padding: 10px 20px;
+    height: 70px;
+    margin-right: 20px;
+    transition: 0.5s;
+    border-radius: 10px;
+    background-color: grey;
+}
+
+.nav button:hover{
+    scale: 1.1 1.1;
+}
+
+.btn_active{
+    background: var(--bg);
+    color: white;
+>>>>>>> design2
+}
+
+/* Intro */
+
+.intro{
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.intro_text{
+    width: 60%;
+}
+.intro h3{ font-size: 30px; margin-bottom: 30px;}
+
+.intro ul{
+    translate:0 20%
+}
+.intro li{
+    margin: 30px 0px;
+    font-family: plakkaat;
+    display: flex;
+    align-items: center;
+}
+
+.intro li span{
+    padding: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+
+/* services */
 .service_container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    max-height: 90vh;
+    max-height: 100vh;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .card{
+    width: 100%;
+    border-top-left-radius:20px; 
+    border-top-right-radius: 20px;
     border-radius: 20px;
+<<<<<<< HEAD
     width: 60%;
     margin-bottom: 100px;
     padding: 40px 50px;
     background-color: rgba(233, 232, 232, 1);
     outline: 2px solid var(--textColor);
     min-height: 275px;
+=======
+    background: white;
+>>>>>>> design2
 }
 
-.card h2 {
-    padding-bottom: 18px;
-    width: 100%;
-    margin-bottom: 12px;
-    border-bottom: 2px solid var(--textColor);
+.cardTop{
+    height: 13vh;
+    padding: 0 30px;
+    padding-bottom: 3.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
 }
 
+<<<<<<< HEAD
 .nav{
     display: flex;
     justify-content: center;
@@ -50,3 +168,160 @@
     background-color: green;
     color: white;
 }
+=======
+
+.cardTop span{
+    font-family: plakkaat;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+
+/* Inner accordion */
+.wrapper{
+    display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-out;
+}
+.inner{
+    overflow: hidden;
+}
+
+/* .card:hover .wrapper{
+    grid-template-rows: 1fr;
+} */
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 45vh;
+    height:45vh ;
+    padding: 0 30px;
+}
+
+.imgBox{
+    border-radius: 20px;
+    min-width: 45%;
+    position: relative;
+    height: 95%;
+    width: 43%;
+    overflow: hidden;
+}
+
+.imgBox::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: inherit;
+    z-index: 10;
+    opacity: 0.3;
+}
+.cardText{
+    max-width: 48%;
+    max-height: 100%;
+    overflow: scroll;
+}
+
+.cardText p{
+    font-size: 20px;
+}
+
+
+
+/* Contact */
+.cardBottom{
+    height: 16vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding-bottom: 3vh;
+}
+
+.bottomText{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20px;
+}
+
+.bottomText p{
+    font-family: plakkaat;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.btn{
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100%;
+    padding: 10px;
+}
+
+.btn div{
+    border: 4px solid black;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.btn:hover div{
+    rotate: -45deg;
+}
+
+@media (max-width: 800px) {
+    .content{
+        flex-direction: column;
+    }
+    .imgBox{
+       max-width: 100%;
+       width: 100%;
+    }
+    .cardText{
+        max-width: 100%;
+        width: 100%;
+        max-height: 60%;
+        margin-bottom: 30px;
+    }
+
+    .container{
+        padding: 0px 10px;
+    }
+    .header h1{
+        font-size: 15vw;
+        line-height: 15vw;
+    }
+    .intro_text{
+        width: 100%;
+    }
+    .intro{
+       flex-direction: column;
+       padding: 0px;
+       padding: 40px 0px;
+    }
+    .intro ul{
+        translate:0 0
+    }
+}
+
+
+
+
+
+/* fix drills color */
+>>>>>>> design2

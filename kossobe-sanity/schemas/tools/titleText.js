@@ -3,6 +3,11 @@ export default{
     title:"titre + text",
     type:"object",
     fields:[
+        {   
+            name:'Nom',
+            title:'Nom',
+            type:'string'
+        },
         {
             name:"name",
             title:"Titre",

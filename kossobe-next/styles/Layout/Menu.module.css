@@ -117,6 +117,15 @@
     }
   }
 
+  .btn_box{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
   @media screen and (max-width:700px) {
     .menu{
         width: 100%;
@@ -131,4 +140,16 @@
         font-size: 8vw;
     }
 
+<<<<<<< HEAD
 }
+=======
+    .btn_box{
+        height: 70px;
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+
+}
+
+>>>>>>> design2

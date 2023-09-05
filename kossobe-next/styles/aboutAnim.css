@@ -1,0 +1,19 @@
+div .introCard{
+    translate: 0 110dvh;
+}
+
+div .introCard:nth-child(1){
+    translate: 0 0;
+}
+
+.activeAboutLi{
+    transform: translateX(40px);
+}
+
+.value-section .valueList .activeAboutLi svg{
+    scale: 1;
+    fill: inherit;
+}
+.activeAboutLi::before{
+
+}

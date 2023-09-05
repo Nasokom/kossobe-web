@@ -9,10 +9,14 @@ main{
     overflow:hidden;
 }
 
+<<<<<<< HEAD
 :root{
     --coming : #E6E49F;
     --coming : #FFA800;
 }
+=======
+
+>>>>>>> design2
 
 /* !! COMING SOON COMPOENT Delete when unuse */
 #comingSoon{
@@ -20,6 +24,7 @@ main{
     left:0;
     position: fixed;
     background-color: #FFFFF2;
+<<<<<<< HEAD
     width: 100vw;
     height: 100vh;
     height: 100svh;
@@ -31,20 +36,37 @@ main{
     flex-direction:column;
     padding:10px;
     padding-bottom: 20px;
+=======
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    padding:30px
+>>>>>>> design2
 }
 
 #lottie{
     padding: 0;
+<<<<<<< HEAD
     max-height: 55vh;
     max-height: 55svh;
     max-height: 55dvh;
     max-width: 55vh;
     max-width: 55svh;
     max-width: 55dvh;
+=======
+    max-height: 60vh;
+    width: fit-content;
+    height: fit-content;
+>>>>>>> design2
 }
 
 #comingSoon h1{
     color: black;
+<<<<<<< HEAD
     font-size: clamp(20px, 9vw, 70Px);
     text-align: center;
     border: 10px solid var(--coming);
@@ -60,18 +82,34 @@ main{
    background-color: #FFFFF2;
     border-radius: 20px;
     padding: 10px;
+=======
+    font-size: 9vw;
+    text-align: center;
+    border: 10px solid #FFA800;
+    background-color: #FFA800;
+    padding: 10px;
+    border-radius: 25px;
+    position: relative;
+>>>>>>> design2
 }
 
 #comingSoon h1, h1::before, h1::after{
     animation: move 5s infinite alternate-reverse;
     box-shadow:7px 5px rgba(0, 0, 0, 0.537)  ;
+<<<<<<< HEAD
     box-shadow:7px 5px rgba(0, 0, 0, 0.537)  ;
+=======
+>>>>>>> design2
 }
 
 #comingSoon h1::before{
     content: '';
     position: absolute;
+<<<<<<< HEAD
     background-color: var(--coming);
+=======
+    background-color: #FFA800;
+>>>>>>> design2
     height: 10px;
     width: 100px;
     border-radius: 20px;
@@ -80,7 +118,11 @@ main{
 #comingSoon h1::after{
     content: '';
     position: absolute;
+<<<<<<< HEAD
     background-color: var(--coming);
+=======
+    background-color: #FFA800;
+>>>>>>> design2
     height: 10px;
     width: 25px;
     border-radius: 50%;
@@ -117,3 +159,7 @@ main{
         translate: 0px 5px;
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> design2

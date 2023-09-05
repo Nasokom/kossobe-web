@@ -2,16 +2,25 @@ import React, { useEffect,useState, useRef } from 'react'
 import { client } from '../../Utils/sanityClient';
 import Link from 'next/link';
 import { useStateContext } from '../../context/StateContext';
-import ComplexText from '../../component/Ui/ComplexText';
+import ComplexText from '../../component/Ui/ComplexText'
 import Styles from '../../styles/Pages/Services.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
+import ServiceCard from '../../component/content/ServiceCard';
+import {FaMusic} from 'react-icons/fa'
+import service from '../../../kossobe-sanity/schemas/service';
+import ScrollRouter from '../../component/Ui/ScrollRouter';
+import Container from '../../component/services/Container';
 
-gsap.registerPlugin(ScrollTrigger);
 
-const ServicePage = ({services, category}) => {
+const ServicePage = ({services, categories, nextIndex}) => {
+  
+  const {userLang,router} = useStateContext();
+  const [disableScroll, setDisableScroll] = useState(false)
+  const main = useRef(null)
 
+<<<<<<< HEAD
     const {userLang} = useStateContext();
     console.log(services.services)
     const main = useRef(null)
@@ -47,32 +56,73 @@ const ServicePage = ({services, category}) => {
            return () => ctx.revert();
          }, []);
    
+=======
+  useEffect(()=>{
+>>>>>>> design2
 
+    setTimeout(()=>{
+      document.documentElement.style.overflow ="auto"
+    },500)
     
+  },[services])
+ 
+
+  const [selectedCard, setSelectedCard] = useState(0);
+  const filterCateg = categories.filter(function(a){return a.slug.current != services.slug.current})
+  const nextSlug = services.slug.current == 'boutique' ? 'pedagogie' : services.slug.current == 'pedagogie' ? 'live' : 'boutique'
+
+
+  function routerBtn(e){
+    e.target.classList.add('btnRouterAnim');
+    document.documentElement.style.overflow ="hidden"
+    setTimeout(()=>{
+      router.push(`/services/${e.target.value}`)
+    },500)
+  }
+
+
   return (
-    <div>
-        <div className='page-header'>
-            <h1>{userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Dienstleistungen': 'Our Services' }</h1>
-            <p>Decouvrez les Services que nous proposons</p>
-        </div>
+  <div className={Styles.container}>
 
+<<<<<<< HEAD
     <div  ref={main}>
+=======
+        {/* NAv */}
+>>>>>>> design2
         <div className={Styles.nav}>
+          {filterCateg.map((categ,i)=>{
+            return(<button value={categ.slug.current} key={i} 
+                    onClick={(e)=>routerBtn(e)} style={{backgroundColor: categ.color.hex ? categ.color.hex : 'blue', color:categ.colorTxt.hex ? categ.colorTxt.hex :'black' }}>
+                      {categ.name[userLang]}
+                  </button>)})}
+        </div>
+          
+        {/* Header */}
+        <div className={`${Styles.header}`}>
+          <h1 className='reverseAnim' style={{backgroundColor:services.color? services.color.hex : 'blue',color: services.colorTxt.hex ? services.colorTxt.hex : 'black' }}>
+            {services.name && services.name[userLang]}
+          </h1>
+        </div>
+            
+        {/* Intro  */}
+        <div className={Styles.intro} id="introAnim">
 
-            {category.map((categ,i)=>{
-              return( 
-                <Link href={`/services/${categ.slug.current}`} key={i}>
-                        <button className={services.name[userLang] == categ.name[userLang] && Styles.btn_active}>
-                            {categ.name[userLang]}
-                        </button>
-                    </Link>
-                )
-              })}
+          <div className={Styles.intro_text}>
+            <h3>{services.introTitle[userLang]}</h3>
+            <ComplexText data={services.introText[userLang]}/>
+          </div>  
+          <ul>
+            {services.list.map((l,i)=>{
+              return <li key={i} ><span style={{backgroundColor: services.color.hex}}><FaMusic/></span>{l[userLang]}</li>
+            })}
+          </ul>
 
         </div>
 
-        <div className={Styles.service_container}>
+        {/* Content */}
+      {/*   {services && <div className={Styles.service_container} ref={main} style={{minHeight:'100vh',}}>
             {services.services.map((service,i)=>{
+<<<<<<< HEAD
               return(
                 <div key={i} className={`service-card ${Styles.card}`}>
                        <h2>{service.name[userLang]}</h2> 
@@ -82,10 +132,24 @@ const ServicePage = ({services, category}) => {
                     </div>
                 )
               })}
+=======
+                  return(
+                    <ServiceCard data={service} i={i}
+                      selectedCard={selectedCard}
+                      setSelectedCard={setSelectedCard}
+                      key={i}
+                      color1={services.color.hex}
+                      color2={services.colorTxt.hex}
+                      />)})}
+        </div>} */}
 
-        </div>
-        </div>
-    </div>
+        <Container services={services} />
+
+        {!disableScroll && <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug}  setDisableScroll={setDisableScroll}categories={categories} currentSlug={services.slug.current} router={router}/>}
+>>>>>>> design2
+
+
+  </div>
   )
 }
 
@@ -112,11 +176,15 @@ export const getStaticPaths = async () => {
     const services = await client.fetch(query);
 
     const categoryQuery = '*[_type == "service"]';
-    const category = await client.fetch(categoryQuery);
+    const unSortedCateg = await client.fetch(categoryQuery);
+    const categories =  unSortedCateg.sort(function(a,b){return a.ordre-b.ordre})
 
-    
+    const arrLght = categories.length -1
+    const index = categories.findIndex((a)=>a.slug.current == slug);
+    const nextIndex = index == arrLght ? 0 : index+1
+
     return {
-      props: { services, category},
+      props: { services, categories,nextIndex},
       revalidate: 3,
     }
   }

@@ -1,0 +1,153 @@
+@import './aboutAnim.css';
+/* Home page Categ Card */
+
+.cardRouterHome div{
+    opacity: 0;
+}
+
+.cardRouterHome::before{
+    animation: homeCardAnim 0.5s forwards;
+}
+
+@keyframes homeCardAnim {
+    0%{ scale: 1;}
+    100%{scale: 2;}
+}
+
+
+.routerAnim{
+}
+
+.btnRouterAnim{
+    z-index: 10;
+}
+
+.cardRouterHome::before,.routerAnim::before,.reverseAnim::before,.btnRouterAnim::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: inherit;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 20px;
+}
+
+@keyframes scrollRouterAnim {
+    0%{ scale: 1;}
+    100%{scale: 3;}
+}
+
+@keyframes reverseAnim {
+    0%{scale: 10; z-index: 20;}
+    95%{scale: 1; z-index: 20;opacity: 1;}
+    100%{display: none; 
+         opacity: 0;}
+}
+
+@keyframes btnRouterAnim {
+    0%{scale: 1;}
+    100%{scale: 30;}
+}
+
+.btnRouterAnim::before{
+    z-index: 101;
+    animation: btnRouterAnim 0.5s forwards;
+}
+.routerAnim::before{
+    animation: scrollRouterAnim 0.5s forwards;
+}
+.reverseAnim::before{
+    animation: reverseAnim 0.5s forwards;
+    background-color: inherit;
+
+}
+
+#introAnim > *{
+    opacity: 0;
+    animation: introAnim 0.5s forwards ;
+}
+
+#introAnim > *:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+#introAnim > *:nth-child(2) {
+    animation-delay: 0.7s;
+}
+
+#introAnim > *:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+@keyframes introAnim {
+    0%{
+        translate: 0 100px;
+        opacity: 0;
+    }
+    100%{
+        translate: 0 0px;
+        opacity: 1;
+    }
+}
+
+
+.splitTextOutDown{
+    animation: splitTextAnim1 forwards ease-in-out;
+    translate: 0 0px;
+}
+
+@keyframes splitTextAnim1 {
+    0%{
+        translate: 0 0px;
+    }
+    100%{
+        translate: 0 200%;
+    }
+}
+
+.splitTextOutUp{
+    animation: splitTextAnim2 forwards ease-in-out;
+    translate: 0 0px;
+}
+
+
+@keyframes splitTextAnim2 {
+    0%{
+        translate: 0 0px;
+    }
+    100%{
+        translate: 0 -200%;
+    }
+}
+
+
+.splitTextInDown{
+    animation: splitTextAnim3 forwards ease-in-out ;
+    translate: 0 200%;
+}
+
+@keyframes splitTextAnim3 {
+    0%{
+        translate: 0 200%;
+    }
+    100%{
+        translate: 0 0px;
+    }
+}
+
+.splitTextInUp{
+    translate: 0 -200%;
+    animation: splitTextAnim4 forwards ease-in-out ;
+}
+
+
+@keyframes splitTextAnim4 {
+    0%{
+        translate: 0 -200%;
+    }
+    100%{
+        translate: 0 0px;
+    }
+}

@@ -10,11 +10,70 @@ const Footer = () => {
       <h4>Site map</h4>
       <p>Pour naviguer facilement sur notre site web</p>
 
+<<<<<<< HEAD
       <div>
         <Link href={'/'}>Home</Link>
         <Link href={'/about'}>About</Link>
         <Link href={'/services'}>Ours Services</Link>
         <Link href={'/contact'}>Contact</Link>
+=======
+      <span id='line'></span>
+      <div className='footer-container'>
+
+        <div className='content-box'>
+
+          <h4>Menu</h4>
+          <p>
+          {userLang.includes('fr') ? 'Pour naviguer facilement sur notre site web' 
+          : userLang.includes('de') ? 'Zur einfachen Navigation auf unserer Website'
+          : 'To easily navigate our website' }
+          </p>
+            <ul>
+              <li><Link href={'/'}>Home</Link></li>
+              <li><Link href={'/about'}>About</Link></li>
+              <li><Link href={'/services/live'}>Ours Services</Link></li>
+              <li><Link href={'/contact'}>Contact</Link></li>
+            </ul>
+          </div>
+
+          <div className='content-box'>
+
+            <h4>Policy</h4>
+            <p>          
+            {userLang.includes('fr') ? 'Retrouver les infos legales' 
+            :userLang.includes('de') ? 'Rechtliche Hinweise finden'
+            :'Find legal information' }
+              </p>
+            <ul>
+              <li><Link href={'/policy#terms'}>
+                {userLang.includes('fr') ? "Conditions d'utilisation"
+                :userLang.includes('de') ? 'Nutzungsbedingungen'
+                :'Terms of use' }
+              </Link></li>
+              <li><Link href={'/policy#cookie'}>Cookie</Link></li>
+              <li><Link href={'/policy#data'}>
+              {userLang.includes('fr') ? "Politique de données"
+                :userLang.includes('de') ? 'Datenrichtlinie'
+                :'Data policy' }
+              </Link></li>
+            </ul>
+          </div>
+
+        <div className='content-box'>
+          <span></span>
+          <h4>settings</h4>
+          <p>
+          {userLang.includes('fr') ? 'Regler vos preferences' 
+            :userLang.includes('de') ? 'Legen Sie Ihre Einstellungen fest'
+            :'Set your preferences' }
+            
+            </p>
+          <ul>
+            <li><ThemeBtn/></li> 
+            <li><LangueBtn/></li>
+          </ul>
+        </div>
+>>>>>>> design2
       </div>
 
 
