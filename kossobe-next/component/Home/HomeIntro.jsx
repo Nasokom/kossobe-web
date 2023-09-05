@@ -3,7 +3,8 @@ import ComplexText from '../Ui/ComplexText'
 import Styles from '../../styles/Home/Intro.module.css'
 import Image from 'next/image'
 import { urlFor } from '../../Utils/sanityClient';
-
+import { gsap } from 'gsap'
+import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
 import { useStateContext } from '../../context/StateContext';
 
@@ -12,8 +13,23 @@ const HomeIntro = ({banner, tl}) => {
 
     const {appColors,userLang} =useStateContext()
 
-useIsomorphicLayoutEffect(()=>{
-    //useEffect(()=>{
+
+    useIsomorphicLayoutEffect(() => { 
+
+      const ctx = gsap.context((self) => {
+        
+  
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: main.current,
+            start:"top top",
+            end: "+=1000vh",
+            scrub: true,
+            pin: true,
+            behavior:'smooth'
+          }
+        });
+
         const txt1 = main.current.querySelector('.introText1')
         const words = txt1.querySelectorAll('span') 
         const imgs = main.current.querySelectorAll('.introImgBoxs');
@@ -78,7 +94,14 @@ useIsomorphicLayoutEffect(()=>{
             onComplete:()=>imgAppear(-200),
             onReverseComplete:()=>imgAppear(-100),
           })
-      },[tl])
+
+  
+  
+    }, main);
+  
+    return () => ctx.revert();
+    }, []);
+
 
   return (
 

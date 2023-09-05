@@ -11,6 +11,8 @@ import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
 
 const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
+
+
   const [textAnim,setTexAnim] = useState({
     h1:'inUp',
     h3:'inDown',
@@ -21,54 +23,69 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
     const myLoader = () => banner.image && urlFor(banner.image)
 
+    useIsomorphicLayoutEffect(() => { 
 
-      useLayoutEffect(()=>{
+      const ctx = gsap.context((self) => {
+        
+  
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: main.current,
+            start:"top top",
+            end: "+=1000vh",
+            scrub: true,
+            pin: true,
+            behavior:'smooth'
+          }
+        });
+
         const img = main.current.querySelector('.hero-img')
         const h2 = main.current.querySelector('.hero-h2')
-        const textBox = main.current.querySelector('.heroText')
-        
-        if(tl){
-          tl.to(img,{
-            scale:'1',
-            translate:'0 -80%',
-            opacity:1,
-            duration:20,
-            borderRadius:'0px',
-            onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown'}),
-            onReverseComplete: ()=>setTexAnim({h1:'inUp',h3:'inDown'})
-          })
 
-          tl.to(h2,{
-            delay:2,
-            opacity:1,
-            color:'white',
-            display:'flex'
-          })
+        tl.to(img,{
+          scale:'1',
+          translate:'0 -80%',
+          opacity:1,
+          duration:20,
+          borderRadius:'0px',
+          onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown'}),
+          onReverseComplete: ()=>setTexAnim({h1:'inUp',h3:'inDown'})
+        })
 
-          tl.addLabel('transition1', '+=1')
+        tl.to(h2,{
+          delay:2,
+          opacity:1,
+          color:'white',
+          display:'flex'
+        })
+
+        tl.addLabel('transition1', '+=1')
 
 
-          tl.to(img,{
-            opacity:0,
-            duration:10,
-            onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown',h2:'outUp'}),
-            onReverseComplete: ()=>setTexAnim({h2:'inDown'})
-          },'transition')
+        tl.to(img,{
+          opacity:0,
+          duration:10,
+          onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown',h2:'outUp'}),
+          onReverseComplete: ()=>setTexAnim({h2:'inDown'})
+        },'transition')
 
-      
+    
 
-          tl.from(arrow,{
-            translate: '-50% 0'
-          })
-          tl.to(arrow,{
-            scale:0.5,
-            x:'200%',
-            y:'50%',
-            rotate:"360deg"
-          })
-        }
-
-      },[tl])
+        tl.from(arrow,{
+          translate: '-50% 0'
+        })
+        tl.to(arrow,{
+          scale:0.5,
+          x:'200%',
+          y:'50%',
+          rotate:"360deg"
+        })
+  
+  
+    }, main);
+  
+    return () => ctx.revert();
+    }, []);
 
     return (
 

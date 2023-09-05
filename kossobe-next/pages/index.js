@@ -1,5 +1,5 @@
 
-import React,{useRef, useState,Suspense, useLayoutEffect} from 'react'
+import React,{useRef, useState,Suspense, useLayoutEffect, useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { client } from '../Utils/sanityClient'
@@ -19,39 +19,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home({services, bannerData}) {
   const {userLang,appColors,router} = useStateContext()
-  const [tl,setTl] = useState(null)
   const main = useRef(null)
-  const timeline = useRef()
   const [arrowElt, setArrowElt]= useState(null)
 
-  useIsomorphicLayoutEffect(() => { 
 
-    const ctx = gsap.context((self) => {
-      
+  useEffect(()=>{
+    setArrowElt(main.current.querySelector('.scrollDownArrow'))
 
-      timeline.current = gsap.timeline({
-        scrollTrigger: {
-          trigger: main.current,
-          start:"top top",
-          end: "+=5000vh",
-          scrub: true,
-          pin: true,
-          behavior:'smooth'
-        }
-        
-      });
-      setTl(timeline)
-
-      const arrow = main.current.querySelector('.scrollDownArrow')
-      
-      setArrowElt(arrow);
-
-  }, main);
-
-  return () => ctx.revert();
-  }, []);
+  },[])
   
-
 
   return (
     <>
@@ -64,9 +40,11 @@ export default function Home({services, bannerData}) {
 
       <div ref={main} style={{backgroundColor:appColors[3].color.hex}}>
        <ScrollDown/>
-      {tl && <HeroBanner banner={bannerData[1]}  appColors={appColors} tl={timeline.current} main={main} userLang={userLang} arrow={arrowElt}/>}
-      {tl && <HomeIntro banner={bannerData[1]} tl={timeline.current} userLang={userLang}/> }
-      {tl && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} tl={timeline.current} arrow={arrowElt} userLang={userLang} /> }
+       <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>
+       
+       <HomeIntro banner={bannerData[1]} userLang={userLang}/> 
+       <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />
+      
       </div>
       </Suspense>
       <FooterBanner banner={bannerData[0]}/>
