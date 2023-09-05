@@ -32,7 +32,7 @@ export default function Home({services, bannerData}) {
         scrollTrigger: {
           trigger: main.current,
           start:"top top",
-          end: "+=5000vh",
+          end: "+=3000vh",
           scrub: true,
           pin: true,
         }

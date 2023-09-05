@@ -42,6 +42,8 @@
     position: absolute;
     transition: 0.5s;
     top: 0;
+    transition: 0.3s;
+    will-change: transform;
 }
 
 .imgBox{

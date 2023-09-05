@@ -25,7 +25,7 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
     h2:'inDown'
   }) 
 
-  useLayoutEffect(()=>{
+useIsomorphicLayoutEffect(()=>{
 //useEffect(()=>{
 
     const cards = main.current.querySelectorAll('.categCard');
@@ -66,28 +66,25 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
       tl.to(cardContainer,{
         opacity:1
       })
-/* 
+
       tl.addLabel('card0', "+=1")
       tl.addLabel('card1', "+=10")
       tl.addLabel('card2', "+=20")
- */
+
 
         navBtns.forEach((btn,i)=>{
           tl.to(btn,{
             backgroundColor:btn.dataset.clr,
             //color:btn.dataset.txtClr
             color:'black',
-          //},`card${i}`)
-          onStart:()=>console.log('navA:' +i),
-          })
+          },`card${i}`)
 
           i !== 2 && tl.to(btn,{
             backgroundColor:'white',
             //color:btn.dataset.clr
             color:'black',
             onStart:()=>console.log('navB:' +i),
-          //},`card${i+1}`)
-          })
+          },`card${i+1}`)
         })
 
         cards.forEach((card,i)=>{
@@ -97,9 +94,7 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
              //translate:`0 400px`,
             //y:`${(5*i)-0}dvh`,
             duration:5,
-          //},`card${i}`)//0
-          onStart:()=>console.log('cardA:' +i),
-          })
+          },`card${i}`)//0
 
             tl.to(card,{
             scale : `${ i < 2 ? `0.${8+i}` : 1}`,
@@ -107,8 +102,7 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
             onStart:()=>console.log('cardB:' +i),
             //y:`${(5.5*i)-7}vh`,
             duration:5
-          //},`card${i}+=5`)//0
-            })
+          },`card${i}+=5`)//0
         }) 
         
         // ClickeEvent 
