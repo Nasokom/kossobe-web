@@ -27,7 +27,6 @@ export default function Home({services, bannerData}) {
   useIsomorphicLayoutEffect(() => { 
 
     const ctx = gsap.context((self) => {
-      
 
       timeline.current = gsap.timeline({
         scrollTrigger: {
@@ -36,7 +35,6 @@ export default function Home({services, bannerData}) {
           end: "+=5000vh",
           scrub: true,
           pin: true,
-          behavior:'smooth'
         }
         
       });
@@ -64,9 +62,9 @@ export default function Home({services, bannerData}) {
 
       <div ref={main} style={{backgroundColor:appColors[3].color.hex}}>
        <ScrollDown/>
-      {tl && <HeroBanner banner={bannerData[1]}  appColors={appColors} tl={timeline.current} main={main} userLang={userLang} arrow={arrowElt}/>}
-      {tl && <HomeIntro banner={bannerData[1]} tl={timeline.current} userLang={userLang}/> }
-      {tl && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} tl={timeline.current} arrow={arrowElt} userLang={userLang} /> }
+      {(tl &&  appColors) && <HeroBanner banner={bannerData[1]}  appColors={appColors} tl={timeline.current} main={main} userLang={userLang} arrow={arrowElt}/>}
+      {(tl &&  appColors) && <HomeIntro banner={bannerData[1]} tl={timeline.current} userLang={userLang}/> }
+      {(tl &&  appColors) && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} tl={timeline.current} arrow={arrowElt} userLang={userLang} /> }
       </div>
       </Suspense>
       <FooterBanner banner={bannerData[0]}/>

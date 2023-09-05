@@ -12,7 +12,7 @@ const HomeIntro = ({banner, tl}) => {
 
     const {appColors,userLang} =useStateContext()
 
-useIsomorphicLayoutEffect(()=>{
+useLayoutEffect(()=>{
     //useEffect(()=>{
         const txt1 = main.current.querySelector('.introText1')
         const words = txt1.querySelectorAll('span') 
@@ -52,15 +52,10 @@ useIsomorphicLayoutEffect(()=>{
 
           words.forEach((word,i )=> {
             tl.to(word,{
-                color: appColors && appColors[3].color.hex,
-                duration:1
+                color:appColors[3].color.hex,
             },`test+=${i*0.1}`)
           });
 
-         /*  tl.to(txt1,{
-            backgroundColor:'black',
-            duration:10,
-          }) */
 
           tl.addLabel('end', '+=1')
           words.forEach((word,i )=> {
@@ -74,11 +69,10 @@ useIsomorphicLayoutEffect(()=>{
           tl.to(txt1,{
           //  translate:'-50% -70%',
             duration:10,
-            opacity:0,
             onComplete:()=>imgAppear(-200),
             onReverseComplete:()=>imgAppear(-100),
           })
-      },[tl])
+      },[])
 
   return (
 

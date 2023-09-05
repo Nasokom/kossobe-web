@@ -53,11 +53,11 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
             duration:10,
             onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown',h2:'outUp'}),
             onReverseComplete: ()=>setTexAnim({h2:'inDown'})
-          },'transition')
+          })
 
       
 
-          tl.from(arrow,{
+          /* tl.from(arrow,{
             translate: '-50% 0'
           })
           tl.to(arrow,{
@@ -65,7 +65,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
             x:'200%',
             y:'50%',
             rotate:"360deg"
-          })
+          }) */
         }
 
       },[tl])

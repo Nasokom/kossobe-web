@@ -35,16 +35,16 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
 
     //0.22 //0.62
     if(tl){
-      tl.to(arrow,{
+     /*  tl.to(arrow,{
         x:'-90vh',
         y:'-100%',
         rotate:"-360deg",
         onComplete: ()=>setTextAnim({h1:'inDown'}),
-      })
+      }) */
 
       tl.to(main.current,{
         translate:'0 0',
-        
+        onStart:()=>console.log('categ main'),
         onReverseComplete: ()=>setTextAnim({h1:'outUp'})
       })
 
@@ -66,42 +66,49 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
       tl.to(cardContainer,{
         opacity:1
       })
-
+/* 
       tl.addLabel('card0', "+=1")
       tl.addLabel('card1', "+=10")
       tl.addLabel('card2', "+=20")
-
+ */
 
         navBtns.forEach((btn,i)=>{
           tl.to(btn,{
             backgroundColor:btn.dataset.clr,
             //color:btn.dataset.txtClr
             color:'black',
-          },`card${i}`)
+          //},`card${i}`)
+          onStart:()=>console.log('navA:' +i),
+          })
 
           i !== 2 && tl.to(btn,{
             backgroundColor:'white',
             //color:btn.dataset.clr
             color:'black',
-          },`card${i+1}`)
+            onStart:()=>console.log('navB:' +i),
+          //},`card${i+1}`)
+          })
         })
 
         cards.forEach((card,i)=>{
-
 
           tl.to(card,{
              translate:`0 ${(5*i)-0}vh`,
              //translate:`0 400px`,
             //y:`${(5*i)-0}dvh`,
-            duration:5
-          },`card${i}`)//0
+            duration:5,
+          //},`card${i}`)//0
+          onStart:()=>console.log('cardA:' +i),
+          })
 
             tl.to(card,{
             scale : `${ i < 2 ? `0.${8+i}` : 1}`,
             translate:`0 ${(5.5*i)-7}vh`,
+            onStart:()=>console.log('cardB:' +i),
             //y:`${(5.5*i)-7}vh`,
             duration:5
-          },`card${i}`)//0
+          //},`card${i}+=5`)//0
+            })
         }) 
         
         // ClickeEvent 
@@ -113,7 +120,7 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
               left: 0,
               behavior: "smooth",
             }); */
-            tl.seek(`card${i}+=5`);
+            //tl.seek(`card${i}+=5`);
           })
         })
     }
