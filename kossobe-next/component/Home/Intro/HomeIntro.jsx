@@ -24,10 +24,9 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
           scrollTrigger: {
             trigger: main.current,
             start:"top top",
-            end: "+=100vh",
-            pin:true,
+            end: "+=1000vh",
             scrub: true,
-
+            pin:true,
           }
         });
 

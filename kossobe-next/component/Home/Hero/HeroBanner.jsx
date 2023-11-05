@@ -33,8 +33,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
           scrollTrigger: {
             trigger: main.current,
             start:"top top",
-            end:'+=1000',
-            pin:true,
+            end:'bottom top',
             scrub: true,
             behavior:'smooth'
           }
