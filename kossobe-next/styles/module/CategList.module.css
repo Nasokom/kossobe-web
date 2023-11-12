@@ -57,6 +57,8 @@
     position: absolute;
     border: unset;
     transition: 0.3s;
+    will-change: transform ;
+    transition: transform;
   }
 
   .cardLeft{
