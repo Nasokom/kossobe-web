@@ -10,14 +10,12 @@
     max-height: 100vh;
     z-index: 200;
     background-color: white;
+    
 }
 
 .parent h2{
     font-size: 4.5vw;
 }
-
-
-
 
   .nav{ 
     margin-top: 20px;

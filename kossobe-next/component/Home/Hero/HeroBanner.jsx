@@ -25,9 +25,10 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
     const myLoader = () => banner.image && urlFor(banner.image)
 
     useIsomorphicLayoutEffect(() => { 
+
       gsap.registerPlugin(ScrollTrigger);
+      
       const ctx = gsap.context((self) => {
-        
   
         const tl = gsap.timeline({
           scrollTrigger: {
