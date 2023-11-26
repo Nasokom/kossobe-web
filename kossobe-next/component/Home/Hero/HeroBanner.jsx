@@ -9,10 +9,9 @@ import gsap from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import SplitText from '../../../Utils/SplitText';
 import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
+import HomeIntro from '../Intro/HomeIntro';
 
 const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
-
-
 
   const [textAnim,setTexAnim] = useState({
     h1:'inUp',
@@ -27,7 +26,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
     useIsomorphicLayoutEffect(() => { 
 
       gsap.registerPlugin(ScrollTrigger);
-      
+
       const ctx = gsap.context((self) => {
   
         const tl = gsap.timeline({
@@ -36,6 +35,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
             start:"top top",
             end:'bottom top',
             scrub: true,
+            pin:true,
             behavior:'smooth'
           }
         });
@@ -44,10 +44,11 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
         const h2 = main.current.querySelector('.hero-h2')
 
         tl.to(img,{
-          scale:'1',
-          opacity:1,
+          scale:1,
+          y:"-80%",
+          translateY:'0',
           duration:20,
-          onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown'}),
+          onComplete: ()=>setTexAnim({h1:'outUp',h3:'outUp'}),
           onReverseComplete: ()=>setTexAnim({h1:'inUp',h3:'inDown'})
         })
 
@@ -60,31 +61,87 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
         tl.addLabel('transition1', '+=1')
 
-
         tl.to(img,{
           opacity:0,
+          width:'110%',
           duration:10,
-          onComplete: ()=>setTexAnim({h1:'outUp',h3:'outDown',h2:'outUp'}),
+          onComplete: ()=>setTexAnim({h1:'outUp',h3:'outUp',h2:'outUp'}),
           onReverseComplete: ()=>setTexAnim({h2:'inDown'})
         },'transition')
 
-    
-
-        tl.from(arrow,{
+       /*  tl.from(arrow,{
           translate: '-50% 0'
         })
+
         tl.to(arrow,{
           scale:0.5,
           x:'200%',
           y:'50%',
           rotate:"360deg"
-        })
-  
+        }) */
+        const txt1 = main.current.querySelector('.introText1')
+
+      
+
+        //const words = gsap.utils.toArray('span');
+        const imgsNode = main.current.querySelectorAll('.intro-imgs');
+        const imgContainer = main.current.querySelector('.introImgContainer');
+        const introMain = main.current.querySelector('#intro-main')
+
+        function imgAppear(d){
+          imgsNode.forEach((img,i)=>{
+            img.style.transform = `translateY(${d}%)`
+          })
+        }
+        
+          tl.to(introMain,{
+            opacity:1,
+            onComplete:()=>imgAppear(-100),
+            onReverseComplete:()=>imgAppear(100),
+          },'transition')
+
+
+          tl.addLabel('test', '+=1')
+
+
+          tl.to(imgContainer,{
+            y:'-150px',
+            duration:10,
+          },'test')
+
+         /*  words.forEach((word,i )=> {
+            tl.to(word,{
+                //color: appColors && appColors[3].color.hex,
+                color:'black',
+                translate:'0 5px',
+                duration:1,
+                onStart: ()=>console.log('word'+i)
+            },`test+=${i*0.1}`)
+          });
+
+          tl.addLabel('endo', '+=1')
+
+          words.forEach((word,i )=> {
+            tl.to(word,{
+                x:5,
+                y:20,
+                opacity:0
+            },`endo+=${i*0.1}`)
+          }); */
+          
+          tl.to(txt1,{
+          //  translate:'-50% -70%',
+            duration:10,
+            opacity:0,
+            onComplete:()=>imgAppear(-200),
+            onReverseComplete:()=>imgAppear(-100),
+          })
+
   
     }, main);
   
     return () => ctx.revert();
-    }, []);
+    }, [appColors,userLang]);
 
     return (
 
@@ -111,6 +168,8 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
               />
             </div>
+            {/* <HomeIntro userLang={userLang} banner={banner}/> */}
+
         </div>
 
     )

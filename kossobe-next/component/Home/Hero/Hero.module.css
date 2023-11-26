@@ -63,10 +63,10 @@
   }
 
   .imgBox{
-    width: 100%;
-    height: 130%;
+    width: 120%;
+    height: 100%;
     position: absolute;
-    scale: 0.8;
+    scale: 0.7;
     top: 80%;
     border-radius: 20px;
     overflow: hidden;

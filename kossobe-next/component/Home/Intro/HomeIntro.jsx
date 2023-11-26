@@ -34,8 +34,8 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
 
       
 
-        const words =    gsap.utils.toArray('span');
-        const imgsNode = main.current.querySelectorAll('img');
+        const words = gsap.utils.toArray('span');
+        const imgsNode = main.current.querySelectorAll('.intro-imgs');
         const imgContainer = main.current.querySelector('.introImgContainer');
 
         function imgAppear(d){
@@ -78,14 +78,14 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
                 opacity:0
             },`endo+=${i*0.1}`)
           });
-          /* 
+          
           tl.to(txt1,{
           //  translate:'-50% -70%',
             duration:10,
             opacity:0,
             onComplete:()=>imgAppear(-200),
             onReverseComplete:()=>imgAppear(-100),
-          }) */
+          })
 
   
   
@@ -97,7 +97,7 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
 
   return (
 
-    <div className={Styles.container} ref={main}>
+    <div className={Styles.container} id={"#intro-main"}ref={main}>
            <div className={`introText1 ${Styles.textBox}`}>
                 <ComplexText data={banner.text[userLang]}/>
             </div>       

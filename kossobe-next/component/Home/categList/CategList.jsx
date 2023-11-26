@@ -11,9 +11,7 @@ import SplitText from '../../../Utils/SplitText';
 import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-
 const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
-
 
   const main = useRef(null)
 
@@ -26,7 +24,6 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
   }) 
 
   useLayoutEffect(()=>{
-//useEffect(()=>{
   gsap.registerPlugin(ScrollTrigger);
 
     const cards = main.current.querySelectorAll('.categCard');
@@ -37,6 +34,7 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: main.current,
+        markers:true,
         start:"top top",
         end: "+=1000vh",
         scrub: true,

@@ -44,7 +44,7 @@ export default function Home({services, bannerData}) {
 
        <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>
 
-   {/*   {(bannerData[1] && userLang) && <HomeIntro banner={bannerData[1]} userLang={userLang}/> } */}
+     {(bannerData[1] && userLang) && <HomeIntro banner={bannerData[1]} userLang={userLang}/> }
 
        {services && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />}
       
