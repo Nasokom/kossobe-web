@@ -39,6 +39,7 @@ const Clients = ({datas,appColors}) => {
             const imgLoader = () =>{return data.image && urlFor(data.image).url()}
 
             return(
+              <Link href={data.url} target='_blank'>
                 <div key={i} className={Styles.card}
                 style={colorsF()}>
                     <div className={Styles.cardText}>
@@ -51,7 +52,7 @@ const Clients = ({datas,appColors}) => {
                         sizes={'100%'}src={'bjr'}alt=''/>
                     </div>
 
-                        <Link href={data.url} target='_blank'>
+                        
                       <div className={Styles.cardBtnBox}>
                       <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path>
                         <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
@@ -61,8 +62,9 @@ const Clients = ({datas,appColors}) => {
                         <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
                         </svg>
                       </div>
-                        </Link>
+                  
                 </div>
+                </Link>
                 )
             })}
         </div>
