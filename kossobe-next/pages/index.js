@@ -29,6 +29,7 @@ export default function Home({services, bannerData}) {
 
   },[userLang])
   
+  //backgroundColor:appColors[3].color.hex, 
 
   return (
     <>
@@ -39,18 +40,18 @@ export default function Home({services, bannerData}) {
       </Head>
       <Suspense fallback={<Loading/>}>
 
-      <div ref={main} style={{backgroundColor:appColors[3].color.hex}}>
-       <ScrollDown/>
+      <div ref={main} style={{position:'relative'}}>
+     {/*   <ScrollDown/>
 
        <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>
 
      {(bannerData[1] && userLang) && <HomeIntro banner={bannerData[1]} userLang={userLang}/> }
-
+ */}
        {services && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />}
       
       </div>
       </Suspense>
-      <FooterBanner banner={bannerData[0]}/>
+      {/* <FooterBanner banner={bannerData[0]}/> */}
     </>
   )
 }

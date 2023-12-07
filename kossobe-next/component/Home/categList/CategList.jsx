@@ -44,30 +44,22 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
     });
     //0.22 //0.62
 
-      tl.to(main.current,{
+     /*  tl.from(main.current,{
         translate:'0 0',
         
-        onReverseComplete: ()=>setTextAnim({h1:'outUp'})
-      })
+        //onReverseComplete: ()=>setTextAnim({h1:'outUp'})
+      }) */
 
-      tl.to(cardContainer,{
-        opacity:1
-      })
-
-      tl.to(nav,{
-        opacity:1
-      })
-
-      tl.addLabel('card0', "+=1")
+     /*  tl.addLabel('card0', "+=1")
       tl.addLabel('card1', "+=15")
       tl.addLabel('card2', "+=30")
 
 
         navBtns.forEach((btn,i)=>{
-       /*    tl.to(btn,{
+         tl.to(btn,{
             backgroundColor:btn.dataset.clr,
             color:'black',
-          },`card${i}`) */
+          },`card${i}`) 
 
           i !== 2 && tl.to(btn,{
             backgroundColor:'white',
@@ -92,9 +84,9 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
             duration:5
           },`card${i}+=5`)//0
         }) 
-        
+         */
         // ClickeEvent 
-        gsap.utils.toArray("#categListNav button").forEach((a, i) => {
+      /*   gsap.utils.toArray("#categListNav button").forEach((a, i) => {
           a.addEventListener("click", e => {
             e.preventDefault();
             window.scrollTo({
@@ -104,20 +96,19 @@ const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
             });
             tl.seek(`card${i}`);
           })
-        }) 
+        })  */
 
 
 
 
-  },[])
+  },[main])
 
 const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen', en:'Discover our services'}
 
 
 
   return (
-    <div ref={main}>
-    <div className={Styles.parent} id="categList" >
+    <div ref={main} className={Styles.parent} id="categList" >
       <h2><SplitText data={titre[userLang]} direction={textAnim.h1}/></h2>
       <div className={Styles.nav} id='categListNav'>
         
@@ -214,7 +205,6 @@ const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen',
             })}
 
         </div>
-    </div>
     </div>
   )
 }
