@@ -34,7 +34,8 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
 
       
 
-        const words = gsap.utils.toArray('span');
+        //const words = gsap.utils.toArray('span');
+        const words =  main.current.querySelectorAll('span');
         const imgsNode = main.current.querySelectorAll('.intro-imgs');
         const imgContainer = main.current.querySelector('.introImgContainer');
 
@@ -45,7 +46,6 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
         }
         
           tl.to(main.current,{
-            opacity:1,
             onComplete:()=>imgAppear(-100),
             onReverseComplete:()=>imgAppear(100),
           })
@@ -61,9 +61,8 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
 
           words.forEach((word,i )=> {
             tl.to(word,{
-                //color: appColors && appColors[3].color.hex,
-                color:'black',
                 translate:'0 5px',
+                opacity:1,
                 duration:1,
                 onStart: ()=>console.log('word'+i)
             },`test+=${i*0.1}`)
@@ -79,21 +78,21 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
             },`endo+=${i*0.1}`)
           });
           
-          tl.to(txt1,{
+         /*  tl.to(txt1,{
           //  translate:'-50% -70%',
             duration:10,
             opacity:0,
             onComplete:()=>imgAppear(-200),
             onReverseComplete:()=>imgAppear(-100),
           })
-
+ */
   //test
   
   
-    }, main);
+    },main);
   
     return () => ctx.revert();
-    }, [appColors]);
+    }, []);
 
 
   return (

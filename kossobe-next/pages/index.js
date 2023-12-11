@@ -27,7 +27,7 @@ export default function Home({services, bannerData}) {
     
     setArrowElt(main.current.querySelector('.scrollDownArrow'))
 
-  },[userLang])
+  },[userLang,bannerData])
   
   //backgroundColor:appColors[3].color.hex, 
 
@@ -41,12 +41,12 @@ export default function Home({services, bannerData}) {
       <Suspense fallback={<Loading/>}>
 
       <div ref={main} style={{position:'relative'}}>
-     {/*   <ScrollDown/>
+       <ScrollDown/>
 
        <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>
 
-     {(bannerData[1] && userLang) && <HomeIntro banner={bannerData[1]} userLang={userLang}/> }
- */}
+     {bannerData && <HomeIntro banner={bannerData[1]} userLang={userLang}/> }
+
        {services && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />}
       
       </div>

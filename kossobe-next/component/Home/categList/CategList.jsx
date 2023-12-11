@@ -11,121 +11,118 @@ import SplitText from '../../../Utils/SplitText';
 import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 
-const CategList = ({data, cible, tl,arrow, router, appColors, userLang}) => {
+gsap.registerPlugin(ScrollTrigger);
+
+const CategList = ({data, cible}) => {
+
+  const {userLang,router} = useStateContext();
 
   const main = useRef(null)
 
   const [setFa,focusedCateg] = useState(null)
 
-  const [textAnim,setTextAnim] = useState({
-    h1:'inUp',
-    h3:'inDown',
-    h2:'inDown'
-  }) 
+  const [gTl,setGtl] = useState(null)
 
-  useLayoutEffect(()=>{
-  gsap.registerPlugin(ScrollTrigger);
+useIsomorphicLayoutEffect(() => { 
 
-    const cards = main.current.querySelectorAll('.categCard');
-    const navBtns = main.current.querySelectorAll('.categNavBtn')
-    const nav = main.current.querySelector('#categListNav')
-    const cardContainer = main.current.querySelector('#categCardContainer')
-
+  const ctx = gsap.context((self) => {
+    
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: main.current,
-        markers:true,
         start:"top top",
-        end: "+=1000vh",
+        end: "+=2200vh",
         scrub: true,
-        pin:true
-
+        pin: true,
+         onUpdate: self => {
+          console.log("progress:", self.progress.toFixed(2), "direction:", self.direction, "velocity", self.getVelocity());
+          /* setFa(t< 0.2 ? 0 : t > 0.22 && t < 0.62 ? 1 : 2) */
+        }
       }
     });
+
+    setGtl(tl)
+    
+    const cards = self.selector('.categCard');
+    const navBtns = self.selector('.categNavBtn')
+
     //0.22 //0.62
+    //Image anim
 
-     /*  tl.from(main.current,{
-        translate:'0 0',
-        
-        //onReverseComplete: ()=>setTextAnim({h1:'outUp'})
-      }) */
+    navBtns.forEach((btn,i)=>{
 
-     /*  tl.addLabel('card0', "+=1")
-      tl.addLabel('card1', "+=15")
-      tl.addLabel('card2', "+=30")
+      tl.to(btn,{
+        backgroundColor:btn.dataset.clr,
+        //color:btn.dataset.txtClr
+        color:'black'
+      },i)
 
+      i !== 2 && tl.to(btn,{
+        backgroundColor:'white',
+        //color:btn.dataset.clr
+        color:'black'
+      },i+0.5)
+    })
 
-        navBtns.forEach((btn,i)=>{
-         tl.to(btn,{
-            backgroundColor:btn.dataset.clr,
-            color:'black',
-          },`card${i}`) 
+    cards.forEach((card,i)=>{
 
-          i !== 2 && tl.to(btn,{
-            backgroundColor:'white',
-            //color:btn.dataset.clr
-            color:'black',
-          },`card${i+1}`)
-        })
+      i == 0 && tl.to(card,{
+        opacity:1,
+      },i)//0
 
-        cards.forEach((card,i)=>{
+      i > 0 && tl.to(card,{
+        translate:`0 ${(5*i)-0}vh`,
+      },i)//0
 
-          tl.to(card,{
-             translate:`0 0`,
-             //translate:`0 400px`,
-            //y:`${(5*i)-0}dvh`,
-            duration:5
-          },`card${i}`)//0 
+      tl.to(card,{
+        scale : `${ i < 2 ? `0.${8+i}` : 1}`,
+        translate:`0 ${(5.5*i)-7}vh`
+      },i+0.5)//0
+    })
 
-           tl.to(card,{
-            scale : `${ i < 2 ? `0.${8+i}` : 1}`,
-            translate:`0 ${(5.5*i)-7}vh`,
-            //y:`${(5.5*i)-7}vh`,
-            duration:5
-          },`card${i}+=5`)//0
-        }) 
-         */
-        // ClickeEvent 
-      /*   gsap.utils.toArray("#categListNav button").forEach((a, i) => {
-          a.addEventListener("click", e => {
-            e.preventDefault();
-            window.scrollTo({
-              top: i == 0 ? 919 : i == 1 ? 2344 : 3870,
-              left: 0,
-              behavior: "smooth",
-            });
-            tl.seek(`card${i}`);
-          })
-        })  */
+    // ClickeEvent 
 
+    
+    gsap.utils.toArray("#categListNav button").forEach((a, i) => {
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        window.scrollTo({
+          top: i == 0 ? 919 : i == 1 ? 2344 : 3870,
+          left: 0,
+          behavior: "smooth",
+        });
+      })
+    })
 
-
-
-  },[main])
-
-const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen', en:'Discover our services'}
-
+    //919
+    //2344
+    //3870, 
+  
+}, main);
+return () => ctx.revert();
+}, []);
 
 
   return (
-    <div ref={main} className={Styles.parent} id="categList" >
-      <h2><SplitText data={titre[userLang]} direction={textAnim.h1}/></h2>
+    <div className={Styles.parent} id="categList" ref={main}>
+      <h2>Decouvrez nos services</h2>
+
       <div className={Styles.nav} id='categListNav'>
-        
         {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
-          return <button data-clr={appColors && appColors[i].color.hex} key={i}
+          return <button data-clr={d.color.hex} data-txtClr={'black'}
           // onClick={()=>gTl.seek(i+0.5*i,true)}
           //onClick={()=>alert(window.scrollY)}
-             //style={{border:`2px solid ${d.color.hex}`,backgroundColor:'white', color: 'black`' }} className='categNavBtn'>{d.name[userLang]}</button>  
-             style={{border:`2px solid ${ appColors && appColors[i].color.hex}`,backgroundColor:'white', color: 'black`' }} className='categNavBtn'>{d.name[userLang]}</button>  
+             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'white', color: 'black`' }} className='categNavBtn'>{d.name[userLang]}</button>  
         })}
       </div>
 
-      <div className={Styles.container} id='categCardContainer'>
+      <div className={Styles.container}>
 
           {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
 
-            const myLoader = () => d.image && urlFor(d.image).url()
+            const myLoader = () => {
+                return d.image && urlFor(d.image).url()
+            }
 
             /* Button Router + anim function */
 
@@ -139,27 +136,22 @@ const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen',
               },300)
               console.log(e)
             }
+
+
             return(
-              <div onClick={(e)=>routingAnim(e)} key={i}
-              className={`categCard ${Styles.card}`}
-               //style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}  
-               style={{backgroundColor: appColors && appColors[i].color.hex, color: appColors && appColors[i].txtColor.hex}} 
-        
-               ref={card}>
+              <div onClick={(e)=>routingAnim(e)}
+              className={`categCard ${Styles.card}`} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}} ref={card}>
               
               {/* left Img */}
-                <div className={Styles.cardLeft} 
-               // style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}
-               style={{backgroundColor: appColors && appColors[i].color.hex, color: appColors && appColors[i].txtColor.hex}} 
-                >
+                <div className={Styles.cardLeft} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>
                   <div className={Styles.imgBox}>
                   <Image 
                     loader={myLoader}
-                    style={{objectFit:"cover"}}
+                    objectFit="cover"
                     fill
                     sizes="100%"
-                    src={'f'}
-                    alt='yes'
+                    src={'bjr'}
+                    alt=''
                     />
                 </div>
                 </div>
@@ -176,17 +168,12 @@ const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen',
                     })}
                   </ul>
 
-                  <h3 //style={{color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}
-                    style={{backgroundColor: appColors && appColors[i].color.hex, color: appColors && appColors[i].txtColor.hex}} 
-                  >{d.name[userLang]}</h3>
+                  <h3 style={{color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>{d.name[userLang]}</h3>
 
                   <div className={Styles.discover}>
                       <p>Discover</p>
                       <div onClick={(e)=>routingAnim(e)} href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
-                        <button 
-                        //style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}
-                        style={{outline:`9px solid ${appColors && appColors[i].color.hex}`}}
-                        > <FaArrowRight/> </button>
+                        <button style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}> <FaArrowRight/> </button>
 
                         <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path>
                         <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
@@ -210,4 +197,3 @@ const titre ={fr:'Decouvrez nos services', de:'Entdecken Sie unsere Leistungen',
 }
 
 export default CategList
-

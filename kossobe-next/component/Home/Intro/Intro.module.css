@@ -2,7 +2,7 @@
     height: 100vh;
     position: relative;
     width: 100%;
-    opacity: 0;
+    opacity: 1s;
     bottom: 0;
 }
 
@@ -13,19 +13,19 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    color: rgb(210, 209, 209);
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
     padding:0px 50px ;
-    transition: 0.5s;
-   
+    transition: 0.5s; 
 }
 
 .textBox p span{
     font-size: 3vw;
     transition: 0.3s;
+    opacity: 0.3;
  /*    text-shadow: 1px 1px 2px white; */
 }
 .container .introText1{
