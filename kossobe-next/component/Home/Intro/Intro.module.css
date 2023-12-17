@@ -25,7 +25,7 @@
 .textBox p span{
     font-size: 3vw;
     transition: 0.3s;
-    opacity: 0.3;
+    opacity: 0.8;
  /*    text-shadow: 1px 1px 2px white; */
 }
 .container .introText1{

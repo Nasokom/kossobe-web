@@ -287,6 +287,7 @@
   border-radius: 30px;
   border: 1px solid black;
   margin: 5px;
+  cursor: unset;
 }
 
 .container{
@@ -322,6 +323,9 @@
   transition: transform;
 }
 
+.card:first-child{
+  translate:0 0vh;
+}
 .cardLeft{
   width: 50%;
   height: 100%;
@@ -409,6 +413,7 @@ transition: 0.3s;
 
 .discover button:hover {
 rotate: -45deg;
+cursor: unset;
 }
 .discover .linkBox{
 translate: 1px 1px;
@@ -497,7 +502,7 @@ rotate: 180deg;
 }
 .nav{
   display: flex;
-}  
+}  î
 .nav button{
   margin: 2.5px;
   width: 30%;

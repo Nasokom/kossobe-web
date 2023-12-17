@@ -92,8 +92,9 @@ const ServicePage = ({services, categories, nextIndex}) => {
         </div>} */}
 
         <Container services={services} />
-
-        {!disableScroll && <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug}  setDisableScroll={setDisableScroll}categories={categories} currentSlug={services.slug.current} router={router}/>}
+        
+        {/* //!! Scroll router */}
+       {/*  {!disableScroll && <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug}  setDisableScroll={setDisableScroll}categories={categories} currentSlug={services.slug.current} router={router}/>} */}
 
 
   </div>

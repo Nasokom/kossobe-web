@@ -15,6 +15,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CategList = ({data, cible}) => {
 
+
+  const title = {'fr': 'Découvrez nos services', 'de':'Entdecken Sie unsere Leistungen','en':'Discover our services'}
+
   const {userLang,router} = useStateContext();
 
   const main = useRef(null)
@@ -64,11 +67,12 @@ useIsomorphicLayoutEffect(() => {
       },i+0.5)
     })
 
+
     cards.forEach((card,i)=>{
 
-      i == 0 && tl.to(card,{
-        opacity:1,
-      },i)//0
+      i == 0 && tl.from(card,{
+        translate:`0 ${(5*i)-0}vh`,
+      },i)//0 
 
       i > 0 && tl.to(card,{
         translate:`0 ${(5*i)-0}vh`,
@@ -83,7 +87,7 @@ useIsomorphicLayoutEffect(() => {
     // ClickeEvent 
 
     
-    gsap.utils.toArray("#categListNav button").forEach((a, i) => {
+    /* gsap.utils.toArray("#categListNav button").forEach((a, i) => {
       a.addEventListener("click", e => {
         e.preventDefault();
         window.scrollTo({
@@ -92,7 +96,7 @@ useIsomorphicLayoutEffect(() => {
           behavior: "smooth",
         });
       })
-    })
+    }) */
 
     //919
     //2344
@@ -105,7 +109,7 @@ return () => ctx.revert();
 
   return (
     <div className={Styles.parent} id="categList" ref={main}>
-      <h2>Decouvrez nos services</h2>
+      <h2>{title[userLang]}</h2>
 
       <div className={Styles.nav} id='categListNav'>
         {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
