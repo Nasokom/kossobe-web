@@ -18,6 +18,13 @@ export default
               hotspot: true,
           },
       },
+
+      {
+        name:'images',
+        titles:'introImg',
+        type:'array',
+        of:[{type:'image'}]
+      },
       {
         name:"imgDesc",
         title:"Image description",
@@ -36,6 +43,7 @@ export default
         title:"introduction",
         type:"titleTrad"
       },
+
       {
         name:"catchP",
         title:"phrase d'accroche",

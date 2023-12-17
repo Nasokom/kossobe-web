@@ -1,19 +1,35 @@
-import React,{useRef, useState} from 'react'
+
+import React,{useRef, useState,Suspense, useLayoutEffect, useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { client } from '../Utils/sanityClient'
-import CategList from '../component/content/CategList'
+import CategList from '../component/Home/categList/CategList'
 import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout'
 import { gsap } from 'gsap'
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import FooterBanner from '../component/Ui/FooterBanner'
-import HeroBanner from '../component/content/HeroBanner'
+import HeroBanner from '../component/Home/Hero/HeroBanner'
 import ScrollDown from '../component/Ui/ScrollDown'
+import HomeIntro from '../component/Home/Intro/HomeIntro'
+import { useStateContext } from '../context/StateContext'
+import Loading from '../component/Layout/Loading'
+
+
 
 
 export default function Home({services, bannerData}) {
+  const {userLang,appColors,router} = useStateContext()
+  const main = useRef(null)
+  const [arrowElt, setArrowElt]= useState(null)
 
-  const [imgW, setImgW] = useState(1500);
+
+  useEffect(()=>{
+    
+    setArrowElt(main.current.querySelector('.scrollDownArrow'))
+
+  },[userLang,bannerData])
+  
+  //backgroundColor:appColors[3].color.hex, 
 
   return (
     <>
@@ -22,10 +38,20 @@ export default function Home({services, bannerData}) {
         <meta name="description" content="Kossobe website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ScrollDown/>
-      <HeroBanner banner={bannerData[1]}/>
-      <CategList data={services} cible={bannerData[1].intro}/>
-      <FooterBanner banner={bannerData[0]}/>
+      <Suspense fallback={<Loading/>}>
+
+      <div ref={main} style={{position:'relative'}}>
+       <ScrollDown/>
+
+       <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>
+
+     {bannerData && <HomeIntro banner={bannerData[1]} userLang={userLang}/> }
+
+       {services && <CategList data={services} router={router} appColors={appColors} cible={bannerData[1].intro} arrow={arrowElt} userLang={userLang} />}
+      
+      </div>
+      </Suspense>
+      {/* <FooterBanner banner={bannerData[0]}/> */}
     </>
   )
 }

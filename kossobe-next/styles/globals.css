@@ -25,7 +25,7 @@ button,button > *{
   font-family: plakkaat;
 }
 * {
-  color: var(--textColor);
+  /* color: var(--textColor); */
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -38,7 +38,6 @@ button,button > *{
     text-align: left;
     text-decoration: none;
     text-indent: 0;
-    color: var(--textColor);
 }
 
 h1,h2,h3,h4, h3 p, h3 > * button{
@@ -64,15 +63,22 @@ p, ul, li{
 
 .complex-text {
   color: inherit;
+  max-width: 100%;
 }
 
 .complex-text p{
   color: inherit;
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
 }
 
 .complex-text  p span{
   color: inherit;
+  margin: 0.5rem;
+  height: fit-content;
 }
+
 
 
 /* 
@@ -235,9 +241,6 @@ p, ul, li{
   translate:0 100vh;
 }
 
-.categCard:nth-child(1){
-  translate:0 0;
-}
 
 
 @import './animation.css'

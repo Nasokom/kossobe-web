@@ -1,0 +1,520 @@
+/* .parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    min-height: 100vh;
+    max-height: 100vh;
+    z-index: 200;
+    background-color: white;
+}
+
+.parent h2{
+    font-size: 4.5vw;
+}
+
+  .nav{ 
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    opacity: 1;
+  }
+
+  .nav button{
+    padding: 10px 20px; 
+    border-radius: 30px;
+    border: 1px solid black;
+    margin: 5px;
+  }
+
+  .container{
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    margin-top: 0px;
+    width: 100%;
+    padding :20px 20px;
+    height: 100vh;
+    opacity: 1;
+    transition: 0.3s;
+    top: 0;
+    border: 10px solid black;
+  }
+
+
+  .card{
+    color: var(--textColor);
+    width: 90%;
+    height: 70vh;
+    height: 70dvh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    font-family: plakkaat;
+    padding: 30px;
+    position: absolute;
+    border: unset;
+    transition: 0.3s;
+    translate: 0 200vh;
+    will-change: transform ;
+    transition: transform;
+  }
+
+  .cardLeft{
+    width: 50%;
+    height: 100%;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cardLeft::before{
+    content:'';
+    background-color: inherit;
+    opacity: 0.33;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  .imgBox{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .cardRight{
+    width: 100%;
+    height: 55%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 20px;
+    background-color: inherit;
+  }
+
+.services{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.services li{
+  font-family: plakkaat;
+  font-size: 20px;
+  width: fit-content;
+  line-height: 20px;
+}
+
+.card h3{
+  font-size: 50Px;
+  text-align: left;
+  width: 100%;
+}
+
+.discover{
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+
+.discover p {
+  font-family: plakkaat;
+  margin-right: 20px;
+}
+.discover button{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  transition: 0.3s;
+}
+
+
+.discover button:hover {
+  rotate: -45deg;
+}
+.discover .linkBox{
+  translate: 1px 1px;
+  padding: 20px;
+  border-top-left-radius: 30px;
+  background-color: white;
+  min-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.svg{
+  position: absolute;
+  bottom: 0px;
+  height: 20px;
+  left: -20px;
+  rotate: 180deg;
+}
+
+.svg2{
+  position: absolute;
+  top: -19px;
+  height:20px;
+  right: 1px;
+  rotate: 180deg;
+}
+
+
+@media screen and (max-width:800px) {
+
+  .container{
+    padding :10px;
+  }
+
+
+  .discover button{
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .card h3{
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .services{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .services li{
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0px 5px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 90px;
+  }
+
+  .cardRight{
+    padding: 0;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+  }
+
+  .cardLeft{
+    width: 100%;
+    height: 70%;
+    align-self: center;
+  }
+
+
+
+  .nav button{
+    padding: 10px 20px; 
+    border-radius: 30px;
+    margin: 5px;
+  }
+  .nav{
+    display: flex;
+  }  
+  .nav button{
+    margin: 2.5px;
+    width: 30%;
+    max-width: 30%;
+    word-wrap: break-word;
+    text-align: center;
+    font-size: 12px;
+  }
+  .parent h2{
+    font-size: 30px;
+    padding: 20px 40px;
+    text-align: center;
+
+  }
+} */
+
+.parent{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.parent h2{
+  font-size: 5vw;
+  padding: 20px;
+}
+
+.nav{ 
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav button{
+  padding: 10px 20px; 
+  border-radius: 30px;
+  border: 1px solid black;
+  margin: 5px;
+  cursor: unset;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  margin-top: 0px;
+  width: 100%;
+  padding :20px 20px;
+  height: 100vh;
+}
+
+
+.card{
+  color: var(--textColor);
+  /* border: 3px solid var(--textColor); */
+  width: 90%;
+  height: 70vh;
+  height: 70dvh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  font-family: plakkaat;
+  padding: 30px;
+  position: relative;
+  position: absolute;
+  border: unset;
+  transition: 0.3s;
+  will-change: transform ;
+  transition: transform;
+}
+
+.card:first-child{
+  translate:0 0vh;
+}
+.cardLeft{
+  width: 50%;
+  height: 100%;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardLeft::before{
+  content:'';
+  background-color: inherit;
+  opacity: 0.33;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.imgBox{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.cardRight{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20px;
+  background-color: inherit;
+}
+
+.services{
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+
+.services li{
+font-family: plakkaat;
+font-size: 20px;
+width: fit-content;
+line-height: 20px;
+}
+
+.card h3{
+font-size: 50Px;
+text-align: left;
+width: 100%;
+}
+
+.discover{
+position: absolute;
+justify-content: space-between;
+align-items: center;
+bottom: 0;
+right: 0;
+display: flex;
+}
+
+.discover p {
+font-family: plakkaat;
+margin-right: 20px;
+}
+.discover button{
+width: 90px;
+height: 90px;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 40px;
+transition: 0.3s;
+}
+
+
+.discover button:hover {
+rotate: -45deg;
+cursor: unset;
+}
+.discover .linkBox{
+translate: 1px 1px;
+padding: 20px;
+border-top-left-radius: 30px;
+background-color: white;
+min-width: 30%;
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+}
+
+.svg{
+position: absolute;
+bottom: 0px;
+height: 20px;
+left: -20px;
+rotate: 180deg;
+}
+
+.svg2{
+position: absolute;
+top: -19px;
+height:20px;
+right: 1px;
+rotate: 180deg;
+}
+
+
+@media screen and (max-width:800px) {
+
+.container{
+  padding :10px;
+}
+
+
+.discover button{
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.card h3{
+  font-size: 28px;
+  text-align: center;
+  width: 100%;
+}
+
+.services{
+  display: flex;
+  justify-content: space-between;
+}
+
+.services li{
+  font-size: 15px;
+  line-height: 15px;
+  margin: 0px 5px;
+}
+
+.card {
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 90px;
+}
+
+.cardRight{
+  padding: 0;
+  justify-content: space-around;
+  flex-direction: column-reverse;
+}
+
+.cardLeft{
+  width: 100%;
+  height: 70%;
+  align-self: center;
+}
+
+
+
+.nav button{
+  padding: 10px 20px; 
+  border-radius: 30px;
+  margin: 5px;
+}
+.nav{
+  display: flex;
+}  î
+.nav button{
+  margin: 2.5px;
+  width: 30%;
+  max-width: 30%;
+  word-wrap: break-word;
+  text-align: center;
+  font-size: 12px;
+}
+.parent h2{
+  font-size: 30px;
+  padding: 20px 40px;
+  text-align: center;
+
+}
+}

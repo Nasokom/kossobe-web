@@ -17,12 +17,11 @@ const About = ({appColors, data}) => {
   const main = useRef(null)
 
   const [valueIndex, setValueIndex] = useState(0)
+  const [gTl,setGtl] = useState(null)
 
   useIsomorphicLayoutEffect(() => { 
 
-    const ctx = gsap.context((self) => {
-  
-      
+    const ctx = gsap.context((self) => { 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: main.current,
@@ -33,6 +32,8 @@ const About = ({appColors, data}) => {
           //markers:true
         }
       });
+
+      setGtl(tl)
       
       const cards = self.selector('.introCard');
       const lastSection = main.current.querySelector('.lastSection')
@@ -144,37 +145,6 @@ const About = ({appColors, data}) => {
           duration:3,
         })
       })
-
-
-
-      /*  valueList.forEach((li,i)=>{
-        tl.to(valueTxtBox,{
-          translate: `0px -${i*400}px`,
-          backgroundColor: appColors[i] ? appColors[i].color.hex : appColors[0].color.hex,
-          color: appColors[i] ?  appColors[i].colorTxt.hex :  appColors[0].colorTxt.hex,
-          onStart : ()=>toggleClass(li,true),//!!SS+
-        })
-
-        tl.to(li,{
-          translate : '50px 0px',
-          color:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
-          scale:1.2,
-          duration: 10,
-          //className:'+=activeAboutLi',
-          yoyo:true,
-          onComplete: ()=>toggleClass(li,false), //!!SS+
-          onReverseComplete : ()=>toggleClass(li,false),
-        })
-
-        tl.to(li,{
-          color:'black',
-          translate : '0px 0px',
-          scale:1,
-          duration:10,
-          onReverseComplete : ()=>toggleClass(li,true),
-        })
-      })
- */ 
 
       
       //4052

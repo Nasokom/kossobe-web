@@ -55,7 +55,8 @@ const imageBuffer = fs.readFileSync(imagePath);
 // Convertir le buffer en chaîne Base64
 const base64Image = imageBuffer.toString('base64');
   const imageSrc = `data:image/png;base64,${base64Image}`;
- */
+*/
+
     // Diviser le texte en mots
     const mots = message.split(' ');
 
@@ -78,12 +79,13 @@ const base64Image = imageBuffer.toString('base64');
             <p>{msg[userLang]}</p>
             <p>{texteAvecBr}</p>
 
-            {/* <img  style={img} 
+            <img  style={img} 
             src="https://sawuri.vercel.app/marcel_logo.png" 
             //src={imageSrc}
             width='400px'
             height='400px'
-            alt="Image"/> */}
+            alt="Image"/>
+            
         </body>
       </html>
     );

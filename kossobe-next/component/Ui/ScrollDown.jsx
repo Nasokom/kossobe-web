@@ -9,12 +9,12 @@ const ScrollDown = () => {
 
   return (
 
-    <div className={Styles.parent}>
+    <div className={`scrollDownArrow ${Styles.parent}`}>
         <div className={Styles.arrow}><FaArrowDown/></div>
     <div className={Styles.circle}>
     <svg viewBox="0 0 200 200">
       <path id="textPath" d="M 85,0 A 85,85 0 0 1 -85,0 A 85,85 0 0 1 85,0" transform="translate(100,100)" fill="none" strokeWidth="0"></path>
-      <g fontSize="22px">
+      <g>
         <text textAnchor="start">
           <textPath xlinkHref="#textPath" startOffset="0%">- Scroll Down - Scroll Down - Scroll Down</textPath>
         </text>

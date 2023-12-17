@@ -18,10 +18,11 @@ const MailResponse = ({state,userLang,toggle}) => {
 
     const msg = {
         success:{
-            'fr' : 'Check ta boite mail tu as dus recevoir un message',
+            'fr' : 'Email envoyé avec success',
             'de' : 'E-Mail mit Erfolg gesendet',
             'en' :'Email sent with success'
     },
+    
     error:{
         'fr' : "Reessaye plus tard ou envoie nous un mail en copiant ou en cliquant sur notre adresse mail",
         'de' : 'Versuchen Sie es später noch einmal oder senden Sie uns eine E-Mail, indem Sie unsere E-Mail-Adresse kopieren oder darauf klicken',
@@ -34,12 +35,13 @@ const routingText = {
         'fr' : 'Continue la visite',
         'de' : 'Setzen Sie den Besuch fort',
         'en' :'Continue the visit'
-},
-change:{
+    },
+    
+    change:{
         'fr' : 'Rester sur cette page',
         'de' : 'E-Mail mit Erfolg gesendet',
         'en' :'Email sent with success'
-}
+    }
 }
 
   return (
