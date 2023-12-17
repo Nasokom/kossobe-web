@@ -29,7 +29,6 @@ const Clients = ({datas,appColors}) => {
         <div className={Styles.clientContainer}>
 
         {datas.clients.map((data,i)=>{
-            
           function colorsF(){
           const rnd =  Math.floor(Math.random() * 3)
           return{color:appColors[rnd].colorTxt.hex,backgroundColor:appColors[rnd].color.hex}
@@ -39,9 +38,8 @@ const Clients = ({datas,appColors}) => {
             const imgLoader = () =>{return data.image && urlFor(data.image).url()}
 
             return(
-              <Link href={data.url} target='_blank'>
-                <div key={i} className={Styles.card}
-                style={colorsF()}>
+              <Link href={data.url} key={i} target='_blank'>
+                <div className={Styles.card} style={colorsF()}>
                     <div className={Styles.cardText}>
                       <h3>{data.name}</h3>
                     </div>
