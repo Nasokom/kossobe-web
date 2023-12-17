@@ -21,32 +21,7 @@ const HomeIntro = ({banner, tl, userLang, appColors}) => {
     <div className={Styles.container} id={"#intro-main"}ref={main}>
            <div className={`introText1 ${Styles.textBox}`}>
                 <ComplexText data={banner.text[userLang]}/>
-            </div>       
-
-            <div className={`introImgContainer ${Styles.imgContainer}`}>
-
-            {banner.images.map((img,i)=>{
-
-              const myLoader = () => img && urlFor(img)
-
-              return(
-
-              <div className={`introImgBoxs ${Styles.imgBox}`} key={i}>
-                <Image
-                  src={"fake"}
-                  loader={myLoader}
-                  sizes={'100%'}
-                  fill
-                  style={{objectFit:"cover"}}
-                  className='intro-imgs'
-                  alt="yes"
-                />
-              </div>
-
-              )
-
-            })}
-            </div>    
+            </div>        
     </div>
   )
 }
