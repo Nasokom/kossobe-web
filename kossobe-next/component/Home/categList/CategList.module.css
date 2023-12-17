@@ -321,6 +321,7 @@
   transition: 0.3s;
   will-change: transform ;
   transition: transform;
+  cursor: pointer;
 }
 
 .card:first-child{
