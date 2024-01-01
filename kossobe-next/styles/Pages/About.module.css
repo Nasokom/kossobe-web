@@ -20,7 +20,7 @@
     text-align: center;
 }
 .page h2{
-    line-height: 1.2em;
+    /* line-height: 1.2em; */
     font-size: clamp(20px, 4vw,100px);
 }
 
@@ -69,12 +69,13 @@
 .textContainer p{
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .textContainer p span{
     margin-right: 12px;
     font-size: clamp(25px,3vw,100px);
-    line-height: 2em;
+    /* line-height: 2em; */
     color: lightgrey;
     opacity: 1;
     transition: 0.3s;
@@ -144,10 +145,14 @@
 }
 
 .valuesContainer{
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60%;
+    height: 60%; */
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .valuesList{
@@ -157,6 +162,7 @@
     flex-direction: column;
     padding-left: 20px;
     height: 100%;
+    flex-grow: 1;
 }
 
 .valuesList li{
@@ -177,7 +183,7 @@
 
 
 .valuesImg{
-    width: 400px;
+    width: 30vw;
     height: 400px;
     border-radius: 20px;
     overflow: hidden;
@@ -185,16 +191,17 @@
 
 .valuesImg p{
     width: 400px;
+    width: 30vw;
     height: 400px;
     padding: 20px;
 }
 
 .valueTxtBox{ 
-    translate: 0 400px;
+    translate: 0 100%;
     transition: 0.5s;
 }
 
-@media (max-width:800px){
+@media (max-width:1000px){
 
     .page{
         padding: 0 20px;
@@ -258,7 +265,7 @@
         height: 400px;
         padding: 20px;
         font-size: 5vw;
-        line-height: 1.7em;
+        /* line-height: 1.7em; */
     }
     
     .valueTxtBox{ 

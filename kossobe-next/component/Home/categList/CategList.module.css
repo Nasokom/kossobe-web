@@ -267,7 +267,6 @@
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  max-height: 100vh;
 }
 
 .parent h2{
@@ -319,9 +318,13 @@
   position: absolute;
   border: unset;
   transition: 0.3s;
-  will-change: transform ;
-  transition: transform;
+  will-change: transform;
+  transition: all;
   cursor: pointer;
+}
+
+.card:checked, .card:active{
+  z-index: 1000;
 }
 
 .card:first-child{
@@ -419,7 +422,7 @@ cursor: unset;
 .discover .linkBox{
 translate: 1px 1px;
 padding: 20px;
-border-top-left-radius: 30px;
+border-top-left-radius: 60px;
 background-color: white;
 min-width: 30%;
 display: flex;

@@ -62,6 +62,7 @@ const About = ({appColors, data}) => {
           })
         })
         
+
         tl.to(textContainer,{
           translate:`0 -100vh`,
           duration: 7
@@ -83,14 +84,14 @@ const About = ({appColors, data}) => {
       const keyCards = self.selector('.complex-text')
 
 
-      keyCards.forEach((card,i)=>{
+    /*   keyCards.forEach((card,i)=>{
 
         tl.to(card,{
           duration: 2,
           color: appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
         })
 
-      })
+      }) */
 
       /* OUR VALUES */
       const valueSection = main.current.querySelector('.value-section')
@@ -109,6 +110,7 @@ const About = ({appColors, data}) => {
       const valueTxtBox = main.current.querySelector('.valueTxtBox')
 
       const lastI = valueList.length -1
+
       valueList.forEach((li,i)=>{
         tl.to(valueTxtBox,{
           translate: `0px -${i*400}px`,
@@ -119,9 +121,13 @@ const About = ({appColors, data}) => {
         })
 
         tl.to(li,{
+          translate:'100px 0',
+          duration:0.1,
+          scale:1.5
+        })
+        tl.to(li,{
           color:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
           fill:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
-          translate:'50px 0',
           duration:3,
         })
 
@@ -184,7 +190,6 @@ const About = ({appColors, data}) => {
 
       <div ref={main} className={styles.pinSpacer}>
 
-
           <div className={styles.introContainer}>
             {data.intro.map((data,i)=>{
 
@@ -224,7 +229,7 @@ const About = ({appColors, data}) => {
                 return(
                   <div className={`keyCard ${styles.keyCard}`} key={i}>
 
-                      <h3>{point.name[userLang]}</h3>
+                      <h3 className='keyCardTitle'>{point.name[userLang]}</h3>
                         <div className={styles.keyText}>
                           <ComplexText data={point.text[userLang]}/>
                         </div>
@@ -233,7 +238,7 @@ const About = ({appColors, data}) => {
               })}
             </div>
 
-
+              {/* Nois valeurs */}
             <div className={`value-section ${styles.valuesSection}`}>
                 <h3>{data.values.title[userLang]}</h3>
                 <div className={styles.valuesContainer}>

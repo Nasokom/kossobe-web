@@ -31,23 +31,24 @@ const Container = ({services}) => {
 
                 const textBox = card.querySelector('.service-card-text');
                 const text = card.querySelector('.complex-text');
-                var topPos = text.offsetHeight;
-                var topPosBox = textBox.offsetHeight;
+                var textHeight = text.offsetHeight;
+                var textBoxHeight = textBox.offsetHeight;
+                const ratioTxtAndBox = textHeight / textBoxHeight
                 
-            
+
                 tl.to(text,{
-                    y: topPosBox - topPos,
-                    duration:10,
-              
+                    y: textBoxHeight - textHeight,
+                    duration: textBoxHeight - textHeight >= 0? 0: 10*(3*ratioTxtAndBox),
                 })
 
                 tl.to(text,{
                     opacity:1,
-                    duration: 4,
                     onStart : ()=>setSelectedCard(i),
                     onComplete : ()=> i < 1 && setSelectedCard(i+1),
-                    onReverseComplete : ()=> setSelectedCard(i),
+                    onReverseComplete : ()=> setSelectedCard(i)
                 })
+
+
             });
    
         }, main);
