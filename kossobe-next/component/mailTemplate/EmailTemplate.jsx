@@ -79,12 +79,12 @@ const base64Image = imageBuffer.toString('base64');
             <p>{msg[userLang]}</p>
             <p>{texteAvecBr}</p>
 
-            <img  style={img} 
+           {/*  <img  style={img} 
             src="https://sawuri.vercel.app/marcel_logo.png" 
             //src={imageSrc}
             width='400px'
             height='400px'
-            alt="Image"/>
+            alt="Image"/> */}
             
         </body>
       </html>
@@ -92,3 +92,4 @@ const base64Image = imageBuffer.toString('base64');
   }
   
   export default EmailTemplate;
+  

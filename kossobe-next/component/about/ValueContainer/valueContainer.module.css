@@ -1,0 +1,44 @@
+.parent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.card{
+    padding: 20px;
+    border-radius: 20px;
+    margin: 15px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: -5px 5px black;
+    width: 400px;
+    width: 40%;
+    cursor: pointer;
+    background-color: rgb(246, 246, 246);
+}
+
+
+.card h4{
+ font-size: clamp(20px,2.5vw ,40px);
+ text-align: center;
+ width: 100%;
+ padding: 20px 0px;
+ margin-bottom: 20px;
+ border-bottom: 2px solid black;
+}
+
+.card:hover{
+    box-shadow: 0px 0px black;
+    translate: -7px 7px;
+  }
+
+  @media (max-width:1000px) {
+
+    .card{
+        width: 100%;
+    }
+    
+  }

@@ -8,6 +8,8 @@ import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../Utils/isomorphicLayout';
 import {FaHeart} from 'react-icons/fa'
+import CardValue from '../component/about/CardValue';
+import ValueContainer from '../component/about/ValueContainer/ValueContainer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,8 +39,7 @@ const About = ({appColors, data}) => {
       
       const cards = self.selector('.introCard');
       const lastSection = main.current.querySelector('.lastSection')
-  
-
+      const animCont = main.current.querySelector('#aboutAnimContainer')
   
       //Image anim
       cards.forEach((card,i)=>{
@@ -70,16 +71,17 @@ const About = ({appColors, data}) => {
 
         tl.to(img,{
           scale:1,
-          duration: 1
+          duration: 1,
         })//0
+       
       })
 
 
 
-      tl.to(lastSection,{
+     /*  tl.to(lastSection,{
         translate : '0 -100vh',
         duration: 5,
-      })
+      }) */
 
       const keyCards = self.selector('.complex-text')
 
@@ -94,82 +96,6 @@ const About = ({appColors, data}) => {
       }) */
 
       /* OUR VALUES */
-      const valueSection = main.current.querySelector('.value-section')
-
-      tl.to(lastSection,{
-        translate : '0 -200vh',
-        duration: 10
-      })
-
-
-      const valueList = main.current.querySelector('.valueList').querySelectorAll('li')
-      //const lis = valueList.querySelectorAll('li');
-
-      const toggleClass = (elt,is) => is ? elt.classList.add('activeAboutLi') : elt.classList.remove('activeAboutLi')
-
-      const valueTxtBox = main.current.querySelector('.valueTxtBox')
-
-      const lastI = valueList.length -1
-
-      valueList.forEach((li,i)=>{
-        tl.to(valueTxtBox,{
-          translate: `0px -${i*400}px`,
-          backgroundColor: appColors[i] ? appColors[i].color.hex : appColors[0].color.hex,
-          color: appColors[i] ?  appColors[i].colorTxt.hex :  appColors[0].colorTxt.hex,
-          onStart : ()=>toggleClass(li,true),//!!SS+
-          duration:0.1
-        })
-
-        tl.to(li,{
-          translate:'100px 0',
-          duration:0.1,
-          scale:1.5
-        })
-        tl.to(li,{
-          color:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
-          fill:appColors[i] ? appColors[i].colorTxt.hex : appColors[0].colorTxt.hex,
-          duration:3,
-        })
-
-        tl.to(li,{
-          duration: 3,
-          //className:'+=activeAboutLi',
-          onComplete: ()=>toggleClass(li,false), //!!SS+
-          onReverseComplete : ()=>toggleClass(li,false),
-        })
-
-        tl.to(li,{
-          color:'black',
-          translate : '0px 0px',
-          scale:1,
-          duration:0.1,
-          onReverseComplete : ()=>toggleClass(li,true),
-        })
-
-        i == lastI && tl.to(valueTxtBox,{
-          translate: `0px -${(i+1)*400}px`,
-          duration:3,
-        })
-      })
-
-      
-      //4052
-      //4472
-      //4871
-      //5256
-
-      valueList.forEach((a, i) => {
-        a.addEventListener("click", e => {
-          e.preventDefault();
-          window.scrollTo({
-            //top: i == 0 ? 6950 : i == 1 ? 8298 : 9150,
-            top:4052 +400*i,
-            left: 0,
-            behavior: "smooth",
-          });
-          console.log(window.scrollY)
-        })
-      })
 
     
   }, main);
@@ -188,7 +114,7 @@ const About = ({appColors, data}) => {
       </div>
 
 
-      <div ref={main} className={styles.pinSpacer}>
+      <div ref={main} className={styles.pinSpacer} id="aboutAnimContainer">
 
           <div className={styles.introContainer}>
             {data.intro.map((data,i)=>{
@@ -222,7 +148,8 @@ const About = ({appColors, data}) => {
             })}
 
           </div>{/* end intro */}
-
+          </div>
+        
         <div className={`lastSection ${styles.lastSection}`}>
           <div className={`keyPoint-section ${styles.keyPointContainer}`}>
               {data.keyPoint.map((point,i)=>{
@@ -240,33 +167,14 @@ const About = ({appColors, data}) => {
 
               {/* Nois valeurs */}
             <div className={`value-section ${styles.valuesSection}`}>
-                <h3>{data.values.title[userLang]}</h3>
-                <div className={styles.valuesContainer}>
-                    <ul className={`valueList ${styles.valuesList}`}>
-                      {data.values.valeur.map((vName,i)=>{
-                        return(
-                          <li key={i}>
-                             <FaHeart/> 
-                             {vName.name[userLang]}</li>
-                      )
-                      })}
-                    </ul>
+                <h3 className='valueTitle'>{data.values.title[userLang]}</h3>
 
-                    <div className={`valuesImg ${styles.valuesImg}`}>
-                      <div className={`valueTxtBox ${styles.valueTxtBox}`}>
-                    {data.values.valeur.map((vName,i)=>{
-                      return <ComplexText data={vName.text[userLang]} key={i}/>
-                    })}
-                    </div>
+                <ValueContainer datas={data.values.valeur} userLang={userLang}/>
 
-                     {/*   {valueIndex && <ComplexText data={data.values.valeur[valueIndex].text[userLang]}/>} */}
-                    </div>
-
-                </div>
               </div>
 
               </div>
-      </div>
+     
     </div>
   )
 }

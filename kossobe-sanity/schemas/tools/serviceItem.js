@@ -27,12 +27,12 @@ export default{
             type:'textTrad',
             description:'New text field'
         },
-        {
+        /* {
             name:'content',
             title:'Contenu',
             type:'array',
             of:[{type:'textImage'}],
             description:"Gerer le contenu de chaque carte service"
-        },
+        }, */
     ]
 }
