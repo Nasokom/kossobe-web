@@ -156,18 +156,22 @@ const Contact = ({services}) => {
                     </textarea>
                     <button id="submit" type='submit' className={Styles.submit} name='submit-btn' 
                     //</form>className={sendingMail&&'sending'}
-                    value={userLang.includes('fr') ? 'envoyer' : userLang.includes('de')? 'schicken' : 'send'} >
+                    value={userLang.includes('fr') ? 'envoyer0' : userLang.includes('de')? 'schicken' : 'send'} >
 
                         {userLang.includes('fr') && !sendingMail ? 'envoyer' 
                         : userLang.includes('fr') && sendingMail? 'envoie' 
                         
-                        : userLang.includes('de') && !sendingMail ? 'schicken' 
-                        : userLang.includes('de') && sendingMail ? 'schick' 
+                        : userLang.includes('de') && !sendingMail ? 'senden' 
+                        : userLang.includes('de') && sendingMail ? 'in Arbeit' 
                         
-                        : !sendingMail  ? 'send' : 'sending'}
+                        : !sendingMail  ? 'send' : 'in progress'}
                       
                       </button>
                 </form>
+
+                {/* envoyer / send / senden ou schicken
+en-cours / in progress / in Arbeit
+envoyé (OK) / sent (OK) / gesendet ou geschickt (OK) */}
             </div>                
     </div>
 </>
