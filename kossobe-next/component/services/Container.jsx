@@ -18,7 +18,7 @@ const Container = ({services}) => {
               scrollTrigger: {
                 trigger: main.current,
                 start:"-50vh top",
-                end: "+=300vh",
+                end: "+=1000vh",
                 scrub: true,
                 pin: true,
                 ///markers:true,
@@ -29,26 +29,35 @@ const Container = ({services}) => {
 
             cards.forEach((card,i) => {
 
+                const wrapper = card.querySelector('.wrapper-card')
                 const textBox = card.querySelector('.service-card-text');
                 const text = card.querySelector('.complex-text');
                 var textHeight = text.offsetHeight;
                 var textBoxHeight = textBox.offsetHeight;
                 const ratioTxtAndBox = textHeight / textBoxHeight
-                
+                console.log(`${i} =  ${ratioTxtAndBox}`)
+
                 tl.to(text,{
-                    color:'red',
-                    duration: 100,
+                    onStart : ()=>setSelectedCard(i),
+                    opacity:1,
+                    duration: 30,
                 })
 
                 tl.to(text,{
-                    y: textBoxHeight - textHeight,
-                    duration: textBoxHeight - textHeight >= 0? 0: 100*(3*ratioTxtAndBox),
+                    y: ratioTxtAndBox <= 1? 0: textBoxHeight - (textHeight+70),
+                    duration: ratioTxtAndBox <= 1? 20: //45,
+                    (50*ratioTxtAndBox),
                 })
 
                 tl.to(text,{
                     opacity:1,
-                    onStart : ()=>setSelectedCard(i),
-                    onComplete : ()=> i < 1 && setSelectedCard(i+1),
+                   duration:15
+                })
+
+                tl.to(text,{
+                    opacity:1,
+                    //onStart : ()=> i < 2 && setSelectedCard(i+1),
+                    onComplete : ()=> i < 2 &&  setSelectedCard(i+1),
                     onReverseComplete : ()=> setSelectedCard(i)
                 })
 
