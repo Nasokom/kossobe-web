@@ -39,7 +39,9 @@ const ServiceCard = ({data,i, color1, color2, selectedCard, setSelectedCard}) =>
                     <span style={{color,border:`4px solid ${color}`}}>0{i+1}</span>
                 </div>
 
-            <div className={styles.wrapper} style={{gridTemplateRows: `${selectedCard !== i ? '0fr' : '1fr'}`}}>
+            <div className={`wrapper-card ${styles.wrapper}`} 
+            style={{gridTemplateRows: `${selectedCard !== i ? '0fr' : '1fr'}`}}
+            >
 
               <div className={styles.inner}>
                 <div className={styles.content} style={{bg}}>

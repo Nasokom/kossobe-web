@@ -11,8 +11,8 @@ const ValueContainer = ({datas,userLang}) => {
     <div className={Styles.parent}>
     
         {datas.map((data,i)=>{
-            return (
 
+            return (
                 <div className={Styles.card} key={i}>
                     <h4> {data.name[userLang]}</h4>
 

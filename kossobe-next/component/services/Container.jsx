@@ -18,7 +18,7 @@ const Container = ({services}) => {
               scrollTrigger: {
                 trigger: main.current,
                 start:"-50vh top",
-                end: "",
+                end: "+=300vh",
                 scrub: true,
                 pin: true,
                 ///markers:true,
@@ -35,10 +35,14 @@ const Container = ({services}) => {
                 var textBoxHeight = textBox.offsetHeight;
                 const ratioTxtAndBox = textHeight / textBoxHeight
                 
+                tl.to(text,{
+                    color:'red',
+                    duration: 100,
+                })
 
                 tl.to(text,{
                     y: textBoxHeight - textHeight,
-                    duration: textBoxHeight - textHeight >= 0? 0: 10*(3*ratioTxtAndBox),
+                    duration: textBoxHeight - textHeight >= 0? 0: 100*(3*ratioTxtAndBox),
                 })
 
                 tl.to(text,{
