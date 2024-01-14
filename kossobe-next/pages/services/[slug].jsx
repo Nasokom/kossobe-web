@@ -8,6 +8,7 @@ import Styles from '../../styles/Pages/Services.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
+import {FaMusic} from 'react-icons/fa'
 import ScrollRouter from '../../component/Ui/ScrollRouter';
 import Container from '../../component/services/Container';
 import Head from 'next/head'
