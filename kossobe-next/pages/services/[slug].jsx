@@ -8,11 +8,11 @@ import Styles from '../../styles/Pages/Services.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
-import ServiceCard from '../../component/content/ServiceCard';
 import {FaMusic} from 'react-icons/fa'
 import service from '../../../kossobe-sanity/schemas/service';
 import ScrollRouter from '../../component/Ui/ScrollRouter';
 import Container from '../../component/services/Container';
+import Head from 'next/head'
 
 
 const ServicePage = ({services, categories, nextIndex}) => {
@@ -21,13 +21,17 @@ const ServicePage = ({services, categories, nextIndex}) => {
   const [disableScroll, setDisableScroll] = useState(false)
   const main = useRef(null)
 
+  console.log(nextIndex)
+
   useEffect(()=>{
 
     setTimeout(()=>{
       document.documentElement.style.overflow ="auto"
     },500)
+
+    window.scrollTo({top: 0, left: 0});
     
-  },[services])
+  },[router])
  
 
   const [selectedCard, setSelectedCard] = useState(0);
@@ -45,10 +49,25 @@ const ServicePage = ({services, categories, nextIndex}) => {
 
 
   return (
+
+    <>
+       <Head>
+
+        <title>services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="all" />
+        <meta name="author" content="kossobe"/>
+        <meta name="publisher" content="Kossobe"/>
+        <meta name="copyright" content="Kossobe"/>
+        <meta name="page-topic" content="Kossobe"></meta>
+    </Head>
+    
+   
   <div className={Styles.container}>
 
         {/* NAv */}
-        <div className={Styles.nav}>
+        <div className={Styles.nav} id="wtf">
           {filterCateg.map((categ,i)=>{
             return(<button value={categ.slug.current} key={i} 
                     onClick={(e)=>routerBtn(e)} style={{backgroundColor: categ.color.hex ? categ.color.hex : 'blue', color:categ.colorTxt.hex ? categ.colorTxt.hex :'black' }}>
@@ -91,13 +110,23 @@ const ServicePage = ({services, categories, nextIndex}) => {
                       />)})}
         </div>} */}
 
-        <Container services={services} />
+        <Container services={services}/>
+        
         
         {/* //!! Scroll router */}
-       {/*  {!disableScroll && <ScrollRouter nextIndex={nextIndex} nextSlug={nextSlug}  setDisableScroll={setDisableScroll}categories={categories} currentSlug={services.slug.current} router={router}/>} */}
 
+        {!disableScroll && 
+        <ScrollRouter 
+        nextIndex={nextIndex} 
+        nextSlug={nextSlug}  
+        setDisableScroll={setDisableScroll}
+        categories={categories} 
+        currentSlug={services.slug.current} 
+        router={router}/>
+        }
 
   </div>
+  </>
   )
 }
 

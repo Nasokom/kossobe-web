@@ -58,7 +58,7 @@ const About = ({appColors, data}) => {
         spans.forEach((span,i)=>{
           tl.to(span,{
             opacity:1,
-            color:'black',
+            color:'inherit',
             duration:0.1,
           })
         })

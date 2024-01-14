@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
 }
 
+p,h1,h2,h3,h4{
+  color: var(--textColor);
+}
+
 a , button{
   color: inherit;
   text-decoration: none;
@@ -81,14 +85,15 @@ p, ul, li{
 
 
 
-/* 
+
 [data-theme="dark"]{
   --textColor:white;
   --reverseColor:black;
   --bg:radial-gradient(circle, #000000, #1a1210, #281f17, #312e1c, #30402a);
+  --bg:#71694f;
   --html:black;
   --gradient:radial-gradient(circle, #000000, #1a1210, #281f17, #312e1c, #30402a);
-} */
+}
 
 @font-face {
   font-family: "plakkaat";

@@ -5,7 +5,7 @@
     top: 70vh;
     left: 50%;
     translate: -50% 0;
-    z-index: 100;
+    z-index: 10;
     transition: 0.3s;
 }
 
@@ -29,7 +29,7 @@
     position: absolute;
     background-color: black;
     width:3px;
-    height: 10px;
+    height: 15px;
     border-radius: 5px;
     top: 40%;
     left: 50%;
@@ -45,7 +45,8 @@
     animation:pop 3s alternate-reverse infinite;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    color:black
 }
 @keyframes pop {
     from{

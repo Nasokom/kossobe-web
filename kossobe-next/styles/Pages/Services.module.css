@@ -1,5 +1,6 @@
 .container{
     padding: 0px 50px;
+    padding-top: 10vh;
 }
 
 .container > *{
@@ -75,6 +76,7 @@
     padding: 50px;
     display: flex;
     justify-content: space-around;
+    color: var(--textColor);
 }
 
 .intro_text{
@@ -225,11 +227,12 @@
 }
 
 .btn{
-    background-color: white;
+    background-color: var(--html);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     height: 100%;
     padding: 10px;
+    translate: 1px 0
 }
 
 .btn div{

@@ -1,7 +1,6 @@
 footer{
     min-height: 20vh;
-    color: var(--textcolor);
-    border: 5px solid var(--textcolor);
+    color: var(--textColor);
     display: flex;
     justify-content: center;
     align-items: center;

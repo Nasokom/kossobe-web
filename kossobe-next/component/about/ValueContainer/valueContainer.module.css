@@ -13,11 +13,12 @@
     transition: 0.3s;
     position: relative;
     overflow: hidden;
-    box-shadow: -5px 5px black;
+    box-shadow: -5px 5px var(--textColor);
     width: 400px;
     width: 40%;
     cursor: pointer;
-    background-color: rgb(246, 246, 246);
+    background-color: var(--bg);
+    color: var(--textColor);
 }
 
 
@@ -27,7 +28,7 @@
  width: 100%;
  padding: 20px 0px;
  margin-bottom: 20px;
- border-bottom: 2px solid black;
+ border-bottom: 4px solid var(--textColor);
 }
 
 .card:hover{

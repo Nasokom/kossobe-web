@@ -1,14 +1,17 @@
-import React,{useRef,useState} from 'react'
+import React,{useEffect, useRef,useState} from 'react'
 import { gsap } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout'
 import Styles from '../../styles/module/ui/ScrollRouter.module.css'
+import {useRouter} from 'next/router'
 
 import { useStateContext } from '../../context/StateContext';
 
 gsap.registerPlugin(ScrollTrigger);
-const ScrollRouter = ({categories,router,nextIndex,setDisableScroll}) => {
+const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
 
+
+    const router = useRouter()
 
     const {userLang} = useStateContext()
     const main = useRef(null)
@@ -27,20 +30,22 @@ const ScrollRouter = ({categories,router,nextIndex,setDisableScroll}) => {
                 box.querySelector('h4').style.translate ='0 100px';
                 box.querySelector('h4').style.opacity ='0';
                 box.classList.add('routerAnim')
-
+                setTimeout(()=>{
+                    main.current.scrollTo({top:0,left:0,behavior:'instant'})
+                 },500 )
                 setTimeout(()=>{
                     router.push(`/services/${categories[nextIndex].slug.current}`)
-                },500)
+                },1000)
             }
             
             const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: main.current,
-                start:"top 25%",
-                end: "+=1000vh",
+                start:"5% 25%",
+                end: "+=800vh",
                 scrub: true,
                 pin: true,
-                //markers:true,
+                markers:true,
                 onLeave: () => endAnim(),
             }
             });
@@ -52,7 +57,7 @@ const ScrollRouter = ({categories,router,nextIndex,setDisableScroll}) => {
         
         }, main);
         return () => ctx.revert();
-    }, [router.query.slug]);
+    }, [router]);
 
 
 

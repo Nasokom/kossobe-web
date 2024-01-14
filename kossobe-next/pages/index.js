@@ -40,7 +40,7 @@ export default function Home({services, bannerData}) {
       </Head>
       <Suspense fallback={<Loading/>}>
 
-      <div ref={main} style={{position:'relative'}}>
+      <div ref={main} style={{position:'relative',backgroundColor:'var(--bgColor)'}}>
        <ScrollDown/>
 
        <HeroBanner banner={bannerData[1]}  appColors={appColors} main={main} userLang={userLang} arrow={arrowElt}/>

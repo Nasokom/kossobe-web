@@ -30,10 +30,12 @@ nav{
   position: relative;
   cursor: pointer;
   z-index: 1000;
+  
 }
 
 #burger-btn:hover span{
   scale: 1.1 1.1;
+  
 }
 
 #burger-btn span{

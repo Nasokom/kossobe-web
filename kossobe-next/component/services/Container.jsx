@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react'
-import ServiceCard from '../content/ServiceCard'
+import ServiceCard from './ServiceCard'
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
 import { gsap } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';

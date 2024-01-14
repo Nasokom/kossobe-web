@@ -29,7 +29,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
         <div className={Styles.container} ref={main}>
             
 
-            <div className={`heroText ${Styles.textBox}`} style={{textShadow:`0.3em 0.3em 0px ${appColors[3].txtColor.hex}`}}>
+            <div className={`heroText ${Styles.textBox}`} style={{textShadow:`0.3em 0.3em 2px ${ 'white'/* appColors[3].txtColor.hex */}`}}>
               <h1 className='hero-h1'><SplitText data={'KOSSOBE'} direction={textAnim.h1}/></h1>
               <h3 className='hero-h3'><SplitText data={banner.catchP[userLang]} direction={textAnim.h3}/></h3>
               <h2 className='hero-h2'><SplitText data={banner.catchP[userLang]} direction={textAnim.h2}/></h2>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Styles from '../../styles/module/ui/MailResponse.module.css'
+import Link from 'next/link'
 const MailResponse = ({state,userLang,toggle}) => {
 
 
@@ -54,8 +55,19 @@ const routingText = {
             <p>{state ? msg.success[userLang] : msg.error[userLang] } { !state && <a href="mailto:kossobe@gmail.com">kossobe@gmail.com</a>}</p>
 
 
-            <button onClick={()=>toggle(false)}>Ok</button>
 
+            {state ?  
+
+            <Link href={'/'}>
+                      <button onClick={()=>toggle(false)}>Ok</button>
+            s</Link>
+      
+            
+            
+            : <button onClick={()=>toggle(false)}>Ok</button> }
+
+
+  
     </div>
 
 

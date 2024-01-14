@@ -13,7 +13,7 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    color: black;
+    color: var(--textColor);
     display: flex;
     justify-content: center;
     align-items: center;

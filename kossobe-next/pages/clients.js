@@ -52,12 +52,12 @@ const Clients = ({datas,appColors}) => {
 
                         
                       <div className={Styles.cardBtnBox}>
-                      <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path>
-                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
+                      <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
+                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
                         </svg>
                           <button> <FaArrowRight/> </button>
-                        <svg  className={Styles.svg2}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path>
-                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
+                        <svg  className={Styles.svg2}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
+                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
                         </svg>
                       </div>
                   

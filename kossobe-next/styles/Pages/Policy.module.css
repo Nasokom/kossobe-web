@@ -1,5 +1,6 @@
 .policy{
     padding-top: 70px;
+    padding-top: 10vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -9,6 +10,7 @@
 .policy p{
     font-size: clamp(15px, 2vw, 25px);
     width: 100%;
+    color: var(--textColor);
 }
 
 .policy h2{
@@ -88,7 +90,7 @@
 .policy button{
     height: 40px;
     width: 40px;
-    border: 2px solid var(--textcolor);
+    border: 2px solid var(--textColor);
     position: relative;
     border-radius: 50%;
     transition: 0.3s;
@@ -99,7 +101,7 @@
     content: "";
     width: 50%;
     height: 2px;
-    background-color: var(--textcolor);
+    background-color: var(--textColor);
     position: absolute;
     top: 50%;
     left: 50%;

@@ -54,6 +54,10 @@ useIsomorphicLayoutEffect(() => {
 
     navBtns.forEach((btn,i)=>{
 
+      tl.from(btn,{
+        color:'inherit'
+      })
+
       tl.to(btn,{
         backgroundColor:btn.dataset.clr,
         //color:btn.dataset.txtClr
@@ -61,9 +65,9 @@ useIsomorphicLayoutEffect(() => {
       },i)
 
       i !== 2 && tl.to(btn,{
-        backgroundColor:'white',
+        backgroundColor:'inherit',
         //color:btn.dataset.clr
-        color:'black'
+        color:'inherit'
       },i+0.5)
     })
 
@@ -116,7 +120,7 @@ return () => ctx.revert();
           return <button data-clr={d.color.hex} data-txtClr={'black'}
           // onClick={()=>gTl.seek(i+0.5*i,true)}
           //onClick={()=>alert(window.scrollY)}
-             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'white', color: 'black`' }} className='categNavBtn'>{d.name[userLang]}</button>  
+             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'inherit' }} className='categNavBtn'>{d.name[userLang]}</button>  
         })}
       </div>
 
@@ -179,12 +183,12 @@ return () => ctx.revert();
                       <div onClick={(e)=>routingAnim(e)} href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
                         <button style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}> <FaArrowRight/> </button>
 
-                        <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path>
-                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
+                        <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
+                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
                         </svg>
 
-                        <svg  className={Styles.svg2}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#F9F8F6"></path>
-                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" fill="#ffffff"></path>
+                        <svg  className={Styles.svg2}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" ></path>
+                        <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z" ></path>
                         </svg>
                       </div>
 

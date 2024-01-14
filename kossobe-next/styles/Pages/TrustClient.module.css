@@ -1,10 +1,10 @@
 .page{
 padding: 50px;
+padding-top: 10vh;
 }
 
 .page h1{
     font-size: 5vw;
-    color: black;
     width: 100%;
     text-align: center;
 }
@@ -35,12 +35,12 @@ padding: 50px;
     transition: 0.3s;
     position: relative;
     overflow: hidden;
-    box-shadow: -5px 5px black;
+    box-shadow: -5px 5px var(--textColor);
 }
 
 
 .card:hover{
-  box-shadow: 0px 0px black;
+  box-shadow: 0px 0px var(--textColor);
   translate: -7px 7px;
 }
 .cardText{
@@ -89,8 +89,8 @@ padding: 50px;
   z-index: 1;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 200%;
+  height: 200%;
   background-color: rgba(0, 0, 0, 0.555);
   backdrop-filter: blur(10px);
   opacity: 0;
@@ -113,7 +113,7 @@ padding: 50px;
     right: -2px;
     height: 60px;
     width: 60px;
-    background-color: white;
+    background-color: var(--html);
     border-top-left-radius: 20px;
     border-top-left-radius: 50%;
     display: flex;
@@ -126,6 +126,7 @@ padding: 50px;
     height: 20px;
     left: -20px;
     rotate: 180deg;
+    fill: var(--html);
   }
   .svg2{
     position: absolute;
@@ -133,13 +134,14 @@ padding: 50px;
     height:20px;
     right: 0px;
     rotate: 180deg;
+    fill: var(--html);
   }
 
   .cardBtnBox button{
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: black;
+    background-color: var(--textColor);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,8 +149,8 @@ padding: 50px;
   
 
   .cardBtnBox button svg{
-    color: white;
-    fill: white;
+    color: var(--html);;
+    fill: var(--html);
   }
 
   @media (max-width:800px){
