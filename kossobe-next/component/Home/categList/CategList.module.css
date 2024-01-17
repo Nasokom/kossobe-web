@@ -279,7 +279,7 @@ fill:var(--bgColor)
   align-self: center;
 }
 
-.shortDesc{
+.shortDesc p > *{
   font-size: 20px;
   line-height: 2.5rem;
 }
