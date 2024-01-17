@@ -35,9 +35,13 @@
     align-items: center;
     flex-direction: column;
     animation: menuAnimation 0.5s forwards ease-in-out;
+    animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    animation-timing-function:ease-in;
     transition: 0.5s;
     z-index: 99;
     opacity: unset;
+    border: 10px solid var(--textColor);
+    border-left: unset;
 }
 
 
@@ -125,6 +129,11 @@
         border-top-right-radius: 20% ;
         border-bottom-right-radius: 20%;
       }
+
+     /*  70%{
+        border-top-right-radius: 20% ;
+        border-bottom-right-radius: 20%;
+      } */
     100%{
         transform: translateX(0%);
         border-top-right-radius: 1% ;
@@ -144,6 +153,7 @@
   @media screen and (max-width:700px) {
     .menu{
         width: 100%;
+        border:unset;
     }
 
     .link,.menu_deroulant{

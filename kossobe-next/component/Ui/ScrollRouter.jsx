@@ -45,7 +45,7 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
                 end: "+=800vh",
                 scrub: true,
                 pin: true,
-                markers:true,
+                //markers:true,
                 onLeave: () => endAnim(),
             }
             });

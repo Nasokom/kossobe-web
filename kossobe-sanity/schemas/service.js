@@ -23,6 +23,13 @@ export default{
             description:'couleur du service 👍'
           },
           {
+            name:'shortDesc',
+            title :'Short Description',
+            type:'textTrad',
+            description:'Courte description pour les servicesCards -> Home'
+
+          },
+          {
             name: 'colorTxt',
             title: 'Service Color 2',
             type: 'color',

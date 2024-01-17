@@ -28,7 +28,7 @@ const ServicePage = ({services, categories, nextIndex}) => {
       document.documentElement.style.overflow ="auto"
     },500)
 
-    window.scrollTo({top: 0, left: 0});
+    //window.scrollTo({top: 0, left: 0});
     
   },[router])
  

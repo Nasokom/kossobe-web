@@ -9,7 +9,6 @@
 }
 
 .header{
-    height: 60vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,12 +17,15 @@
 
 .page h1{
     font-family: plakkaat;
-    font-size: 7vw;
+    font-size: clamp(30px, 7vw,150px);
     text-align: center;
+    line-height: 3.5rem;
 }
 .page h2{
     /* line-height: 1.2em; */
     font-size: clamp(20px, 4vw,100px);
+    margin: 100px 0;
+    line-height: 3.5rem;
 }
 
 .introContainer{
@@ -69,7 +71,7 @@
     flex-wrap: wrap;
     width: 100%;
     color: var(--textColor);
-    
+    line-height: 3.5rem;
 }
 
 .textContainer p{
@@ -81,7 +83,8 @@
 
 .textContainer p span{
     margin-right: 12px;
-    font-size: clamp(25px,3vw,100px);
+    font-size: clamp(25px,5vw,100px);
+    line-height: 5.5rem;
     /* line-height: 2em; */
     opacity: 0.4;
     opacity: 1;
@@ -143,6 +146,7 @@
 .keyText{
     width: 50%;
     color: var(--textColor);
+    
 }
 
 /* TODO VAlues  */
@@ -167,7 +171,7 @@
     }
 
     .page{
-        padding: 0 20px;
+        padding: 10vh 20px;
     }
 
     .header{
@@ -193,6 +197,7 @@
     .keyText p{
         width: 100%;
         font-size: 4vw;
+        font-size: clamp(25px, 4vw,100px);
     }
 
     .valuesSection{
@@ -235,5 +240,9 @@
         translate: 0 400px;
         transition: 0.5s;
     }
-    
+
+
+.textContainer p span{
+    line-height: 3.7rem;
+}   
 }

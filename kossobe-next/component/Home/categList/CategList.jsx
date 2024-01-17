@@ -1,15 +1,16 @@
 import React, {useEffect,useLayoutEffect,useRef, useState} from 'react'
-import ComplexTexts from '../../Ui/ComplexText'
+import ComplexText from '../../Ui/ComplexText'
 import { useStateContext } from '../../../context/StateContext'
 import Link from 'next/link';
 import Styles from './CategList.module.css'
 import Image from 'next/image';
 import { urlFor } from '../../../Utils/sanityClient';
-import {FaArrowRight} from 'react-icons/fa'
+import {FaArrowRight, FaMusic} from 'react-icons/fa'
 import { gsap } from 'gsap';
 import SplitText from '../../../Utils/SplitText';
 import { useIsomorphicLayoutEffect } from '../../../Utils/isomorphicLayout';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
+import service from '../../../../kossobe-sanity/schemas/service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,8 @@ const CategList = ({data, cible}) => {
   const {userLang,router} = useStateContext();
 
   const main = useRef(null)
-
+  const box = useRef(null)
+  const [activeCard,setActiveCard]= useState(0);
   const [setFa,focusedCateg] = useState(null)
 
   const [gTl,setGtl] = useState(null)
@@ -38,7 +40,7 @@ useIsomorphicLayoutEffect(() => {
         scrub: true,
         pin: true,
          onUpdate: self => {
-          console.log("progress:", self.progress.toFixed(2), "direction:", self.direction, "velocity", self.getVelocity());
+          //le.log("progress:", self.progress.toFixed(2), "direction:", self.direction, "velocity", self.getVelocity());
           /* setFa(t< 0.2 ? 0 : t > 0.22 && t < 0.62 ? 1 : 2) */
         }
       }
@@ -49,62 +51,60 @@ useIsomorphicLayoutEffect(() => {
     const cards = self.selector('.categCard');
     const navBtns = self.selector('.categNavBtn')
 
-    //0.22 //0.62
-    //Image anim
-
-    navBtns.forEach((btn,i)=>{
-
-      tl.from(btn,{
-        color:'inherit'
-      })
-
-      tl.to(btn,{
-        backgroundColor:btn.dataset.clr,
-        //color:btn.dataset.txtClr
-        color:'black'
-      },i)
-
-      i !== 2 && tl.to(btn,{
-        backgroundColor:'inherit',
-        //color:btn.dataset.clr
-        color:'inherit'
-      },i+0.5)
-    })
-
-
     cards.forEach((card,i)=>{
 
-      i == 0 && tl.from(card,{
+      i > 0 &&
+       tl.to(card,{
         translate:`0 ${(5*i)-0}vh`,
-      },i)//0 
-
-      i > 0 && tl.to(card,{
-        translate:`0 ${(5*i)-0}vh`,
-      },i)//0
+        duration:1,
+        onStart:()=>setActiveCard(i),
+        onReverseComplete: ()=>setActiveCard(i-1 ),
+      })//0
 
       tl.to(card,{
         scale : `${ i < 2 ? `0.${8+i}` : 1}`,
-        translate:`0 ${(5.5*i)-7}vh`
-      },i+0.5)//0
+        translate:`0 ${(5.5*i)-7}vh`,
+        onComplete:()=>setActiveCard(i),
+       
+      })//0
     })
 
     // ClickeEvent 
-
     
-    /* gsap.utils.toArray("#categListNav button").forEach((a, i) => {
+    const categBox = main.current.parentElement
+    const boxStart = box.current.offsetTop
+    const boxHeight = main.current.offsetHeight
+
+    gsap.utils.toArray("#categListNav button").forEach((a, i) => {
       a.addEventListener("click", e => {
         e.preventDefault();
+
         window.scrollTo({
-          top: i == 0 ? 919 : i == 1 ? 2344 : 3870,
+          top: i == 0 ? boxStart
+              :i == 1 ? (boxStart + boxHeight)
+              :(boxStart + (boxHeight*2)),
           left: 0,
           behavior: "smooth",
         });
+       // tl.seek(i+1)
       })
-    }) */
+    })
 
-    //919
-    //2344
-    //3870, 
+    gsap.utils.toArray(".trickCardPos").forEach((a, i) => {
+      a.addEventListener("click", e => {
+        e.preventDefault();
+
+        window.scrollTo({
+          top: i == 0 ? boxStart
+              :i == 1 ? (boxStart + boxHeight)
+              :(boxStart + (boxHeight*2)),
+          left: 0,
+          behavior: "smooth",
+        });
+       // tl.seek(i+1)
+      })
+      
+    })
   
 }, main);
 return () => ctx.revert();
@@ -112,15 +112,25 @@ return () => ctx.revert();
 
 
   return (
+    <div ref={box}>
     <div className={Styles.parent} id="categList" ref={main}>
       <h2>{title[userLang]}</h2>
 
       <div className={Styles.nav} id='categListNav'>
         {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
-          return <button data-clr={d.color.hex} data-txtClr={'black'}
-          // onClick={()=>gTl.seek(i+0.5*i,true)}
-          //onClick={()=>alert(window.scrollY)}
-             style={{border:`2px solid ${d.color.hex}`,backgroundColor: i == 0 ? d.color.hex : 'inherit' }} className='categNavBtn'>{d.name[userLang]}</button>  
+          return( <button
+          key={i}
+                      data-clr={d.color.hex} data-txtClr={'black'}
+                        // onClick={()=>gTl.seek(i+0.5*i,true)}
+                        //onClick={()=>alert(window.scrollY)}
+                      style={{border:`2px solid ${d.color.hex}`,
+                              backgroundColor: activeCard == i? d.color.hex : 'inherit' ,
+                              color: activeCard == i ? 'black' : 'var(--textColor)' ,
+                              scale: activeCard == i ? '1.1 1.1' : 'inherit'
+                            }}
+                      className='categNavBtn'>
+                        {d.name[userLang]}
+                  </button> ) 
         })}
       </div>
 
@@ -136,13 +146,20 @@ return () => ctx.revert();
 
             const card = useRef(null)
 
+
+              
             function routingAnim(e){
+              
+
+              if(e.target.className.includes("trick")){
+                return
+              }
               card.current.classList.add('cardRouterHome')
               document.documentElement.style.overflow ="hidden"
               setTimeout(()=>{
                 router.push(`/services/${d.slug.current}`)
               },300)
-              console.log(e)
+
             }
 
 
@@ -150,8 +167,13 @@ return () => ctx.revert();
               <div onClick={(e)=>routingAnim(e)}
               className={`categCard ${Styles.card}`} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}} ref={card}>
               
+              <div className={`${Styles.invisibleTrick} trickCardPos`}></div>
+
+
               {/* left Img */}
-                <div className={Styles.cardLeft} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>
+                <div className={Styles.cardLeft} 
+                      onClick={(e)=>routingAnim(e)}
+                      style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>
                   <div className={Styles.imgBox}>
                   <Image 
                     loader={myLoader}
@@ -166,17 +188,28 @@ return () => ctx.revert();
 
                 {/* right  Txt*/}
 
-                <div className={Styles.cardRight}>
+                <div className={Styles.cardRight} onClick={(e)=>routingAnim(e)}>
                   
+                <h3 style={{color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>{d.name[userLang]}</h3>
+
                   <ul className={Styles.services}>
                     {d.services && d.services.map((service,i)=>{
                       return(
-                        <li key={i} style={{color:'black'}}>{service.name[userLang].replace(/"([^"]+)"|\(([^)]+)\)/g, '')}</li>
+                        <li key={i} style={{color:'black'}}>
+                          <div style={{display: i == 0 && 'none' /* color: d.colorTxt.hex  */}}><FaMusic/></div>
+                          {service.name[userLang].replace(/"([^"]+)"|\(([^)]+)\)/g, '')}
+                          </li>
                       )
                     })}
                   </ul>
 
-                  <h3 style={{color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}}>{d.name[userLang]}</h3>
+                  <p className={Styles.shortDesc}style={{color: d.colorTxt.hex }}> 
+                  {
+                    d.shortDesc && d.shortDesc[userLang] ? <ComplexText data={d.shortDesc[userLang]}/> :
+                  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus tenetur cupiditate ea earum nemo minima unde, laboriosam molestiae facere ipsa a aut iste iusto voluptates officia beatae tempora atque vitae.'
+                  }
+                  </p>
+
 
                   <div className={Styles.discover}>
                       <p>Discover</p>
@@ -200,6 +233,7 @@ return () => ctx.revert();
             })}
 
         </div>
+    </div>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { useStateContext } from '../context/StateContext'
 import {FaArrowRight} from 'react-icons/fa'
 import Link from 'next/link'
 import ComplexText from '../component/Ui/ComplexText'
+import Head from 'next/head'
 
 const Clients = ({datas,appColors}) => {
 
@@ -18,6 +19,22 @@ const Clients = ({datas,appColors}) => {
   },[])
 
   return (
+
+    <>
+     <Head>
+        <title>{userLang.includes('fr') ? 'Nos clients' : userLang.includes('de') ? 'zufriedene Kunden': 'Trust clients' }</title>
+        <meta name="description" content="Contact kossobe" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="all" />
+        <meta name="author" content="kossobe"/>
+        <meta name="publisher" content="Kossobe"/>
+        <meta name="copyright" content="Kossobe"/>
+        <meta name="page-topic" content="Kossobe"></meta>
+    </Head>
+    
+    
+
     <div className={Styles.page}>
 
         <h1>{datas.title[userLang]}</h1>
@@ -68,6 +85,7 @@ const Clients = ({datas,appColors}) => {
         </div>
 
     </div>
+    </>
   )
 
 

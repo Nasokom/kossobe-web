@@ -1,6 +1,7 @@
 .page{
 padding: 50px;
 padding-top: 10vh;
+background-color: var(--bgColor);
 }
 
 .page h1{
@@ -14,6 +15,7 @@ padding-top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--textColor);
 }
 
 .text div{

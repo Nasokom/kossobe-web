@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useRef} from 'react'
 import NavBar from './Navbar'
 import Footer from './Footer'
 import Loading from './Loading'
 import ComingSoon from './ComingSoon'
 import {client} from '../../Utils/sanityClient'
 
+import { useRouter } from "next/router"
 
 import { useStateContext } from '../../context/StateContext'
 
@@ -15,6 +16,10 @@ const Layout = ({children,colors,bgColor}) => {
   /* console.log(colors) */
 
     const [isLoading, setIsLoading] = useState(true)
+    const router = useRouter()
+
+    const scrollPositions = useRef({})
+    const isBack = useRef(false)
 
     useEffect(()=>{
 
@@ -32,8 +37,41 @@ const Layout = ({children,colors,bgColor}) => {
         //console.log(appColors);
       })
       
+  
 
-    },[])
+ 
+
+
+    router.beforePopState(() => {
+      isBack.current = true
+      return true
+    })
+
+    const onRouteChangeStart = () => {
+      const url = router.pathname
+      scrollPositions.current[url] = window.scrollY
+    }
+
+    const onRouteChangeComplete = (url) => {
+      if (isBack.current && scrollPositions.current[url]) {
+        window.scroll({
+          top: scrollPositions.current[url],
+          behavior: "auto",
+        })
+      }
+
+      isBack.current = false
+    }
+
+    router.events.on("routeChangeStart", onRouteChangeStart)
+    router.events.on("routeChangeComplete", onRouteChangeComplete)
+
+    return () => {
+      router.events.off("routeChangeStart", onRouteChangeStart)
+      router.events.off("routeChangeComplete", onRouteChangeComplete)
+    }
+  }, [router])
+
 
 
     useEffect(()=>{

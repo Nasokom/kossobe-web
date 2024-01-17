@@ -26,8 +26,21 @@ export default function Home({services, bannerData}) {
   useEffect(()=>{
     
     setArrowElt(main.current.querySelector('.scrollDownArrow'))
+    document.addEventListener("DOMContentLoaded", function (event) {
+      var scrollpos = sessionStorage.getItem('scrollpos');
+      if (scrollpos) {
+        console.log(scrollpos)
+          window.scrollTo(0, scrollpos);
+          sessionStorage.removeItem('scrollpos');
+      }
+  });
 
-  },[userLang,bannerData])
+    return(
+    window.addEventListener("beforeunload", function (e) {
+        sessionStorage.setItem('scrollpos', window.scrollY);
+    })
+    )
+  },[])
   
   //backgroundColor:appColors[3].color.hex, 
 

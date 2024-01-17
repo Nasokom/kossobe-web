@@ -80,7 +80,7 @@ export default function ScrollContainer({services, bannerData, appColors, userLa
   }, main);
 
   return () => ctx.revert();
-  }, [tl,appColors]);
+  }, []);
   
 
   return (

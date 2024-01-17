@@ -111,9 +111,14 @@ const About = ({appColors, data}) => {
       <div className={styles.header}>
         <h1>{userLang.includes('fr') ? 'Apprennez en plus sur nous' : userLang.includes('de') ? 'lerne mehr über uns' : 'Learn more about us'}</h1>
         <h2>{data.name[userLang]}</h2>
+      
+      <div className={`value-section ${styles.valuesSection}`}>
+                <h3 className='valueTitle'>{data.values.title[userLang]}</h3>
+
+                <ValueContainer datas={data.values.valeur} userLang={userLang}/>
+
+              </div>
       </div>
-
-
       <div ref={main} className={styles.pinSpacer} id="aboutAnimContainer">
 
           <div className={styles.introContainer}>
@@ -166,12 +171,12 @@ const About = ({appColors, data}) => {
             </div>
 
               {/* Nois valeurs */}
-            <div className={`value-section ${styles.valuesSection}`}>
+           {/*  <div className={`value-section ${styles.valuesSection}`}>
                 <h3 className='valueTitle'>{data.values.title[userLang]}</h3>
 
                 <ValueContainer datas={data.values.valeur} userLang={userLang}/>
 
-              </div>
+              </div> */}
 
               </div>
      

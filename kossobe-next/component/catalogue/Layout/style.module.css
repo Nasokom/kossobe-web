@@ -1,0 +1,13 @@
+.page{
+    padding: 20px;
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bgColor);
+    min-height: 100vh;
+}
+
+.page h1{
+    font-size: 100px;
+}

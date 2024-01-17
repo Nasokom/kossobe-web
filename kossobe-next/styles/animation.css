@@ -1,5 +1,8 @@
 @import './aboutAnim.css';
 /* Home page Categ Card */
+.cardRouterHome{
+    z-index: 100;
+}
 
 .cardRouterHome div{
     opacity: 0;
