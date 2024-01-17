@@ -43,7 +43,7 @@ export const StateContext = ({children}) => {
         : setUserLang('en');
         //console.log(userLang)
     //},[router.query.slug && router.query.slug, appColors])
-        },[appColors])
+        },[])
     
     return (
         <Context.Provider
