@@ -27,7 +27,8 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
             function endAnim(){
                 document.documentElement.style.overflow ="hidden"
                 const box = main.current.querySelector('.routerScrollCardBox ')
-                box.querySelector('h4').style.translate ='0 100px';
+                //box.querySelector('h4').style.scale ='1.2';
+                box.querySelector('h4').style.translate ='0 200px';
                 box.querySelector('h4').style.opacity ='0';
                 box.classList.add('routerAnim')
                 setTimeout(()=>{
@@ -69,9 +70,10 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
         <h3>{userLang.includes('fr') ?'les autres services de kossobe' : userLang.includes('de') ? "Dienstleistungen von Kossobe zu entdecken" : "Kossobe's other services" }</h3>
         <br/>
         <div className={`routerScrollCardBox ${Styles.cardBox}`} style={{backgroundColor:categories[nextIndex].color.hex}} >
-            <div className={Styles.card} style={{border:`4px solid ${categories[nextIndex].color.hex}`}}>
+            <div className={Styles.card} style={{outline:`4px solid ${categories[nextIndex].color.hex}`,border:`4px solid ${categories[nextIndex].color.hex}`}}>
                 <h4>{categories[nextIndex].name[userLang]}</h4>
-                <div className={Styles.scrollElt} style={{backgroundColor:categories[nextIndex].color.hex}}id='innerScroll'></div>
+                <div className={Styles.scrollElt} 
+                style={{backgroundColor:categories[nextIndex].color.hex,boxShadow:`0px 0px 10px ${categories[nextIndex].color.hex}`}}id='innerScroll'></div>
             </div>
         </div>
     
