@@ -44,7 +44,7 @@ const Menu = ({toggleMenu}) => {
                 </Link> 
 
                 <div className={styles.menu_deroulant} data-text="Contact Us" >
-                    {userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Services': 'Our Services' }
+                    {userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'usere Leistungen': 'Our Services' }
                     <div className={styles.shrink}>
                         <div>
 
@@ -91,7 +91,7 @@ const Menu = ({toggleMenu}) => {
                 className={styles.link}   
                 onClick={()=>toggleMenu()}
                 >
-                    <span  data-text="Contact Us">Contact Us </span>
+                    <span  data-text="Contact Us">{userLang.includes('fr') ? 'Contact' : userLang.includes('de') ? 'Kontakt': 'Contact' }</span>
                 </Link>
 
             </ul>

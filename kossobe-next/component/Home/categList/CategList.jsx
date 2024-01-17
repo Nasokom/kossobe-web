@@ -211,7 +211,7 @@ return () => ctx.revert();
                   </p>
 
 
-                  <div className={Styles.discover}>
+                  <div className={Styles.discover} onClick={(e)=>routingAnim(e)}>
                       <p>Discover</p>
                       <div onClick={(e)=>routingAnim(e)} href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
                         <button style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}> <FaArrowRight/> </button>

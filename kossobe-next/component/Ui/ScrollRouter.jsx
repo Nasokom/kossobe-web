@@ -66,7 +66,7 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
     <>
     <div className={Styles.container} ref={main}>
 
-        <h3>{userLang.includes('fr') ?'Scroll pour decouvrir' : userLang.includes('de') ? "Scrollen Sie, um die anderens" : "Scroll to discover" } </h3>
+        <h3>{userLang.includes('fr') ?'Scroll pour decouvrir' : userLang.includes('de') ? "Scrollen Sie, um die anderen" : "Scroll to discover" } </h3>
         <h3>{userLang.includes('fr') ?'les autres services de kossobe' : userLang.includes('de') ? "Dienstleistungen von Kossobe zu entdecken" : "Kossobe's other services" }</h3>
         <br/>
         <div className={`routerScrollCardBox ${Styles.cardBox}`} style={{backgroundColor:categories[nextIndex].color.hex}} >

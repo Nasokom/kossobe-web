@@ -60,7 +60,7 @@ const ServiceCard = ({data,i, color1, color2, selectedCard, setSelectedCard}) =>
                     : 'interested in this service ?' }
                     </p>
                     <p style={{color:'white'}}> {userLang.includes('fr') ? 'Contactez nous' 
-                      : userLang.includes('de') ? 'Kontaktiere uns'
+                      : userLang.includes('de') ? 'Kontaktieren Sie uns'
                       : 'Contact us' }</p>
                   </div>
 
