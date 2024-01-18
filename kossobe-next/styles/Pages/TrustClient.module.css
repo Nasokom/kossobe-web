@@ -159,6 +159,7 @@ background-color: var(--bgColor);
 
     .page{
       padding: 10px;
+      padding-top: 10vh;
       }
       
       .card{

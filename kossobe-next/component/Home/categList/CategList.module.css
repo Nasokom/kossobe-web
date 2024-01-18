@@ -29,12 +29,16 @@
   border-radius: 30px;
   border: 3px solid black;
   margin: 5px;
-  cursor: unset;
   color: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav button:hover{
+  scale: 1.2;
 }
 
 .container{

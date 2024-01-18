@@ -123,10 +123,11 @@ return () => ctx.revert();
                       data-clr={d.color.hex} data-txtClr={'black'}
                         // onClick={()=>gTl.seek(i+0.5*i,true)}
                         //onClick={()=>alert(window.scrollY)}
-                      style={{border:`2px solid ${d.color.hex}`,
+                      style={{border:`4px solid ${d.color.hex}`,
+                              outline:`0px solid ${d.color.hex}`,
                               backgroundColor: activeCard == i? d.color.hex : 'inherit' ,
                               color: activeCard == i ? 'black' : 'var(--textColor)' ,
-                              scale: activeCard == i ? '1.1 1.1' : 'inherit'
+                              //scale: activeCard == i ? '1.1 1.1' : ''
                             }}
                       className='categNavBtn'>
                         {d.name[userLang]}

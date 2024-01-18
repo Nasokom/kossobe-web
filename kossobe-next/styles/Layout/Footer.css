@@ -80,3 +80,9 @@ footer #credit p{
     opacity: 0.5;
     text-align: center;
 }
+
+@media (max-width:800px) {
+    .footer{
+        padding: 20px;
+    }
+}
