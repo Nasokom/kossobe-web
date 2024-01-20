@@ -151,10 +151,14 @@ return () => ctx.revert();
               
             function routingAnim(e){
               
+              
+            //console.log(e.target.classList.value)
 
-              if(e.target.className.includes("trick")){
+              if(e.target.classList.value.includes("trick")){
                 return
               }
+
+
               card.current.classList.add('cardRouterHome')
               document.documentElement.style.overflow ="hidden"
               setTimeout(()=>{
@@ -214,7 +218,7 @@ return () => ctx.revert();
 
                   <div className={Styles.discover} onClick={(e)=>routingAnim(e)}>
                       <p>Discover</p>
-                      <div onClick={(e)=>routingAnim(e)} href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
+                      <div href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
                         <button style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}> <FaArrowRight/> </button>
 
                         <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>

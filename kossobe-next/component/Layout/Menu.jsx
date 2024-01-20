@@ -83,7 +83,7 @@ const Menu = ({toggleMenu}) => {
                     className={styles.link}    
                     onClick={()=>toggleMenu()}
                 >
-                     <span>{userLang.includes('fr') ? 'Nos clients' : userLang.includes('de') ? 'zufriedene Kunden': 'Trust clients' }</span>
+                     <span>{userLang.includes('fr') ? 'Nos clients' : userLang.includes('de') ? 'Unsere Kunden': 'Our Clients' }</span>
                 </Link>
 
 

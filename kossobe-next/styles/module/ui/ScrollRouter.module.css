@@ -11,6 +11,8 @@
 
 .container h3{
     font-size: 40px;
+    text-align: center;
+    line-height: 2.5rem;
 }
 
 .cardBox{
@@ -63,4 +65,21 @@
 
 .container button:hover{
     background-color: rgba(255, 0, 0, 0.749);
+}
+
+@media screen and (max-width:700px) {
+
+    .cardBox{
+        width: 90%;
+        height: 60vh;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .container h3{
+        font-size: 6vw;
+        text-align: center;
+        line-height: 2.5rem;
+    }
+
 }

@@ -25,7 +25,8 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
             const inner = self.selector('#innerScroll')
             
             function endAnim(){
-                document.documentElement.style.overflow ="hidden"
+                document.documentElement.style.overflow = "hidden"
+                document.body.style.overflow = 'hidden'
                 const box = main.current.querySelector('.routerScrollCardBox ')
                 //box.querySelector('h4').style.scale ='1.2';
                 box.querySelector('h4').style.translate ='0 200px';
@@ -33,30 +34,43 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
                 box.classList.add('routerAnim')
                 setTimeout(()=>{
                     main.current.scrollTo({top:0,left:0,behavior:'instant'})
-                 },500 )
+                 },600 )
                 setTimeout(()=>{
                     router.push(`/services/${categories[nextIndex].slug.current}`)
-                },1000)
+                },700)
             }
             
             const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: main.current,
                 start:"5% 25%",
-                end: "+=800vh",
+                end: "+=1800vh",
                 scrub: true,
                 pin: true,
                 //markers:true,
-                onLeave: () => endAnim(),
+                //onLeave: () => endAnim(),
             }
             });
             
             //Image anim
             tl.to(inner,{
                 translate:`0 -100%`,
-            }).call(()=>endAnim())
+                //onComplete: ()=> endAnim(),
+            })
+
+            tl.pause();
+
+            tl.to(inner,{
+                opacity:0
+            })
+
         
+        
+
         }, main);
+
+
+
         return () => ctx.revert();
     }, [router]);
 
