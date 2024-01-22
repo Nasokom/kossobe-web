@@ -18,14 +18,14 @@
 .page h1{
     font-family: plakkaat;
     font-size: clamp(30px, 7vw,150px);
-    text-align: center;
-    line-height: 3.5rem;
+    text-align: center; 
+    line-height: 1em;
 }
 .page h2{
     /* line-height: 1.2em; */
     font-size: clamp(20px, 4vw,100px);
     margin: 100px 0;
-    line-height: 3.5rem;
+    line-height: 1em;
 }
 
 .introContainer{
@@ -83,8 +83,8 @@
 
 .textContainer p span{
     margin-right: 12px;
-    font-size: clamp(25px,5vw,100px);
-    line-height: 5.5rem;
+    font-size: clamp(25px,4vw,100px);
+    line-height: 1.2em;
     /* line-height: 2em; */
     opacity: 0.4;
     opacity: 1;
@@ -104,6 +104,7 @@
 
 .imgBox image{
     object-fit: contain;
+
 }
 
 
@@ -141,6 +142,7 @@
 
 .page h3{
     font-size: 50px;
+    line-height: 1em;
 }
 
 .keyText{
@@ -241,8 +243,5 @@
         transition: 0.5s;
     }
 
-
-.textContainer p span{
-    line-height: 3.7rem;
-}   
+ 
 }

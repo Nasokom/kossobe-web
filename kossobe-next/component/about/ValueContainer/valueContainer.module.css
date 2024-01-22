@@ -29,6 +29,7 @@
  padding: 20px 0px;
  margin-bottom: 20px;
  border-bottom: 4px solid var(--textColor);
+ line-height: 1em;
 }
 
 .card:hover{
