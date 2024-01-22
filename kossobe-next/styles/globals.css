@@ -44,8 +44,9 @@ button,button > *{
     text-indent: 0;
 }
 
-h1,h2,h3,h4, h3 p, h3 > * button{
+h1,h2,h3,h4, h3 p, h3 > *, button{
   font-family: plakkaat;
+  line-height: 1em;
 }
 
 /* @media (prefers-color-scheme: dark) {

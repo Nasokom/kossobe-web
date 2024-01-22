@@ -69,11 +69,6 @@ const About = ({appColors, data}) => {
           duration: 7
         })//0
 
-        tl.to(img,{
-          scale:1,
-          duration: 1,
-        })//0
-       
       })
 
 

@@ -243,27 +243,34 @@ fill:var(--bgColor)
 }
 
 .card{
-  padding-top: 40px;
+  padding-top: 50px;
 }
 
 .card h3{
-  font-size: 28px;
+  font-size: 20px;
   text-align: center;
   width: 100%;
+  top: 10px;
   position: absolute;
-  top: 20px;
-
 }
+
 
 .services{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
+.services li div{
+  margin-right: 10px;
+  padding: 10px;
+  line-height: 10px;
+}
+
+
 .services li{
-  font-size: 12px;
+  font-size: 10px;
   line-height: 15px;
-  margin: 0px 5px;
+  margin-right: 10px;
 }
 
 .card {
@@ -317,5 +324,9 @@ fill:var(--bgColor)
   padding: 20px 40px;
   text-align: center;
 
+}
+
+.discover .linkBox{
+  border-top-left-radius: 45px;
 }
 }
