@@ -1,0 +1,76 @@
+.theme-btn{
+    border: 3px solid var(--textColor);
+    min-width: 120px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 25px;
+    position: relative;
+    transition: 0.5s;
+    padding-left: 40px;
+    color: var(--textColor);
+}
+
+.theme-btn div{
+    transition: inherit;
+}
+
+.theme-logo{
+    border: 3px solid var(--textColor);
+    border-radius: 50%;
+    background: var(--bg);
+    position: absolute;
+    font-weight: 900;
+    left: -3px;
+    translate: 0 -50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    transition: 0.5s;
+}
+
+.theme-logo svg{
+    font-size: 20px;
+    stroke-width: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.btnDark{
+    rotate: 360deg;
+    left: 70%;
+}
+
+.theme-logo:hover{
+    scale: 1.1;
+}
+
+
+#langue-btn select{
+    color: var(--textColor);
+    overflow: visible;
+    height: 100%;
+}
+
+#langue-btn{
+    padding-left: 40px;
+    padding-right: 0;
+}
+
+#langue-btn span{
+    font-size: 25px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    translate: 5px -50%;    
+}
+
+#langue-btn svg{
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+

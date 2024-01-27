@@ -783,6 +783,11 @@
     base64url "^3.0.1"
     tslib "^2.3.1"
 
+"@studio-freight/lenis@1.0.12":
+  version "1.0.12"
+  resolved "https://registry.npmjs.org/@studio-freight/lenis/-/lenis-1.0.12.tgz"
+  integrity sha512-iN3JQ6qJVc+L7vh8NjlDibw9dvjjifvlJ+s0UAkfwty+vW9MJxRfszb5X/eAhcbDLZW6MlvjRHoH9WSQH3J8eA==
+
 "@swc/helpers@0.5.1":
   version "0.5.1"
   resolved "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.1.tgz"
@@ -3419,6 +3424,13 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+locomotive-scroll@^5.0.0-beta.8:
+  version "5.0.0-beta.8"
+  resolved "https://registry.npmjs.org/locomotive-scroll/-/locomotive-scroll-5.0.0-beta.8.tgz"
+  integrity sha512-4Nq12voKr5719aaySZg3FX/gQKQIAaAC4NkBiU27aKEKFnYcTeOB1r8VO5bGpEIOGQo94wsiJQNZuRb3TsxjHA==
+  dependencies:
+    "@studio-freight/lenis" "1.0.12"
+
 lodash.defaults@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/lodash.defaults/-/lodash.defaults-4.2.0.tgz"
@@ -4914,10 +4926,10 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
-styled-components@^5.2, styled-components@^5.2.0, "styled-components@>= 2":
-  version "5.3.10"
-  resolved "https://registry.npmjs.org/styled-components/-/styled-components-5.3.10.tgz"
-  integrity sha512-3kSzSBN0TiCnGJM04UwO1HklIQQSXW7rCARUk+VyMR7clz8XVlA3jijtf5ypqoDIdNMKx3la4VvaPFR855SFcg==
+styled-components@^5.2, styled-components@^5.2.0, styled-components@^5.3.11, "styled-components@>= 2":
+  version "5.3.11"
+  resolved "https://registry.npmjs.org/styled-components/-/styled-components-5.3.11.tgz"
+  integrity sha512-uuzIIfnVkagcVHv9nE0VPlHPSCmXIUGKfJ42LNjxCCTDTL5sgnJ8Z7GZBq0EnLYGln77tPpEpExt2+qa+cZqSw==
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/traverse" "^7.4.5"

@@ -7,33 +7,32 @@ export default{
             name:'backOfficeName',
             title:'Nom du Service',
             type:"string",
-            description:"Nom du service"
-
+            description:"Nom du back office"
         },
         {
             name:"name",
             title:"Nom du service",
             type:'titleTrad',
+            description:"Nom afficher sur le site web"
         },
         {
-            name:"image",
-            title:"Image",
-            type:"array",
-            of:[{type:"image"}],
-            description: "2 photos qui decrivent le service"
+            name:'image',
+            title:'Image Unique',
+            type:'image',
+            description:'New img field'
         },
-        {   
-            name:"text",
-            title:'Text',
-            type:"textTrad"
+        {
+            name:'text',
+            title:'text',
+            type:'textTrad',
+            description:'New text field'
         },
-
-        {   
-            name:"text2",
-            title:'Text2',
-            type:"textTrad"
-        },
-
-
+        /* {
+            name:'content',
+            title:'Contenu',
+            type:'array',
+            of:[{type:'textImage'}],
+            description:"Gerer le contenu de chaque carte service"
+        }, */
     ]
 }

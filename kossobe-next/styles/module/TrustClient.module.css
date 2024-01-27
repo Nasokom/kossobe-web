@@ -1,0 +1,52 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    border: 3px solid black;
+}
+
+
+.carousel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    animation: carousel 15s infinite linear;
+    transition: 1s;
+    width: 200%;
+    border: 2px solid red;
+}
+
+@keyframes carousel {
+    
+    0%{
+        translate: -25% 0;
+    }
+     5%{
+        translate: -25% 0;
+    }
+
+    25%{
+        translate: 0% 0;
+    }
+
+    50%{
+        translate: 25% 0;
+    }
+
+    55%{
+        translate: 25% 0;
+    }
+
+    75%{
+        translate: 0% 0;
+    }
+
+
+    100%{
+        translate: -25% 0;
+    }
+}

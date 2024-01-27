@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { client } from '../../Utils/sanityClient';
+//import { client } from '../../Utils/sanityClient';
 import styles from '../../styles/Layout/Menu.module.css'
 import { useStateContext } from '../../context/StateContext';
 
@@ -23,8 +23,13 @@ const Menu = ({toggleMenu}) => {
 
     return (
 
-        <div id="menu-container" className={`${styles.modalMenu} ${styles.blurbg}`} onClick={()=>toggleMenu()} >
+        <div id="menu-container" className={`${styles.modalMenu} ${styles.blurbg}`} 
+        //onClick={()=>toggleMenu()} 
+        >
+        <div className={styles.emptyClose} onClick={()=>toggleMenu()}></div>
+
          <div className={styles.menu} ref={menuRef} id="menu">
+            
             <ul className={styles.container}>
                {/*  <div className={styles.img_container}>
                     <Image className={styles.image} src={'/djembe.png'} width="300" height="500" />
@@ -37,9 +42,15 @@ const Menu = ({toggleMenu}) => {
                 </Link> 
 
                 <div className={styles.menu_deroulant} data-text="Contact Us" >
-                    {userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Dienstleistungen': 'Our Services' }
+                    {userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'usere Leistungen': 'Our Services' }
                     <div className={styles.shrink}>
                         <div>
+
+                        <Link href="/services/boutique"
+                        onClick={()=>toggleMenu()}
+                        >
+                            <span>{userLang.includes('fr') ? 'Boutique' : userLang.includes('de') ? 'Geschäft': 'Shop' }</span>
+                        </Link> 
 
                         <Link href="/services/pedagogie"
                             onClick={()=>toggleMenu()}
@@ -47,23 +58,13 @@ const Menu = ({toggleMenu}) => {
                             <span>{userLang.includes('fr') ? 'Pedagogie' : userLang.includes('de') ? 'Pädagogik': 'Pedagogy' }</span>
                         </Link> 
 
-                        <Link href="/services/artiste"
-                            onClick={()=>toggleMenu()}
-                            >
-                            <span>{userLang.includes('fr') ? 'Artiste' : userLang.includes('de') ? 'Artist': 'Artist' }</span>
-                        </Link> 
-
                         <Link href="/services/live" 
                         onClick={()=>toggleMenu()}
                         >
-                            <span >Live</span>
+                            <span> <span>{userLang.includes('fr') ? 'Performance' : userLang.includes('de') ? 'Leistung': 'Performance' }</span></span>
                         </Link> 
 
-                        <Link href="/services/boutique"
-                        onClick={()=>toggleMenu()}
-                        >
-                            <span>{userLang.includes('fr') ? 'Boutique' : userLang.includes('de') ? 'Geschäft': 'Shop' }</span>
-                        </Link> 
+                       
                     </div>
                     </div>
 
@@ -76,12 +77,19 @@ const Menu = ({toggleMenu}) => {
                      <span>{userLang.includes('fr') ? 'A propos de nous' : userLang.includes('de') ? 'über uns': 'About Us' }</span>
                 </Link>
 
+                <Link href="/clients"
+                    className={styles.link}    
+                    onClick={()=>toggleMenu()}
+                >
+                     <span>{userLang.includes('fr') ? 'Nos clients' : userLang.includes('de') ? 'Unsere Kunden': 'Our Clients' }</span>
+                </Link>
+
 
                 <Link href="/contact"
                 className={styles.link}   
                 onClick={()=>toggleMenu()}
                 >
-                    <span  data-text="Contact Us">Contact Us </span>
+                    <span  data-text="Contact Us">{userLang.includes('fr') ? 'Contact' : userLang.includes('de') ? 'Kontakt': 'Contact' }</span>
                 </Link>
 
             </ul>

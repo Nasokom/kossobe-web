@@ -1,91 +1,131 @@
 import React, { useEffect,useState, useRef } from 'react'
-import { client } from '../../Utils/sanityClient';
+import { client, urlFor } from '../../Utils/sanityClient';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useStateContext } from '../../context/StateContext';
-import ComplexText from '../../component/Ui/ComplexText';
+import ComplexText from '../../component/Ui/ComplexText'
 import Styles from '../../styles/Pages/Services.module.css'
 import { gsap, selector } from 'gsap';
 import { ScrollTrigger} from 'gsap/dist/ScrollTrigger';
 import { useIsomorphicLayoutEffect } from '../../Utils/isomorphicLayout';
+import {FaMusic} from 'react-icons/fa'
+import ScrollRouter from '../../component/Ui/ScrollRouter';
+import Container from '../../component/services/Container';
+import Head from 'next/head'
 
-gsap.registerPlugin(ScrollTrigger);
 
-const ServicePage = ({services, category}) => {
+const ServicePage = ({services, categories, nextIndex}) => {
+  
+  const {userLang,router} = useStateContext();
+  const [disableScroll, setDisableScroll] = useState(false)
+  const main = useRef(null)
 
-    const {userLang} = useStateContext();
-    console.log(services.services)
-    const main = useRef(null)
-    useIsomorphicLayoutEffect(() => {
+  console.log(nextIndex)
 
-      //setImgW(window.innerWidth)
+  useEffect(()=>{
 
-      const ctx = gsap.context((self) => {
-   
-          //main.current.querySelector('#crowd3')
+    setTimeout(()=>{
+      document.documentElement.style.overflow ="auto"
+    },500)
 
-               const crowd3 = self.selector('#crowd3');
-                const card = main.current.querySelectorAll('.service-card');
-     
-               const tl = gsap.timeline({
-                 scrollTrigger: {
-                   trigger: main.current,
-                   start:"top top",
-                   end: "+=1500px",
-                   scrub: true,
-                   pin: true,
-                 }
-               });
-   
-              card.forEach((elt,i)=>{
-
-                 i > 0 && tl.to(elt,{
-                  y:-300*i
-                })   
-              })
-
-           }, main);
-           return () => ctx.revert();
-         }, []);
-   
-
+    //window.scrollTo({top: 0, left: 0});
     
+  },[router])
+ 
+
+  const [selectedCard, setSelectedCard] = useState(0);
+  const filterCateg = categories.filter(function(a){return a.slug.current != services.slug.current})
+  const nextSlug = services.slug.current == 'boutique' ? 'pedagogie' : services.slug.current == 'pedagogie' ? 'live' : 'boutique'
+
+
+  function routerBtn(e){
+    e.target.classList.add('btnRouterAnim');
+    document.documentElement.style.overflow ="hidden"
+    setTimeout(()=>{
+      router.push(`/services/${e.target.value}`)
+    },500)
+  }
+
+
   return (
-    <div>
-        <div className='page-header'>
-            <h1>{userLang.includes('fr') ? 'Nos Services' : userLang.includes('de') ? 'Unsere Dienstleistungen': 'Our Services' }</h1>
-            <p>Decouvrez les Services que nous proposons</p>
+
+    <>
+       <Head>
+
+        <title>services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="all" />
+        <meta name="author" content="kossobe"/>
+        <meta name="publisher" content="Kossobe"/>
+        <meta name="copyright" content="Kossobe"/>
+        <meta name="page-topic" content="Kossobe"></meta>
+    </Head>
+    
+   
+  <div className={Styles.container}>
+
+        {/* NAv */}
+        <div className={Styles.nav} id="wtf">
+          {filterCateg.map((categ,i)=>{
+            return(<button value={categ.slug.current} key={i} 
+                    onClick={(e)=>routerBtn(e)} style={{backgroundColor: categ.color.hex ? categ.color.hex : 'blue', color:categ.colorTxt.hex ? categ.colorTxt.hex :'black' }}>
+                      {categ.name[userLang]}
+                  </button>)})}
+        </div>
+          
+        {/* Header */}
+        <div className={`${Styles.header}`}>
+          <h1 className='reverseAnim' style={{backgroundColor:services.color? services.color.hex : 'blue',color: services.colorTxt.hex ? services.colorTxt.hex : 'black' }}>
+            {services.name && services.name[userLang]}
+          </h1>
+        </div>
+            
+        {/* Intro  */}
+        <div className={Styles.intro} id="introAnim">
+
+          <div className={Styles.intro_text}>
+            <h3>{services.introTitle[userLang]}</h3>
+            <ComplexText data={services.introText[userLang]}/>
+          </div>  
+          <ul>
+            {services.list.map((l,i)=>{
+              return <li key={i} ><span style={{backgroundColor: services.color.hex}}><FaMusic/></span>{l[userLang]}</li>
+            })}
+          </ul>
+
         </div>
 
-    <div  ref={main}>
-        <div className={Styles.nav}>
-
-            {category.map((categ,i)=>{
-              return( 
-                <Link href={`/services/${categ.slug.current}`} key={i}>
-                        <button className={services.name[userLang] == categ.name[userLang] && Styles.btn_active}>
-                            {categ.name[userLang]}
-                        </button>
-                    </Link>
-                )
-              })}
-
-        </div>
-
-        <div className={Styles.service_container}>
+        {/* Content */}
+      {/*   {services && <div className={Styles.service_container} ref={main} style={{minHeight:'100vh',}}>
             {services.services.map((service,i)=>{
-              return(
-                <div key={i} className={`service-card ${Styles.card}`}>
-                       <h2>{service.name[userLang]}</h2> 
+                  return(
+                    <ServiceCard data={service} i={i}
+                      selectedCard={selectedCard}
+                      setSelectedCard={setSelectedCard}
+                      key={i}
+                      color1={services.color.hex}
+                      color2={services.colorTxt.hex}
+                      />)})}
+        </div>} */}
 
-                        <ComplexText data={service.text[userLang]}/>
+        <Container services={services}/>
+        
+        
+        {/* //!! Scroll router */}
 
-                    </div>
-                )
-              })}
+        {!disableScroll && 
+        <ScrollRouter 
+        nextIndex={nextIndex} 
+        nextSlug={nextSlug}  
+        setDisableScroll={setDisableScroll}
+        categories={categories} 
+        currentSlug={services.slug.current} 
+        router={router}/>
+        }
 
-        </div>
-        </div>
-    </div>
+  </div>
+  </>
   )
 }
 
@@ -112,11 +152,15 @@ export const getStaticPaths = async () => {
     const services = await client.fetch(query);
 
     const categoryQuery = '*[_type == "service"]';
-    const category = await client.fetch(categoryQuery);
+    const unSortedCateg = await client.fetch(categoryQuery);
+    const categories =  unSortedCateg.sort(function(a,b){return a.ordre-b.ordre})
 
-    
+    const arrLght = categories.length -1
+    const index = categories.findIndex((a)=>a.slug.current == slug);
+    const nextIndex = index == arrLght ? 0 : index+1
+
     return {
-      props: { services, category},
+      props: { services, categories,nextIndex},
       revalidate: 3,
     }
   }

@@ -1,0 +1,113 @@
+.policy{
+    padding-top: 70px;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 100px;
+}
+
+.policy p{
+    font-size: clamp(15px, 2vw, 25px);
+    width: 100%;
+    color: var(--textColor);
+}
+
+.policy h2{
+    font-size: clamp(25px, 4vw, 40px);
+    padding-bottom: 70px;
+    text-align: center;
+    font-weight: 100;
+}
+
+.policy h3{
+    font-size: clamp(20px, 4vw, 35px);
+    font-weight: bolder;
+    padding-bottom: 20px;
+}
+
+.content_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.categ{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+    margin-top: 80px;
+    background: var(--bg);
+    min-width: 80%;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+
+.sub_categ{
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 4px solid var(--textColor);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.sub_title{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* .policy-sub-categ:hover .policy-text{
+    transition: 1s;
+    max-height: 100vh;
+} */
+
+.ppda{
+    max-height: 50vh !important;
+    transition: 1s;
+}
+
+.text{
+    width: 80vw;
+    max-height: 0vh;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.policy button:hover{
+    scale: 1.1;
+}
+
+.policy button{
+    height: 40px;
+    width: 40px;
+    border: 2px solid var(--textColor);
+    position: relative;
+    border-radius: 50%;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.policy button:after,#policy button::before {
+    content: "";
+    width: 50%;
+    height: 2px;
+    background-color: var(--textColor);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.policy button::before{
+    rotate: 90deg;
+}

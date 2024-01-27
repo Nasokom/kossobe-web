@@ -5,11 +5,21 @@ import serviceItem from './tools/serviceItem'
 import service from './service'
 import titleText from './tools/titleText'
 import policy from './policy'
-import client from './client'
+import textImage from './tools/textImage'
+import about from './about'
+import aboutValues from './tools/aboutValues'
+import simpleTextImg from './tools/simpleTextImg'
+import simpleTextTrad from './tools/simpleTextTrad'
+import mail from './mail'
+import clientPage from './clientPage'
+import clientObject from './clientObject'
+import colors from './colors'
+import settings from './settings'
 
 export const schemaTypes = [
-    banner,service,policy,client,
+    banner,service,policy,about,mail,clientPage,clientObject,colors,settings,
     
     
-    textTrad, titleTrad, serviceItem, titleText
+    textTrad, titleTrad, serviceItem, titleText, textImage, aboutValues,
+    simpleTextImg, simpleTextTrad
 ]

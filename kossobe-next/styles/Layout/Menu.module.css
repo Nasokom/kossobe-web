@@ -5,28 +5,43 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 98;
+    z-index: 1000;
     transition: 0.4s;
 }
 .blurbg{
     animation: blury forwards 1s;
 }
 
+.emptyClose{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
 
 .menu{
+    padding-top: 10vh;
+    padding-bottom: 5vh;
     position: absolute;
     width:50vw;
     height:100vh;
     top: 0;
     left: 0;
     background: var(--bg);
+    background: var(--bgColor);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
     animation: menuAnimation 0.5s forwards ease-in-out;
+    animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    animation-timing-function:ease-in;
     transition: 0.5s;
     z-index: 99;
     opacity: unset;
+    border: 10px solid var(--textColor);
+    border-left: unset;
 }
 
 
@@ -35,7 +50,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    height: 80%;
 }
 
 .menu_deroulant{
@@ -47,6 +63,7 @@
     font-size: 5vw;
     padding-top:20px ;
     padding-bottom:20px ;
+    color: var(--textColor);
 }
 
 .shrink{
@@ -64,6 +81,7 @@
     justify-content: center;
     align-items: left;
     flex-direction: column;
+
 }
 
 .shrink a{
@@ -84,6 +102,8 @@
     padding-top:20px ;
     padding-bottom:20px ;
     z-index: 100;
+    color: var(--textColor);
+    text-align: center;
 }
 
 .img_container{
@@ -110,6 +130,11 @@
         border-top-right-radius: 20% ;
         border-bottom-right-radius: 20%;
       }
+
+     /*  70%{
+        border-top-right-radius: 20% ;
+        border-bottom-right-radius: 20%;
+      } */
     100%{
         transform: translateX(0%);
         border-top-right-radius: 1% ;
@@ -117,9 +142,19 @@
     }
   }
 
+  .btn_box{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
   @media screen and (max-width:700px) {
     .menu{
         width: 100%;
+        border:unset;
     }
 
     .link,.menu_deroulant{
@@ -131,4 +166,12 @@
         font-size: 8vw;
     }
 
+    .btn_box{
+        height: 70px;
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+
 }
+

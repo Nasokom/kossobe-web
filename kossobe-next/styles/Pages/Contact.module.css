@@ -6,10 +6,8 @@
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
-
+    background-color: var(--bgColor);
 }
-
-
 
 .page form{
     display: flex;
@@ -17,9 +15,10 @@
     align-items: center;
     flex-direction: column;
     padding: 40px;
+    color: var(--textColor);
 }
 
-.page input,.page textarea, .page button{
+.page input,.page textarea, .page button ,.page select{
     max-width: 700px;
     width: 100%;
     padding:10px 0px;
@@ -27,15 +26,23 @@
     font-size: xx-large;
     margin: 20px 0px;
     font-family: "Grandstander-variable";
-    color: var(--textcolor);
+    color: var(--textColor);
 }
 
+.page input::placeholder, .page textarea::placeholder {
+    color: var(--textColor);
+    opacity: 1; /* Firefox */
+  }
+  
+  .page input::-ms-input-placeholder, .page textarea::placeholder { /* Edge 12 -18 */
+    color: var(--textColor);
+  }
 .page input{
     height: 50px;
 }
 
 .page textarea{
-    color: var(--textcolor);
+    color: var(--textColor);
 }
 
 .submit{
