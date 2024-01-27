@@ -2,13 +2,14 @@ import React from 'react'
 import ThemeBtn from '../Ui/ThemeBtn'
 import LangueBtn from '../Ui/LangueBtn'
 import Link from 'next/link'
+import { useStateContext } from '../../context/StateContext'
 
-const Footer = ({userLang}) => {
+const Footer = () => {
+
+  const {userLang} = useStateContext()
+
   return (
     <footer>
-    <div >
-      <h4>Site map</h4>
-      <p>Pour naviguer facilement sur notre site web</p>
 
       <span id='line'></span>
       <div className='footer-container'>
@@ -68,13 +69,11 @@ const Footer = ({userLang}) => {
           </ul>
         </div>
       </div>
+      <div id="credit">
+        <p>@ Kossobe, d'ici et d'ailleurs <span>2023</span></p>
 
-
-    </div>
-    <div className='settings'>
-        <ThemeBtn/>
-        <LangueBtn/>
-    </div>
+        <p>Website made by Nasoa</p>
+      </div>
     </footer>
   )
 }

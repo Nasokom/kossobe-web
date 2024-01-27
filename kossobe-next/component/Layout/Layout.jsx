@@ -12,7 +12,7 @@ import { useStateContext } from '../../context/StateContext'
 
 const Layout = ({children,colors,bgColor}) => {
 
-  const {setAppColors,appColors,theme,userLang} = useStateContext()
+  const {setAppColors,appColors,theme} = useStateContext()
   /* console.log(colors) */
 
     const [isLoading, setIsLoading] = useState(true)
@@ -94,7 +94,7 @@ const Layout = ({children,colors,bgColor}) => {
             {appColors && children}
 
           </main>
-      <Footer userLang={userLang}/>
+      <Footer/>
       </>
     )
 }

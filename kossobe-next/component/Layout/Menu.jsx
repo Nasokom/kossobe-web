@@ -4,6 +4,8 @@ import Image from 'next/image';
 //import { client } from '../../Utils/sanityClient';
 import styles from '../../styles/Layout/Menu.module.css'
 import { useStateContext } from '../../context/StateContext';
+import ThemeBtn from '../Ui/ThemeBtn';
+import LangueBtn from '../Ui/LangueBtn';
 
 const Menu = ({toggleMenu}) => {
 
@@ -74,7 +76,7 @@ const Menu = ({toggleMenu}) => {
                     className={styles.link}    
                     onClick={()=>toggleMenu()}
                 >
-                     <span>{userLang.includes('fr') ? 'A propos de nous' : userLang.includes('de') ? 'über uns': 'About Us' }</span>
+                     <span>{userLang.includes('fr') ? 'Nous connaître' : userLang.includes('de') ? 'über uns': 'About Us' }</span>
                 </Link>
 
                 <Link href="/clients"
@@ -93,8 +95,12 @@ const Menu = ({toggleMenu}) => {
                 </Link>
 
             </ul>
-            
+        <div className={styles.btn_box}>
+                <ThemeBtn/>
+                <LangueBtn/>
+            </div>
         </div>
+
         </div>
     )
 }
