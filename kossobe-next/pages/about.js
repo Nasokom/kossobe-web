@@ -50,25 +50,42 @@ const About = ({appColors, data}) => {
         const text2 = card.querySelector('.introTxt2')
         const spans = text2.querySelectorAll('span');
 
+
+        function getRndInteger(min, max) {
+          return Math.floor(Math.random() * (max - min)) + min;
+        }
+
          i !== 0 && tl.to(card,{
           translate:`0 0`,
-          duration: 3
         })
         
         spans.forEach((span,i)=>{
           tl.to(span,{
             opacity:1,
-            color:'inherit',
-            duration:0.1,
+            duration:0.02,
           })
         })
-        
+        tl.addLabel("myLabel", ">");
+
+        spans.forEach((span,i)=>{
+          tl.to(span,{
+            translate:`${getRndInteger(-100,100)}vh ${getRndInteger(-100,100)}vh`,
+            opacity:0,
+          },'myLabel')
+        })
+
+       /*  tl.from(img,{
+          scale:'0.2'
+        }) */
 
         tl.to(textContainer,{
-          translate:`0 -100vh`,
-          duration: 7
-        })//0
+          opacity:0,
+        },'myLabel')//0
 
+        tl.to(img,{
+          scale:'1'
+        }, 'myLabel')
+       
       })
 
 
