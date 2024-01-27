@@ -20,7 +20,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Home({services, bannerData}) {
   const {userLang,appColors,router} = useStateContext()
-  const main = useRef(null)
   const [arrowElt, setArrowElt]= useState(null)
 
 

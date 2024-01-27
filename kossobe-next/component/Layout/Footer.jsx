@@ -3,7 +3,7 @@ import ThemeBtn from '../Ui/ThemeBtn'
 import LangueBtn from '../Ui/LangueBtn'
 import Link from 'next/link'
 
-const Footer = () => {
+const Footer = ({userLang}) => {
   return (
     <footer>
     <div >
