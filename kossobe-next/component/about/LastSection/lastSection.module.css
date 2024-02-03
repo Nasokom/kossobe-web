@@ -1,0 +1,59 @@
+.parent{
+        background-color: var(--html);
+        background-color: var(--bgColor);
+        outline: 10px solid var(--html);
+        outline: 10px solid var(--bgColor);
+        color: var(--html);
+}
+.container{
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50vh;
+    align-items: center;
+    border-bottom: 1px solid var(--textColor);
+    padding:50px 0px;
+}
+
+.card h3{
+    margin-bottom: 20px;
+}
+
+.keyText{
+    width: 50%;
+    color: var(--textColor);
+    
+}
+
+@media (max-width:1000px){
+
+
+
+    .container{
+        justify-content: center;
+        outline: 5px solid var(--html);
+    }
+
+    .card{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .keyText{
+        width: 100%;
+    }
+    .keyText p{
+        width: 100%;
+        font-size: 4vw;
+        font-size: clamp(25px, 4vw,100px);
+    }
+}

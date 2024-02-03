@@ -55,7 +55,7 @@ const ScrollRouter = ({categories,nextIndex,setDisableScroll}) => {
             //Image anim
             tl.to(inner,{
                 translate:`0 -100%`,
-                //onComplete: ()=> endAnim(),
+                onComplete: ()=> endAnim(),
             })
 
             tl.pause();

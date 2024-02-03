@@ -6,6 +6,18 @@
     margin-top: 50px;
 }
 
+.parent h2{
+    text-align: center;
+}
+.cardBox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 50px;
+}
+
+
 .card{
     padding: 20px;
     border-radius: 20px;
@@ -24,6 +36,7 @@
 
 .card h4{
  font-size: clamp(20px,2.5vw ,40px);
+ color: inherit;
  text-align: center;
  width: 100%;
  padding: 20px 0px;
