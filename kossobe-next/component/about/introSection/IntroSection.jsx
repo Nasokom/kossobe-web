@@ -43,6 +43,10 @@ useIsomorphicLayoutEffect(() => {
        i !== 0 && tl.to(card,{
         translate:`0 0`,
       })
+
+      cards[i-1] && tl.to(cards[i-1],{
+        opacity:0
+      })
       
       spans.forEach((span,i)=>{
         tl.to(span,{
@@ -50,6 +54,7 @@ useIsomorphicLayoutEffect(() => {
           duration:0.02,
         })
       })
+
       tl.addLabel("myLabel", ">");
 
       spans.forEach((span,i)=>{
