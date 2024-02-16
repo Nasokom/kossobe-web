@@ -45,7 +45,8 @@ useIsomorphicLayoutEffect(() => {
       })
 
       cards[i-1] && tl.to(cards[i-1],{
-        opacity:0
+        opacity:0,
+        duration:0,
       })
       
       spans.forEach((span,i)=>{
@@ -53,6 +54,10 @@ useIsomorphicLayoutEffect(() => {
           opacity:1,
           duration:0.02,
         })
+      })
+
+      tl.to(textContainer,{
+      opacity:1,
       })
 
       tl.addLabel("myLabel", ">");
@@ -63,6 +68,7 @@ useIsomorphicLayoutEffect(() => {
           opacity:0,
         },'myLabel')
       })
+
 
       tl.to(textContainer,{
         opacity:0,

@@ -12,7 +12,7 @@ function changeLangue(e){
 }
 
   return (
-    <button className='theme-btn' name="langue button"  aria-label="langue button" id='langue-btn' for="langueBtn">
+    <button className='theme-btn' name="langue button"  aria-label="langue button" id='langue-btn' htmlFor="langueBtn">
         <span><MdOutlineLanguage/></span>
         <select name="" id="langueBtn" value={'vzz'} onChange={(e)=>changeLangue(e)}>
             <option value={userLang}>{userLang == 'fr' ? 'Francais': userLang == 'de' ? 'Deutsch' : "English" }</option>
