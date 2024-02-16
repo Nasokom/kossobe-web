@@ -7,6 +7,28 @@
     translate: -50% 0;
     z-index: 10;
     transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.294);
+    animation: appear 0.5s forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+@keyframes appear {
+
+0%{
+  opacity: 1;
+  transform: translateY(50%) scale(0.2) rotate(90deg);
+
+}
+
+50%{}
+
+100%{ 
+  
+  opacity: 1;
+  transform: translateY(0%) scale(1);
+rotate: 0deg;}
+  
 }
 
 .circle{
@@ -17,7 +39,9 @@
     
 }
 .circle g{
-    font-size: 22px;
+    font-size: 23.2px;
+    font-weight: 800;
+    font-stretch: 150%;
 }
 
 .parent p{

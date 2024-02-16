@@ -19,13 +19,14 @@ p,h1,h2,h3,h4{
   color: var(--textColor);
 }
 
-a , button{
+a , button,select{
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+
 }
 
-button,button > *{
+button,input,button > *{
   font-family: plakkaat;
 }
 * {
@@ -47,7 +48,9 @@ button,button > *{
 h1,h2,h3,h4, h3 p, h3 > *, button{
   font-family: plakkaat;
   line-height: 1em;
+  font-weight: 900;
 }
+
 
 /* @media (prefers-color-scheme: dark) {
   html {
@@ -99,6 +102,8 @@ p, ul, li{
 @font-face {
   font-family: "plakkaat";
   src: url('.././public/fonts/Plakkaat.ttf');
+  src: url('.././public/fonts/Gluten.ttf');
+  src: url('.././public/fonts/DynaPuff.ttf');
   font-display: swap;
 }
 
