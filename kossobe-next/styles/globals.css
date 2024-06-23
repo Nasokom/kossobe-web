@@ -103,7 +103,7 @@ p, ul, li{
   font-family: "plakkaat";
   src: url('.././public/fonts/Plakkaat.ttf');
   src: url('.././public/fonts/Gluten.ttf');
-  /* src: url('.././public/fonts/DynaPuff.ttf'); */
+  src: url('.././public/fonts/DynaPuff.ttf');
   font-display: swap;
 }
 
