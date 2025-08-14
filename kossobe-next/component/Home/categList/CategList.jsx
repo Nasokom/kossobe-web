@@ -119,8 +119,9 @@ return () => ctx.revert();
       <div className={Styles.nav} id='categListNav'>
         {data.sort(function(a,b){return a.ordre-b.ordre}).map((d,i)=>{
           return( <button
-          key={i}
-                      data-clr={d.color.hex} data-txtClr={'black'}
+                    key={i}
+                      data-clr={d.color.hex} //data-txtClr={'black'}
+                      data-txtclr={'black'}
                         // onClick={()=>gTl.seek(i+0.5*i,true)}
                         //onClick={()=>alert(window.scrollY)}
                       style={{border:`4px solid ${d.color.hex}`,
@@ -169,7 +170,7 @@ return () => ctx.revert();
 
 
             return(
-              <div onClick={(e)=>routingAnim(e)}
+              <div onClick={(e)=>routingAnim(e)} key={i}
               className={`categCard ${Styles.card}`} style={{backgroundColor: d.color.hex ? d.color.hex : 'blue', color: d.colorTxt.hex ? d.colorTxt.hex : 'black'}} ref={card}>
               
               <div className={`${Styles.invisibleTrick} trickCardPos`}></div>
@@ -182,7 +183,8 @@ return () => ctx.revert();
                   <div className={Styles.imgBox}>
                   <Image 
                     loader={myLoader}
-                    objectFit="cover"
+                    //objectFit="cover"
+                    style={{objectFit:'cover'}}
                     fill
                     sizes="100%"
                     src={'bjr'}
@@ -208,18 +210,18 @@ return () => ctx.revert();
                     })}
                   </ul>
 
-                  <p className={Styles.shortDesc}style={{color: d.colorTxt.hex }}> 
+                  <div className={Styles.shortDesc}style={{color: d.colorTxt.hex }}> 
                   {
                     d.shortDesc && d.shortDesc[userLang] ? <ComplexText data={d.shortDesc[userLang]}/> :
                   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus tenetur cupiditate ea earum nemo minima unde, laboriosam molestiae facere ipsa a aut iste iusto voluptates officia beatae tempora atque vitae.'
                   }
-                  </p>
+                  </div>
 
 
                   <div className={Styles.discover} onClick={(e)=>routingAnim(e)}>
                       <p>Discover</p>
                       <div href={`/services/${d.slug.current}`} key={i} className={Styles.linkBox}>
-                        <button style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}> <FaArrowRight/> </button>
+                        <button aria-label="Discover service" style={{outline:`9px solid ${ d.color.hex ? d.color.hex : 'blue'}`}}> <FaArrowRight/> </button>
 
                         <svg  className={Styles.svg}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>
                         <path d="m100,0H0v100C0,44.77,44.77,0,100,0Z"></path>

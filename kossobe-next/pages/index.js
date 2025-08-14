@@ -50,8 +50,9 @@ export default function Home({services, bannerData}) {
         <title>Kossobe Home</title>
         <meta name="description" content="Kossobe website" />
         <link rel="icon" href="/favicon.ico" />
+
       </Head>
-      <Suspense fallback={<Loading/>}>
+      <Suspense fallback={<p></p>}>
 
       <div ref={main} style={{position:'relative',backgroundColor:'var(--bgColor)'}}>
        <ScrollDown/>

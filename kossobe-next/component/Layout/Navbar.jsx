@@ -29,13 +29,13 @@ const NavBar = () => {
   return (
     <>
     <nav ref={nav}>
-        <button type="button" id="burger-btn" onClick={()=>toggleMenu()}>
+        <button type="button" id="burger-btn" aria-label={showMenu ?'close menu' :'open menu'} onClick={()=>toggleMenu()}>
             <span className={!showMenu ? 'burger-line1' : 'burger-line11'}></span>
                 <span className={!showMenu ? 'burger-line2' : 'burger-line22'}></span>
         </button>
 
         <Link href={'/'} >
-        <button id='logo' aria-label='home'>
+        <button id='logo' aria-label='home' style={{padding:'10px 0px 10px 10px'}}>
         kossobe
         </button>
       </Link>

@@ -21,7 +21,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
     const main = useRef(null)
 
-    const myLoader = () => banner.image && urlFor(banner.image);
+    const myLoader = () => banner.image && urlFor(banner.image).url();
   
 
     return (
@@ -31,8 +31,8 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
 
             <div className={`heroText ${Styles.textBox}`} style={{textShadow:`0.3em 0.3em 2px ${ 'white'/* appColors[3].txtColor.hex */}`}}>
               <h1 className='hero-h1'><SplitText data={'KOSSOBE'} direction={textAnim.h1}/></h1>
-              <h3 className='hero-h3'><SplitText data={banner.catchP[userLang]} direction={textAnim.h3}/></h3>
               <h2 className='hero-h2'><SplitText data={banner.catchP[userLang]} direction={textAnim.h2}/></h2>
+              <h3 className='hero-h3'><SplitText data={banner.catchP[userLang]} direction={textAnim.h3}/></h3>
             </div>
       
             {/* <p>{banner.intro[userLang]}</p> */}
@@ -40,6 +40,7 @@ const HeroBanner = ({banner,tl,userLang,arrow,appColors}) => {
               <Image
                 src={"fake"}
                 loader={myLoader}
+                alt='Instruments Africains creation de Kossobe'
                 sizes={'100%'}
                 priority={true}
                 fill

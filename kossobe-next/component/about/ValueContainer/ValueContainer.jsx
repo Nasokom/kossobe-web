@@ -4,7 +4,7 @@ import ComplexText from '../../Ui/ComplexText'
 
 const ValueContainer = ({datas,userLang, title,h2,appColors}) => {
 
-    console.log(appColors)
+    console.log('ValueContainer',appColors)
     useEffect(()=>{
 
     },[datas, userLang])

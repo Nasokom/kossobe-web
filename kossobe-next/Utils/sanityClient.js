@@ -10,7 +10,11 @@ export const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-export const urlFor = (source) => builder.image(source);
+export const urlFor = (source) => {  
+  const sanityImage = builder.image(source)
+  const proxyUrl = () => `/api/image-proxy?url=${encodeURIComponent(sanityImage)}`
+    return {url:proxyUrl}
+};
 
 
 

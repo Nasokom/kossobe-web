@@ -2,20 +2,22 @@ import React, {useState, useEffect,useRef} from 'react'
 import NavBar from './Navbar'
 import Footer from './Footer'
 import Loading from './Loading'
-import ComingSoon from './ComingSoon'
 import {client} from '../../Utils/sanityClient'
 
 import { useRouter } from "next/router"
 
 import { useStateContext } from '../../context/StateContext'
 
+export const metadata = {
+  lang:'fr'
+}
 
 const Layout = ({children,colors,bgColor}) => {
 
   const {setAppColors,appColors,theme} = useStateContext()
   /* console.log(colors) */
 
-    const [isLoading, setIsLoading] = useState(true)
+    //const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
 
     const scrollPositions = useRef({})
@@ -23,20 +25,20 @@ const Layout = ({children,colors,bgColor}) => {
 
     useEffect(()=>{
 
-      /*  (
-      async () => {
-          const LocomotiveScroll = (await import('locomotive-scroll')).default
-          const locomotiveScroll = new LocomotiveScroll();
-      }
-    )() */
-
       fetch('/api/getColors').then((res) => res.json())
       .then((data) => {
         //console.log(data)
         setAppColors(data)
+        const r = document.querySelector(':root');
+        r.style.setProperty('--bgColor', !theme ? data.colorLigth.hex : data.colorDark.hex);
         //console.log(appColors);
       })
+    },[])
       
+
+
+
+       useEffect(()=>{
   
 
  
@@ -73,13 +75,6 @@ const Layout = ({children,colors,bgColor}) => {
   }, [router])
 
 
-
-    useEffect(()=>{
-
-      const r = document.querySelector(':root');
-      appColors && r.style.setProperty('--bgColor', !theme ? appColors.colorLigth.hex : appColors.colorDark.hex);
-
-    })
     console.log(bgColor)
       //const r = document.querySelector(':root');
       //r.style.setProperty('--html', theme ? bgColor.colorLight.hex : bgColor.colorDark.hex);

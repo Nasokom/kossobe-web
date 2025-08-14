@@ -12,9 +12,15 @@ function changeLangue(e){
 }
 
   return (
-    <button className='theme-btn' name="langue button"  aria-label="langue button" id='langue-btn' htmlFor="langueBtn">
-        <span><MdOutlineLanguage/></span>
-        <select name="" id="langueBtn" value={'vzz'} onChange={(e)=>changeLangue(e)}>
+    <button style={{position:'relative'}} 
+      className='theme-btn' name="langue button"  
+      aria-label="langue button" id='langue-btn' 
+    >
+          <span><MdOutlineLanguage/></span> 
+        <label style={{position:'absolute',opacity:0}} htmlFor="langueBtn"> 
+          change langue
+        </label>
+        <select style={{height:'100%'}} name="Select langue" id="langueBtn"  value={'vzz'} onChange={(e)=>changeLangue(e)}>
             <option value={userLang}>{userLang == 'fr' ? 'Francais': userLang == 'de' ? 'Deutsch' : "English" }</option>
             { userLang !== 'fr' && <option value="fr">Francais</option>}
             {userLang !== 'de' && <option value="de">Deutsch</option>}

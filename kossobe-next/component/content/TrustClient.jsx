@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const TrustClient = ({datas}) => {
 
-    console.log(datas)
+    //console.log(datas)
   return (
       <div className={styles.container}> 
 
